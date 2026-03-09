@@ -14,19 +14,20 @@
 using namespace geode::prelude;
 
 bool ConnectPopup::init() {
+    log::info("We are making the thing");
     m_noElasticity = true;
-
+    log::info("Set no elasticity");
     //this->setTitle("Connect to Archipelago");
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
     auto const layerSize = CCSize { 346.f, 280.f };
     auto const layerPos = (winSize - layerSize) / 2;
-
+    log::info("Calculated layer size and position");
     urlInput = TextInput::create(260, "archipelago.gg:12345", "chatFont.fnt");
     slotInput = TextInput::create(260, "1257Plays", "chatFont.fnt");
     passInput = TextInput::create(260, "topsecretpassword", "chatFont.fnt");
-
+    log::info("Created text inputs");
     urlInput->setFilter("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.:;*/");
     urlInput->setString(Mod::get()->getSavedValue<std::string>("recent-url", ""));
 
@@ -39,7 +40,7 @@ bool ConnectPopup::init() {
     auto urlLabel = CCLabelBMFont::create("Archipelago URL", "bigFont.fnt");
     auto slotLabel = CCLabelBMFont::create("Slot Name", "bigFont.fnt");
     auto passLabel = CCLabelBMFont::create("Password (if not set, leave empty)", "bigFont.fnt");
-
+    log::info("Created labels");
     urlLabel->setScale(.5f);
     urlLabel->setPosition(173.f, 225.f);
     urlInput->setPosition(173.f, urlLabel->getPositionY()-25.f);
@@ -51,13 +52,13 @@ bool ConnectPopup::init() {
     passLabel->setScale(.5f);
     passLabel->setPosition(173.f, 115.f);
     passInput->setPosition(173.f, passLabel->getPositionY()-25.f);
-
+    log::info("Scaled and position elements in the popup");
     auto connectButton = CCMenuItemSpriteExtra::create(
         ButtonSprite::create("Connect"),
         this,
         menu_selector(ConnectPopup::onConnect)
     );
-
+    log::info("Created connect button"); // this should be where it crashes
     connectButton->setPosition(173.f, 40.f);
 
     auto menu = m_buttonMenu;
