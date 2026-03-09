@@ -61,7 +61,8 @@ bool ConnectPopup::init() {
     log::info("Created connect button"); // this should be where it crashes
     connectButton->setPosition(173.f, 40.f);
     log::info("Positioned connect button");
-    auto menu = m_buttonMenu;
+    // this is whats stopping it
+    auto menu = MenuLayer::get();
     menu->addChild(urlInput);
     menu->addChild(slotInput);
     menu->addChild(passInput);
