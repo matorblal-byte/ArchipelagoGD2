@@ -13,7 +13,7 @@
 
 using namespace geode::prelude;
 
-bool ConnectPopup::setup() {
+bool ConnectPopup::init() {
     m_noElasticity = true;
 
     this->setTitle("Connect to Archipelago");
@@ -105,7 +105,7 @@ ConnectPopup* ConnectPopup::create() {
     auto* ret = new ConnectPopup();
 
    
-    if (ret && ret->initAnchored(346.f, 280.f)) {
+    if (ret && ret->init()) {
         ret->autorelease();   
     } else {
         CC_SAFE_DELETE(ret);

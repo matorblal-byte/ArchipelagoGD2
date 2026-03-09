@@ -7,9 +7,9 @@
 
 using namespace geode::prelude;
 
-class ConnectPopup : public geode::Popup<> {
+class ConnectPopup : public Popup {
     protected:
-    bool setup() override;
+    bool init();
     TextInput* urlInput;
     TextInput* slotInput;
     TextInput* passInput;
