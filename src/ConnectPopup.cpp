@@ -16,7 +16,7 @@ using namespace geode::prelude;
 bool ConnectPopup::init() {
     m_noElasticity = true;
 
-    this::setTitle("Connect to Archipelago");
+    ConnectPopup::setTitle("Connect to Archipelago");
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
