@@ -1,4 +1,7 @@
 # ArchipelagoGD
+Lets see if i can make this work idk
+
+Original description:
 This is where she makes a mod.
 
 <img src="logo.png" width="150" alt="the mod's logo" />
