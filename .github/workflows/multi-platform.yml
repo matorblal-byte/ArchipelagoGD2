@@ -26,7 +26,6 @@ jobs:
         with:
           combine: true
           target: ${{ matrix.config.target }}
-          cmake-args: -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
 
   package:
     name: Package builds
