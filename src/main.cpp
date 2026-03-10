@@ -1,5 +1,5 @@
 #include <Geode/modify/MenuLayer.hpp>
-#include "ConnectPopup.h"
+#include "ConnectPopup.cpp"
 #include "APUtils.hpp"
 
 using namespace geode::prelude;

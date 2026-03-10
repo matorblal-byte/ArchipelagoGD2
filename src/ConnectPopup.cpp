@@ -84,7 +84,6 @@ bool init() {
     TextInput* passInput;
 
 public:
-void connectToAP(const char* url, const char* slot, const char* password);
 void onConnect(CCObject* sender) {
     geode::createQuickPopup(
         "Connect",
@@ -114,7 +113,7 @@ void connectToAP(const char* url, const char* slot, const char* pass) {
     Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
 }
 
-ConnectPopup* create() {
+static ConnectPopup* create() {
     auto* ret = new ConnectPopup();
 
    
