@@ -25,15 +25,15 @@
 	"incompatibilities": {
 		"km7dev.gdps-switcher": {
 			"version": "*",
-			"importance": "breaking"
+			"breaking": true
 		},
 		"teamtcm.geometry-dash-odyssey": {
 			"version": "*",
-			"importance": "breaking"
+			"breaking": true
 		},
 		"capeling.geometry-dash-lunar": {
 			"version": "*",
-			"importance": "breaking"
+			"breaking": true
 		}
 	}
 }
