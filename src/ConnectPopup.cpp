@@ -12,8 +12,9 @@
 #include "APUtils.hpp"
 
 using namespace geode::prelude;
-
-bool ConnectPopup::init() {
+class ConnectPopup : public Popup {
+    protected:
+bool init() {
     auto const layerSize = CCSize { 346.f, 280.f };
     
     if (!Popup::init(layerSize)) {
@@ -77,9 +78,14 @@ bool ConnectPopup::init() {
     this->addChild(connectButton);
     log::info("Added the connect button to the menu");
     return true;
+}
+    TextInput* urlInput;
+    TextInput* slotInput;
+    TextInput* passInput;
 
-
-void ConnectPopup::onConnect(CCObject* sender) {
+public:
+void connectToAP(const char* url, const char* slot, const char* password);
+void onConnect(CCObject* sender) {
     geode::createQuickPopup(
         "Connect",
         "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
@@ -91,9 +97,10 @@ void ConnectPopup::onConnect(CCObject* sender) {
         }
      );
 }
-}
 
-void ConnectPopup::connectToAP(const char* url, const char* slot, const char* pass) {
+
+
+void connectToAP(const char* url, const char* slot, const char* pass) {
     FLAlertLayer::create("stuff", "currently trying to connect - give me a sec and check your multiworld panel", "cool")->show();
     AP_Init(url, "Geometry Dash", slot, pass);
     AP_SetItemClearCallback(&APUtils::clearItemState);
@@ -107,7 +114,7 @@ void ConnectPopup::connectToAP(const char* url, const char* slot, const char* pa
     Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
 }
 
-ConnectPopup* ConnectPopup::create() {
+ConnectPopup* create() {
     auto* ret = new ConnectPopup();
 
    
@@ -118,4 +125,5 @@ ConnectPopup* ConnectPopup::create() {
     }
 
     return ret;
+};
 };
