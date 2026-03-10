@@ -46,16 +46,16 @@ bool ConnectPopup::init() {
     auto passLabel = CCLabelBMFont::create("Password (if not set, leave empty)", "bigFont.fnt");
     log::info("Created labels");
     urlLabel->setScale(.5f);
-    urlLabel->setPosition(173.f, 225.f);
-    urlInput->setPosition(173.f, urlLabel->getPositionY()-25.f);
+    urlLabel->setPosition(275.f, 235.f);
+    urlInput->setPosition(275.f, urlLabel->getPositionY()-25.f);
 
     slotLabel->setScale(.5f);
-    slotLabel->setPosition(173.f, 170.f);
-    slotInput->setPosition(173.f, slotLabel->getPositionY()-25.f);
+    slotLabel->setPosition(275.f, 180.f);
+    slotInput->setPosition(275.f, slotLabel->getPositionY()-25.f);
 
     passLabel->setScale(.5f);
-    passLabel->setPosition(173.f, 115.f);
-    passInput->setPosition(173.f, passLabel->getPositionY()-25.f);
+    passLabel->setPosition(275.f, 125.f);
+    passInput->setPosition(275.f, passLabel->getPositionY()-25.f);
     log::info("Scaled and position elements in the popup");
     auto connectButton = CCMenuItemSpriteExtra::create(
         ButtonSprite::create("Connect"),
@@ -63,7 +63,7 @@ bool ConnectPopup::init() {
         menu_selector(ConnectPopup::onConnect)
     );
     log::info("Created connect button"); // this should be where it crashes
-    connectButton->setPosition(173.f, 40.f);
+    connectButton->setPosition(275.f, 50.f);
     log::info("Positioned connect button");
     // this is whats stopping it
     this->addChild(urlInput);
