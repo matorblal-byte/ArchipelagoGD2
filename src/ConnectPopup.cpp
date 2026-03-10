@@ -67,9 +67,9 @@ bool ConnectPopup::init() {
     menu->addChild(slotInput);
     menu->addChild(passInput);
     log::info("Added the inputs to menu");
-    m_mainLayer->addChild(urlLabel);
-    m_mainLayer->addChild(slotLabel);
-    m_mainLayer->addChild(passLabel);
+    menu->addChild(urlLabel);
+    menu->addChild(slotLabel);
+    menu->addChild(passLabel);
     log::info("Added the labels to the main layer");
     menu->addChild(connectButton);
     log::info("Added the connect button to the menu");
