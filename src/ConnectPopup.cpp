@@ -56,7 +56,7 @@ bool init() {
     auto connectButton = CCMenuItemSpriteExtra::create(
         ButtonSprite::create("Connect"),
         this,
-        menu_selector(ConnectPopup::onButton)
+        menu_selector(ConnectPopup::onClick)
     );
     connectButton->setPosition(275.f, 50.f);
     // this is whats stopping it
@@ -74,7 +74,7 @@ bool init() {
     TextInput* passInput;
 
 public:
-void onButton(CCObject* sender) {
+void onClick(CCObject* sender) {
     log::info("Clicked connect");
     geode::createQuickPopup(
         "Connect",
