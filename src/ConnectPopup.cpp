@@ -85,6 +85,7 @@ bool init() {
 
 public:
 void onConnect(CCObject* sender) {
+    log::info("Clicked connect");
     geode::createQuickPopup(
         "Connect",
         "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
