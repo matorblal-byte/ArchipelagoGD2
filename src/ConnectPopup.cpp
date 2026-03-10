@@ -53,20 +53,23 @@ bool init() {
     passLabel->setScale(.5f);
     passLabel->setPosition(275.f, 125.f);
     passInput->setPosition(275.f, passLabel->getPositionY()-25.f);
+
+    auto menu = CCMenu::create();
     auto connectButton = CCMenuItemSpriteExtra::create(
         ButtonSprite::create("Connect"),
         this,
         menu_selector(ConnectPopup::onClick)
     );
     connectButton->setPosition(275.f, 50.f);
-    // this is whats stopping it
-    this->addChild(urlInput);
-    this->addChild(slotInput);
-    this->addChild(passInput);
-    this->addChild(urlLabel);
-    this->addChild(slotLabel);
-    this->addChild(passLabel);
-    this->addChild(connectButton);
+    menu->addChild(urlInput);
+    menu->addChild(slotInput);
+    menu->addChild(passInput);
+    menu->addChild(urlLabel);
+    menu->addChild(slotLabel);
+    menu->addChild(passLabel);
+    menu->addChild(connectButton);
+    this->addChild(menu);
+
     return true;
 }
     TextInput* urlInput;
