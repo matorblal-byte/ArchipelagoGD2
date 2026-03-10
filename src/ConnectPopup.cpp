@@ -16,7 +16,7 @@ using namespace geode::prelude;
 bool ConnectPopup::init() {
     auto const layerSize = CCSize { 346.f, 280.f };
     
-    if (!Popup<ConnectPopup>::init(layerSize)) {
+    if (!Popup::init(layerSize)) {
         return false;
     }
     log::info("We are making the thing");
