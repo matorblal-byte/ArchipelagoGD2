@@ -77,9 +77,9 @@ bool ConnectPopup::init() {
     this->addChild(connectButton);
     log::info("Added the connect button to the menu");
     return true;
-}
 
-void ConnectPopup::onConnect(CCObject*) {
+
+void onConnect(CCObject* sender); {
     geode::createQuickPopup(
         "Connect",
         "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
@@ -89,7 +89,8 @@ void ConnectPopup::onConnect(CCObject*) {
                 ConnectPopup::connectToAP(urlInput->getString().c_str(), slotInput->getString().c_str(), passInput->getString().c_str());
             }
         }
-    );
+     );
+}
 }
 
 void ConnectPopup::connectToAP(const char* url, const char* slot, const char* pass) {
