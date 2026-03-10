@@ -14,25 +14,22 @@
 using namespace geode::prelude;
 class ConnectPopup : public Popup {
     protected:
+
 bool init() {
     auto const layerSize = CCSize { 346.f, 280.f };
     
     if (!Popup::init(layerSize)) {
         return false;
     }
-    log::info("We are making the thing");
     m_noElasticity = true;
-    log::info("Set no elasticity");
     //this->setTitle("Connect to Archipelago");
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
     auto const layerPos = (winSize - layerSize) / 2;
-    log::info("Calculated layer size and position");
     urlInput = TextInput::create(260, "archipelago.gg:12345", "chatFont.fnt");
     slotInput = TextInput::create(260, "1257Plays", "chatFont.fnt");
     passInput = TextInput::create(260, "topsecretpassword", "chatFont.fnt");
-    log::info("Created text inputs");
     urlInput->setFilter("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.:;*/");
     urlInput->setString(Mod::get()->getSavedValue<std::string>("recent-url", ""));
 
@@ -45,7 +42,6 @@ bool init() {
     auto urlLabel = CCLabelBMFont::create("Archipelago URL", "bigFont.fnt");
     auto slotLabel = CCLabelBMFont::create("Slot Name", "bigFont.fnt");
     auto passLabel = CCLabelBMFont::create("Password (if not set, leave empty)", "bigFont.fnt");
-    log::info("Created labels");
     urlLabel->setScale(.5f);
     urlLabel->setPosition(275.f, 235.f);
     urlInput->setPosition(275.f, urlLabel->getPositionY()-25.f);
@@ -57,26 +53,20 @@ bool init() {
     passLabel->setScale(.5f);
     passLabel->setPosition(275.f, 125.f);
     passInput->setPosition(275.f, passLabel->getPositionY()-25.f);
-    log::info("Scaled and position elements in the popup");
     auto connectButton = CCMenuItemSpriteExtra::create(
         ButtonSprite::create("Connect"),
         this,
-        menu_selector(ConnectPopup::onConnect)
+        menu_selector(ConnectPopup::onButton)
     );
-    log::info("Created connect button"); // this should be where it crashes
     connectButton->setPosition(275.f, 50.f);
-    log::info("Positioned connect button");
     // this is whats stopping it
     this->addChild(urlInput);
     this->addChild(slotInput);
     this->addChild(passInput);
-    log::info("Added the inputs to popup");
     this->addChild(urlLabel);
     this->addChild(slotLabel);
     this->addChild(passLabel);
-    log::info("Added the labels to the main layer");
     this->addChild(connectButton);
-    log::info("Added the connect button to the menu");
     return true;
 }
     TextInput* urlInput;
@@ -84,7 +74,7 @@ bool init() {
     TextInput* passInput;
 
 public:
-void onConnect(CCObject* sender) {
+void onButton(CCObject* sender) {
     log::info("Clicked connect");
     geode::createQuickPopup(
         "Connect",
