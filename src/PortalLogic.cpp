@@ -1,7 +1,7 @@
 #include <Geode/modify/PlayLayer.hpp>
 #include "APUtils.hpp"
 
-using namespace geode::prelude
+using namespace geode::prelude;
 
 class $modify(APPlayLayer, PlayLayer) {
     void addObject(GameObject* p0) {
@@ -9,5 +9,5 @@ class $modify(APPlayLayer, PlayLayer) {
           PlayLayer::addObject(p0);
         }
     };
-};
+
 
