@@ -14,6 +14,11 @@
 using namespace geode::prelude;
 
 bool ConnectPopup::init() {
+    auto const layerSize = CCSize { 346.f, 280.f };
+    
+    if (!Popup<ConnectPopup>::init(layerSize)) {
+        return false;
+    }
     log::info("We are making the thing");
     m_noElasticity = true;
     log::info("Set no elasticity");
@@ -21,7 +26,6 @@ bool ConnectPopup::init() {
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
 
-    auto const layerSize = CCSize { 346.f, 280.f };
     auto const layerPos = (winSize - layerSize) / 2;
     log::info("Calculated layer size and position");
     urlInput = TextInput::create(260, "archipelago.gg:12345", "chatFont.fnt");
@@ -62,16 +66,15 @@ bool ConnectPopup::init() {
     connectButton->setPosition(173.f, 40.f);
     log::info("Positioned connect button");
     // this is whats stopping it
-    auto menu = MenuLayer::get();
-    menu->addChild(urlInput);
-    menu->addChild(slotInput);
-    menu->addChild(passInput);
-    log::info("Added the inputs to menu");
-    menu->addChild(urlLabel);
-    menu->addChild(slotLabel);
-    menu->addChild(passLabel);
+    this->addChild(urlInput);
+    this->addChild(slotInput);
+    this->addChild(passInput);
+    log::info("Added the inputs to popup");
+    this->addChild(urlLabel);
+    this->addChild(slotLabel);
+    this->addChild(passLabel);
     log::info("Added the labels to the main layer");
-    menu->addChild(connectButton);
+    this->addChild(connectButton);
     log::info("Added the connect button to the menu");
     return true;
 }
