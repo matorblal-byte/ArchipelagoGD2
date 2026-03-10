@@ -43,16 +43,16 @@ bool init() {
     auto slotLabel = CCLabelBMFont::create("Slot Name", "bigFont.fnt");
     auto passLabel = CCLabelBMFont::create("Password (if not set, leave empty)", "bigFont.fnt");
     urlLabel->setScale(.5f);
-    urlLabel->setPosition(275.f, 235.f);
-    urlInput->setPosition(275.f, urlLabel->getPositionY()-25.f);
+    urlLabel->setPosition(0.f, 85.f);
+    urlInput->setPosition(0.f, urlLabel->getPositionY()-25.f);
 
     slotLabel->setScale(.5f);
-    slotLabel->setPosition(275.f, 180.f);
-    slotInput->setPosition(275.f, slotLabel->getPositionY()-25.f);
+    slotLabel->setPosition(0.f, 25.f);
+    slotInput->setPosition(0.f, slotLabel->getPositionY()-25.f);
 
     passLabel->setScale(.5f);
-    passLabel->setPosition(275.f, 125.f);
-    passInput->setPosition(275.f, passLabel->getPositionY()-25.f);
+    passLabel->setPosition(0.f, -35.f);
+    passInput->setPosition(0.f, passLabel->getPositionY()-25.f);
 
     auto menu = CCMenu::create();
     auto connectButton = CCMenuItemSpriteExtra::create(
@@ -60,7 +60,7 @@ bool init() {
         this,
         menu_selector(ConnectPopup::onClick)
     );
-    connectButton->setPosition(275.f, 50.f);
+    connectButton->setPosition(0.f, -105.f);
     menu->addChild(urlInput);
     menu->addChild(slotInput);
     menu->addChild(passInput);
