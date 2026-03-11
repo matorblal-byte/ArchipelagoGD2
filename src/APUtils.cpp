@@ -44,6 +44,37 @@ std::vector<std::string> items = {
     "Secret Coin"
 };
 
+std::vector<std::string> levels = {
+    "Stereo Madness: Unlock",
+    "Back On Track: Unlock",
+    "Polargeist: Unlock",
+    "Dry Out: Unlock",
+    "Base After Base: Unlock",
+    "Cant Let Go: Unlock",
+    "Jumper: Unlock",
+    "Time Machine: Unlock",
+    "Cycles: Unlock",
+    "xStep: Unlock",
+    "Clutterfunk: Unlock",
+    "Theory of Everything: Unlock",
+    "Electroman Adventures: Unlock",
+    "Clubstep: Unlock",
+    "Electrodynamix: Unlock",
+    "Hexagon Force: Unlock",
+    "Blast Processing: Unlock",
+    "Theory of Everything 2: Unlock",
+    "Geometrical Dominator: Unlock",
+    "Deadlocked: Unlock",
+    "Fingerdash: Unlock",
+    "Dash: Unlock",
+    /*
+    "The Tower: Unlock",
+    "The Sewers: Unlock",
+    "The Cellar: Unlock",
+    "The Secret Hollow: Unlock",
+    */
+};
+
 int gdBaseID = 130820130;
     // note to index staff: this is due to the way Archipelago itself works 
     // fun fact, this is the GD release date in DD/MM/YYYY and a 0
@@ -59,16 +90,6 @@ void APUtils::recieveItem(int64_t id, bool notify) {
         AchievementNotifier::sharedState()->notifyAchievement("secret coin", "coiner", "GJ_lockGray_001.png", true);
     }
     */
-    // adding a specific override for can't let go because rob didn't add the apostrophe in the game but my apworld has it. god damn it rob
-    if (itemToRecieve == "Can't Let Go: Unlock") {
-        Mod::get()->setSavedValue<bool>("Cant Let Go: Unlock", true);
-        if (notify) {
-            Loader::get()->queueInMainThread(
-                [itemToRecieve]{APUtils::createNotification(itemToRecieve, false);}
-            );
-        }
-    }
-    else {
         Mod::get()->setSavedValue<bool>(itemToRecieve, true);
         if (notify) {
                 Loader::get()->queueInMainThread(
@@ -76,7 +97,6 @@ void APUtils::recieveItem(int64_t id, bool notify) {
                 );
         }
     }
-}
 
 void APUtils::clearItemState() {
     std::size_t itemAmount = items.size();
@@ -151,12 +171,30 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
+void APUtils::getStartingLevels(int value)
+{
+    for (int i = 0; i < value; ++i) {
+        std::mt19937 engine(static_cast<unsigned int>(std::time(nullptr)));
+        std::uniform_int_distribution<std::size_t> dist(0, items.size() - 1);
+        std::size_t levelNum = dist(engine);
+        auto level = levels[levelNum];
+        Mod::get()->setSavedValue<bool>(level, true);
+    }
+}
+
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
+    auto values = Mod::get()->getSaveDir();
+        for (auto& level : levels) {
+            if (Mod::get()->getSavedValue<bool>(level, true)) {
+                Mod::get()->setSavedValue<bool>(level, false);
+            }
+        }
     AP_Init(url, "Geometry Dash", slot, pass);
     AP_SetItemClearCallback(&APUtils::clearItemState);
     AP_SetItemRecvCallback(&APUtils::recieveItem);
     AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
     AP_SetDeathLinkSupported(true);
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
+    AP_RegisterSlotDataIntCallback("start_levels", &APUtils::getStartingLevels);
     AP_Start();
 }

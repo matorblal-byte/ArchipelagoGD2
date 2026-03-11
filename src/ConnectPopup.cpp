@@ -11,6 +11,37 @@
 #include <Archipelago.h>
 #include "APUtils.hpp"
 
+std::vector<std::string> levels = {
+    "Stereo Madness: Unlock",
+    "Back On Track: Unlock",
+    "Polargeist: Unlock",
+    "Dry Out: Unlock",
+    "Base After Base: Unlock",
+    "Cant Let Go: Unlock",
+    "Jumper: Unlock",
+    "Time Machine: Unlock",
+    "Cycles: Unlock",
+    "xStep: Unlock",
+    "Clutterfunk: Unlock",
+    "Theory of Everything: Unlock",
+    "Electroman Adventures: Unlock",
+    "Clubstep: Unlock",
+    "Electrodynamix: Unlock",
+    "Hexagon Force: Unlock",
+    "Blast Processing: Unlock",
+    "Theory of Everything 2: Unlock",
+    "Geometrical Dominator: Unlock",
+    "Deadlocked: Unlock",
+    "Fingerdash: Unlock",
+    "Dash: Unlock",
+    /*
+    "The Tower: Unlock",
+    "The Sewers: Unlock",
+    "The Cellar: Unlock",
+    "The Secret Hollow: Unlock",
+    */
+};
+
 using namespace geode::prelude;
 class ConnectPopup : public Popup {
     protected:
@@ -95,12 +126,19 @@ void onClick(CCObject* sender) {
 
 void connectToAP(const char* url, const char* slot, const char* pass) {
     FLAlertLayer::create("stuff", "currently trying to connect - give me a sec and check your multiworld panel", "cool")->show();
+    auto values = Mod::get()->getSaveDir();
+        for (auto& level : levels) {
+            if (Mod::get()->getSavedValue<bool>(level, true)) {
+                Mod::get()->setSavedValue<bool>(level, false);
+            }
+        }
     AP_Init(url, "Geometry Dash", slot, pass);
     AP_SetItemClearCallback(&APUtils::clearItemState);
     AP_SetItemRecvCallback(&APUtils::recieveItem);
     AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
     AP_SetDeathLinkSupported(true);
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
+    AP_RegisterSlotDataIntCallback("start_levels", &APUtils::getStartingLevels);
     AP_Start();
     Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
