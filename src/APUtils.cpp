@@ -12,7 +12,7 @@ std::vector<std::string> items = {
     "Polargeist: Unlock",
     "Dry Out: Unlock",
     "Base After Base: Unlock",
-    "Can't Let Go: Unlock",
+    "Cant Let Go: Unlock",
     "Jumper: Unlock",
     "Time Machine: Unlock",
     "Cycles: Unlock",

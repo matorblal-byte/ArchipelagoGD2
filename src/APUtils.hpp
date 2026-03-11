@@ -2,7 +2,7 @@
 
 namespace APUtils {
 
-    std::vector<std::string> levels = {
+    static std::vector<std::string> levels = {
         "Stereo Madness: Unlock",
         "Back On Track: Unlock",
         "Polargeist: Unlock",
@@ -32,7 +32,7 @@ namespace APUtils {
         "The Secret Hollow: Unlock",
         */
     };
-    
+
     void recieveItem(int64_t id, bool notify);
 
     void clearItemState();
