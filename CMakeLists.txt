@@ -28,25 +28,11 @@ add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
 
-set(IXWEBSOCKET_INSTALL OFF CACHE BOOL "" FORCE)
-set(USE_ZLIB OFF CACHE BOOL "" FORCE) 
-
-add_definitions(-DIXWEBSOCKET_USE_DLL)
 CPMAddPackage(
     NAME APCpp-gd
     GIT_REPOSITORY https://github.com/matorblal-byte/APCpp-gd
     GIT_TAG main
-    OPTIONS "BUILD_SHARED_LIBS ON"
 )
 
 target_link_libraries(${PROJECT_NAME} APCpp)
 target_include_directories(${PROJECT_NAME} PUBLIC ${APCpp_SOURCE_DIR})
-target_link_options(${PROJECT_NAME} PUBLIC)
-
-if (TARGET APCpp)
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "$<TARGET_FILE:APCpp>"
-        "${GEODE_OUTPUT_DIRECTORY}/APCpp.dll"
-        )
-endif()
