@@ -14,7 +14,7 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
-          target: x64
+          platform: Win64
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -27,7 +27,6 @@ jobs:
         with:
           combine: true
           target: ${{ matrix.config.target }}
-          platform: Win64
 
   package:
     name: Package builds
