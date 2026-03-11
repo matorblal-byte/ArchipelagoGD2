@@ -39,10 +39,8 @@ class $modify(APMenuLayer, MenuLayer) {
     }
 
     void debug(CCObject*) {
-        /*
         Mod::get()->setSavedValue<bool>("Deadlocked: Unlock", true);
         AchievementNotifier::sharedState()->notifyAchievement("Deadlocked has been unlocked", "deadlocked is unlocked", "APLogo.png"_spr, true);
-        */
        APUtils::recieveItem(130820149, false);
     }
 
