@@ -36,9 +36,12 @@ CPMAddPackage(
 
 target_link_libraries(${PROJECT_NAME} APCpp)
 target_include_directories(${PROJECT_NAME} PUBLIC ${APCpp_SOURCE_DIR})
+target_link_options(${PROJECT_NAME} PUBLIC)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy
-    "${APCpp_SOURCE_DIR}/APCpp.dll"
-    "${CMAKE_CURRENT_BINARY_DIR}/APCpp.dll"
-)
+if (TARGET APCpp)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "$<TARGET_FILE:APCpp>"
+        "${GEODE_OUTPUT_DIRECTORY}/APCpp.dll"
+        )
+endif()
