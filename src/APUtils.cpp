@@ -44,37 +44,6 @@ std::vector<std::string> items = {
     "Secret Coin"
 };
 
-std::vector<std::string> levels = {
-    "Stereo Madness: Unlock",
-    "Back On Track: Unlock",
-    "Polargeist: Unlock",
-    "Dry Out: Unlock",
-    "Base After Base: Unlock",
-    "Cant Let Go: Unlock",
-    "Jumper: Unlock",
-    "Time Machine: Unlock",
-    "Cycles: Unlock",
-    "xStep: Unlock",
-    "Clutterfunk: Unlock",
-    "Theory of Everything: Unlock",
-    "Electroman Adventures: Unlock",
-    "Clubstep: Unlock",
-    "Electrodynamix: Unlock",
-    "Hexagon Force: Unlock",
-    "Blast Processing: Unlock",
-    "Theory of Everything 2: Unlock",
-    "Geometrical Dominator: Unlock",
-    "Deadlocked: Unlock",
-    "Fingerdash: Unlock",
-    "Dash: Unlock",
-    /*
-    "The Tower: Unlock",
-    "The Sewers: Unlock",
-    "The Cellar: Unlock",
-    "The Secret Hollow: Unlock",
-    */
-};
-
 int gdBaseID = 130820130;
     // note to index staff: this is due to the way Archipelago itself works 
     // fun fact, this is the GD release date in DD/MM/YYYY and a 0
@@ -175,16 +144,16 @@ void APUtils::getStartingLevels(int value)
 {
     for (int i = 0; i < value; ++i) {
         std::mt19937 engine(static_cast<unsigned int>(std::time(nullptr)));
-        std::uniform_int_distribution<std::size_t> dist(0, items.size() - 1);
+        std::uniform_int_distribution<std::size_t> dist(0, APUtils::levels.size() - 1);
         std::size_t levelNum = dist(engine);
-        auto level = levels[levelNum];
+        auto level = APUtils::levels[levelNum];
         Mod::get()->setSavedValue<bool>(level, true);
     }
 }
 
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
     auto values = Mod::get()->getSaveDir();
-        for (auto& level : levels) {
+        for (auto& level : APUtils::levels) {
             if (Mod::get()->getSavedValue<bool>(level, true)) {
                 Mod::get()->setSavedValue<bool>(level, false);
             }
