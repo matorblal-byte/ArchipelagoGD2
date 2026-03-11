@@ -28,6 +28,12 @@ add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
 
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+    "resources/APCpp.dll"
+    "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+)
+
 CPMAddPackage(
     NAME APCpp-gd
     GIT_REPOSITORY https://github.com/matorblal-byte/APCpp-gd
