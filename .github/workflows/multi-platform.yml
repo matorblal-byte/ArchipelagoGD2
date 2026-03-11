@@ -27,6 +27,7 @@ jobs:
         with:
           combine: true
           target: ${{ matrix.config.target }}
+          platform: Win64
 
   package:
     name: Package builds
