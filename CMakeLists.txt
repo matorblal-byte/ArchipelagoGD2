@@ -31,7 +31,7 @@ setup_geode_mod(${PROJECT_NAME})
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy
     "${CMAKE_CURRENT_SOURCE_DIR}/resources/APCpp.dll"
-    "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+    "${CMAKE_CURRENT_BINARY_DIR}/APCpp.dll"
 )
 
 CPMAddPackage(
