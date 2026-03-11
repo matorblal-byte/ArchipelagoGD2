@@ -28,6 +28,10 @@ add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
 
+set(IXWEBSOCKET_INSTALL OFF CACHE BOOL "" FORCE)
+set(USE_ZLIB OFF CACHE BOOL "" FORCE) 
+
+add_definitions(-DIXWEBSOCKET_USE_DLL)
 CPMAddPackage(
     NAME APCpp-gd
     GIT_REPOSITORY https://github.com/matorblal-byte/APCpp-gd
