@@ -17,13 +17,10 @@
 			"APLogoSheet": [
 				"resources/APLogo.png"
 			]
-		},
-		"files": [
-			"resources/APCpp.dll"
-		]
+		}
 	},
 	"dependencies": {
-		"geode.node-ids": ">=1.18.0"
+		"geode.node-ids": "1.18.0"
 	},
 	"incompatibilities": {
 		"km7dev.gdps-switcher": {
