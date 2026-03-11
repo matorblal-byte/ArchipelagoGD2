@@ -12,7 +12,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
         if (!LoadingLayer::init(p0)) return false;
         if (Mod::get()->getSavedValue<std::string>("recent-url", "") != "") {
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
-            connectToAP(url.c_str(), Mod::get()->getSavedValue<std::string>("recent-slot", "").c_str(), Mod::get()->getSavedValue<std::string>("recent-pass", "").c_str());
+            APUtils::startArchipelago(url.c_str(), Mod::get()->getSavedValue<std::string>("recent-slot", "").c_str(), Mod::get()->getSavedValue<std::string>("recent-pass", "").c_str());
             auto apLabel = CCLabelBMFont::create(("ArchipelagoGD: Connecting to " + url).c_str(), "goldFont.fnt");
             apLabel->setPosition(CCDirector::get()->getWinSize().width / 2, CCDirector::get()->getWinSize().height - 10);
             apLabel->setScale(.45f);
@@ -30,13 +30,3 @@ class $modify(APLoadingLayer, LoadingLayer) {
         return true;
     }
 };
-
-void connectToAP(const char* url, const char* slot, const char* pass) {
-    AP_Init(url, "Geometry Dash", slot, pass);
-    AP_SetItemClearCallback(&APUtils::clearItemState);
-    AP_SetItemRecvCallback(&APUtils::recieveItem);
-    AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
-    AP_SetDeathLinkSupported(true);
-    AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
-    AP_Start();
-}
