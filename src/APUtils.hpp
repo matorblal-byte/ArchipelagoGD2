@@ -1,6 +1,38 @@
 #pragma once
 
 namespace APUtils {
+
+    std::vector<std::string> levels = {
+        "Stereo Madness: Unlock",
+        "Back On Track: Unlock",
+        "Polargeist: Unlock",
+        "Dry Out: Unlock",
+        "Base After Base: Unlock",
+        "Cant Let Go: Unlock",
+        "Jumper: Unlock",
+        "Time Machine: Unlock",
+        "Cycles: Unlock",
+        "xStep: Unlock",
+        "Clutterfunk: Unlock",
+        "Theory of Everything: Unlock",
+        "Electroman Adventures: Unlock",
+        "Clubstep: Unlock",
+        "Electrodynamix: Unlock",
+        "Hexagon Force: Unlock",
+        "Blast Processing: Unlock",
+        "Theory of Everything 2: Unlock",
+        "Geometrical Dominator: Unlock",
+        "Deadlocked: Unlock",
+        "Fingerdash: Unlock",
+        "Dash: Unlock",
+        /*
+        "The Tower: Unlock",
+        "The Sewers: Unlock",
+        "The Cellar: Unlock",
+        "The Secret Hollow: Unlock",
+        */
+    };
+    
     void recieveItem(int64_t id, bool notify);
 
     void clearItemState();
