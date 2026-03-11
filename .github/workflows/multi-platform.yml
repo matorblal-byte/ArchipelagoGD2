@@ -14,6 +14,7 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
+          target: x64
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
