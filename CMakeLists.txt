@@ -32,6 +32,7 @@ CPMAddPackage(
     NAME APCpp-gd
     GIT_REPOSITORY https://github.com/matorblal-byte/APCpp-gd
     GIT_TAG main
+    OPTIONS "BUILD_SHARED_LIBS ON"
 )
 
 target_link_libraries(${PROJECT_NAME} APCpp)
