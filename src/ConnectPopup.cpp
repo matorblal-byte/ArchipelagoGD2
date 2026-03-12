@@ -83,7 +83,7 @@ void onClick(CCObject* sender) {
         "Connect",
         "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
         "No", "Yes",
-        [this](auto, bool btn2) {
+        [this](auto, bool btn2) { 
             if (btn2) {
                 std::string url = urlInput->getString();
                 std::string slot = slotInput->getString();
@@ -114,6 +114,7 @@ void connectToAP(const char* url, const char* slot, const char* pass) {
     Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
+    APUtils::getStartingLevels(5);
 }
 
 static ConnectPopup* create() {
