@@ -111,9 +111,11 @@ void connectToAP(const char* url, const char* slot, const char* pass) {
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
     AP_RegisterSlotDataMapIntIntCallback("startinglevels", &APUtils::getStartingLevels);
     AP_Start();
+    log::info("apstart");
     Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
+    log::info("Connected to AP with url {}, slot {}, pass {}", url, slot, pass);
 }
 
 static ConnectPopup* create() {
