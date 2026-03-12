@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_OSX_ARCHITECTURES "x86_64")
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-set(USE_ZLIB OFF) # disable IXWebSock-et's usage of zlib
+# set(USE_ZLIB OFF) # disable IXWebSock-et's usage of zlib
 
 project(ArchipelagoGDAgain VERSION 1.0.0)
 
