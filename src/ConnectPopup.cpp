@@ -85,7 +85,10 @@ void onClick(CCObject* sender) {
         "No", "Yes",
         [this](auto, bool btn2) {
             if (btn2) {
-                ConnectPopup::connectToAP(urlInput->getString().c_str(), slotInput->getString().c_str(), passInput->getString().c_str());
+                std::string url = urlInput->getString();
+                std::string slot = slotInput->getString();
+                std::string pass = passInput->getString();
+                this->connectToAP(url.c_str(), slot.c_str(), pass.c_str());
             }
         }
      );
