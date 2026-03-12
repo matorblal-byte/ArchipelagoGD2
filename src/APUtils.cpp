@@ -141,6 +141,7 @@ bool APUtils::checkPortal(int id) {
 }
 
 void APUtils::getStartingLevels(std::map<int,int> levelss) {
+    geode::log::info("ima do this if u dont mind");
     for (size_t i = 0; i < levelss.size(); i++) {
         geode::log::info("checking level {}", i);
         Mod::get()->setSavedValue<bool>(std::to_string(levelss.at(i)), true);
