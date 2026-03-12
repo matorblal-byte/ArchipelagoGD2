@@ -109,7 +109,7 @@ void connectToAP(const char* url, const char* slot, const char* pass) {
     AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
     AP_SetDeathLinkSupported(true);
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
-    AP_RegisterSlotDataIntCallback("start_levels", &APUtils::getStartingLevels);
+    AP_RegisterSlotDataMapIntIntCallback("startinglevels", &APUtils::getStartingLevels);
     AP_Start();
     Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
