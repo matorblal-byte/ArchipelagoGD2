@@ -68,26 +68,21 @@ void APUtils::recieveItem(int64_t id, bool notify) {
     }
 
 void APUtils::clearItemState() {
-    /*
     std::size_t itemAmount = items.size();
     for (std::size_t index = 0; index < itemAmount; ++index) {
         std::string itemToClear = items[index];
         Mod::get()->setSavedValue<bool>(itemToClear, false);
     }
     Mod::get()->setSavedValue<bool>("Cant Let Go: Unlock", false);
-    */
 }
 
 void APUtils::checkLocationCallback(int64_t id) {
-    /*
     Loader::get()->queueInMainThread(
         []{APUtils::createNotification("ligma balls", true);}
     );
-    */
 }
 
 void APUtils::sendItem(int64_t id) {
-    /*
     if (id < 23) {
         AP_SendItem(id + gdBaseID);
     } else {
@@ -96,7 +91,6 @@ void APUtils::sendItem(int64_t id) {
             geode::log::info("g");
         }
     }
-        */
 };
 
 void APUtils::createNotification(std::string name, bool location) {
@@ -168,6 +162,6 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
     AP_SetDeathLinkSupported(true);
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
-    AP_RegisterSlotDataMapIntIntCallback("startinglevels", &APUtils::getStartingLevels);
+    //AP_RegisterSlotDataMapIntIntCallback("startinglevels", &APUtils::getStartingLevels);
     AP_Start();
 }
