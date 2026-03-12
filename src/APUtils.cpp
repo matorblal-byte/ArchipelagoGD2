@@ -149,7 +149,7 @@ void APUtils::getStartingLevels(int value)
         std::size_t levelNum = dist(engine);
         auto level = APUtils::levels[levelNum];
         if (Mod::get()->getSavedValue<bool>(level, true)) {
-            value += 1
+            value += 1;
         } else {
         Mod::get()->setSavedValue<bool>(level, true);
         }
