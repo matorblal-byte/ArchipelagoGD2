@@ -104,11 +104,11 @@ void connectToAP(const char* url, const char* slot, const char* pass) {
             }
         }
     AP_Init(url, "Geometry Dash", slot, pass);
-    //AP_SetItemClearCallback(&APUtils::clearItemState);
-    //AP_SetItemRecvCallback(&APUtils::recieveItem);
-    //AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
-    //AP_SetDeathLinkSupported(true);
-    //AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
+    AP_SetItemClearCallback(&APUtils::clearItemState);
+    AP_SetItemRecvCallback(&APUtils::recieveItem);
+    AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
+    AP_SetDeathLinkSupported(true);
+    AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
     AP_RegisterSlotDataMapIntIntCallback("startinglevels", &APUtils::getStartingLevels);
     AP_Start();
     log::info("apstart");
