@@ -148,7 +148,11 @@ void APUtils::getStartingLevels(int value)
         std::uniform_int_distribution<std::size_t> dist(0, APUtils::levels.size() - 1);
         std::size_t levelNum = dist(engine);
         auto level = APUtils::levels[levelNum];
+        if (Mod::get()->getSavedValue<bool>(level, true)) {
+            value += 1
+        } else {
         Mod::get()->setSavedValue<bool>(level, true);
+        }
     }
 }
 
