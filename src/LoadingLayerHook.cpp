@@ -7,6 +7,7 @@
 
 using namespace geode::prelude;
 
+/*
 class $modify(APLoadingLayer, LoadingLayer) {
     bool init(bool p0) {
         if (!LoadingLayer::init(p0)) return false;
@@ -30,3 +31,4 @@ class $modify(APLoadingLayer, LoadingLayer) {
         return true;
     }
 };
+*/
