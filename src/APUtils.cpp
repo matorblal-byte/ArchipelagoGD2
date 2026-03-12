@@ -142,6 +142,7 @@ bool APUtils::checkPortal(int id) {
 
 void APUtils::getStartingLevels(int value)
 {
+    geode::log::info("getting starting levels with value {}", value);
     for (int i = 0; i < value; ++i) {
         std::mt19937 engine(static_cast<unsigned int>(std::time(nullptr)));
         std::uniform_int_distribution<std::size_t> dist(0, APUtils::levels.size() - 1);

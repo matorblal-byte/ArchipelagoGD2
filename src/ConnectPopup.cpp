@@ -12,13 +12,9 @@
 #include "APUtils.hpp"
 
 using namespace geode::prelude;
-
-void sleep(int seconds) {
-    std::this_thread::sleep_for(std::chrono::seconds(seconds));
-    APUtils::getStartingLevels(5);
-}
 class ConnectPopup : public Popup {
     protected:
+
 bool init() {
     auto const layerSize = CCSize { 346.f, 280.f };
     
@@ -118,8 +114,6 @@ void connectToAP(const char* url, const char* slot, const char* pass) {
     Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
-    std::thread t(sleep, 5);
-    t.join();
 }
 
 static ConnectPopup* create() {
