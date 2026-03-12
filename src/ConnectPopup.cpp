@@ -88,7 +88,7 @@ void onClick(CCObject* sender) {
                 std::string url = urlInput->getString();
                 std::string slot = slotInput->getString();
                 std::string pass = passInput->getString();
-                this->connectToAP(url.c_str(), slot.c_str(), pass.c_str());
+                //this->connectToAP(url.c_str(), slot.c_str(), pass.c_str());
             }
         }
      );
