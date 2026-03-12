@@ -47,7 +47,7 @@ namespace APUtils {
 
     bool checkPortal(int id);
 
-    void getStartingLevels(int value);
+    void getStartingLevels(std::map<int,int> levelss);
 
     void startArchipelago(const char* url, const char* slot, const char* pass);
 }
