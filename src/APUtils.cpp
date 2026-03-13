@@ -140,13 +140,12 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
-void APUtils::getStartingLevels(std::map<int64_t,int64_t> ids) {
+void APUtils::getStartingLevels(std::vector<int> ids) {
     geode::log::info("ima do this if u dont mind");
-    for (const auto& pair : ids) {
-        int64_t id = pair.second;
+    for (int id : ids) {
         auto level = APUtils::levels.at(id);
         Mod::get()->setSavedValue<bool>(level, true);
-    } 
+    }
 }
 
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
@@ -162,6 +161,6 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
     AP_SetDeathLinkSupported(true);
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
-    AP_RegisterSlotDataMapIntIntCallback("startinglevels", &APUtils::getStartingLevels);
+    APRegisterSlotDataIntListCallback("startinglevels", &APUtils::getStartingLevels);
     AP_Start();
 }
