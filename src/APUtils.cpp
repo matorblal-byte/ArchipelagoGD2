@@ -140,13 +140,13 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
-void APUtils::getStartingLevels(std::map<int,int> levelss) {
+void APUtils::getStartingLevels(std::map<int,int> ids) {
     geode::log::info("ima do this if u dont mind");
-    for (size_t i = 0; i < levelss.size(); i++) {
-        geode::log::info("checking level {}", i);
-        Mod::get()->setSavedValue<bool>(std::to_string(levelss.at(i)), true);
-    }
-  
+    for (const auto& pair : ids) {
+        int id = pair.second;
+        auto level = APUtils::levels.at(id);
+        Mod::get()->setSavedValue<bool>(level, true);
+    } 
 }
 
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
