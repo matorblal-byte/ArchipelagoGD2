@@ -25,12 +25,10 @@ namespace APUtils {
         "Deadlocked: Unlock",
         "Fingerdash: Unlock",
         "Dash: Unlock",
-        /*
         "The Tower: Unlock",
         "The Sewers: Unlock",
         "The Cellar: Unlock",
         "The Secret Hollow: Unlock",
-        */
     };
 
     void recieveItem(int64_t id, bool notify);
