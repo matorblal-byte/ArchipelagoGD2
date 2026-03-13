@@ -148,7 +148,7 @@ void APUtils::getStartingLevels(std::vector<int64_t> ids) {
     }
 }
 
-void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
+static void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
     auto values = Mod::get()->getSaveDir();
         for (auto& level : APUtils::levels) {
             if (Mod::get()->getSavedValue<bool>(level, true)) {
