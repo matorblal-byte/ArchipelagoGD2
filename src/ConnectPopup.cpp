@@ -88,34 +88,15 @@ void onClick(CCObject* sender) {
                 std::string url = urlInput->getString();
                 std::string slot = slotInput->getString();
                 std::string pass = passInput->getString();
-                this->connectToAP(url.c_str(), slot.c_str(), pass.c_str());
+                FLAlertLayer::create("stuff", "currently trying to connect - give me a sec and check your multiworld panel", "cool")->show();
+                APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
+                Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
+                Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
+                Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
+                log::info("Connected to AP with url {}, slot {}, pass {}", url, slot, pass);
             }
         }
      );
-}
-
-
-
-static void connectToAP(const char* url, const char* slot, const char* pass) {
-    FLAlertLayer::create("stuff", "currently trying to connect - give me a sec and check your multiworld panel", "cool")->show();
-        for (auto& level : APUtils::levels) {
-            if (Mod::get()->getSavedValue<bool>(level, true)) {
-                Mod::get()->setSavedValue<bool>(level, false);
-            }
-        }
-    AP_Init(url, "Geometry Dash", slot, pass);
-    AP_SetItemClearCallback(&APUtils::clearItemState);
-    AP_SetItemRecvCallback(&APUtils::recieveItem);
-    AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
-    AP_SetDeathLinkSupported(true);
-    AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
-    AP_RegisterSlotDataRawCallback("startinglevels", &APUtils::getStartingLevels);
-    AP_Start();
-    log::info("apstart");
-    Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
-    Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
-    Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
-    log::info("Connected to AP with url {}, slot {}, pass {}", url, slot, pass);
 }
 
 static ConnectPopup* create() {
