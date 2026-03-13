@@ -104,6 +104,9 @@ void connectToAP(const char* url, const char* slot, const char* pass) {
             }
         }
     AP_RegisterSlotDataRawCallback("startinglevels", &APUtils::getStartingLevels);
+    AP_RegisterSlotDataRawCallback("*", [](std::string key){
+    geode::log::info("slotdata received: {}", key);
+});
     AP_Init(url, "Geometry Dash", slot, pass);
     AP_SetItemClearCallback(&APUtils::clearItemState);
     AP_SetItemRecvCallback(&APUtils::recieveItem);
