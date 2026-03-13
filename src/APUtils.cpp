@@ -140,9 +140,9 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
-void APUtils::getStartingLevels(std::vector<int> ids) {
+void APUtils::getStartingLevels(std::vector<int64_t> ids) {
     geode::log::info("ima do this if u dont mind");
-    for (int id : ids) {
+    for (int64_t id : ids) {
         auto level = APUtils::levels.at(id);
         Mod::get()->setSavedValue<bool>(level, true);
     }
