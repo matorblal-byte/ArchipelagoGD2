@@ -140,7 +140,7 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
-void APUtils::getStartingLevels(std::string ids) {
+static void APUtils::getStartingLevels(std::string ids) {
     geode::log::info("ima do this if u dont mind");
     std::istringstream iss(ids);
     std::vector<std::string> levelIds((std::istream_iterator<std::string>(iss)),
