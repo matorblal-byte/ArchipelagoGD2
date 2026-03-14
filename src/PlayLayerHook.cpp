@@ -2,7 +2,7 @@
 #include <Geode/modify/PlayLayer.hpp>
 #include "APUtils.hpp"
 
-int gdBaseID = 130820130;
+
 
 class $modify(APPlayLayer, PlayLayer) {
     void levelComplete() {
@@ -11,8 +11,8 @@ class $modify(APPlayLayer, PlayLayer) {
             return; // reaches into thje zone of normal levels
         }
         auto level = APUtils::levels.at(levelID);
-        APUtils::sendItem(levelID + gdBaseID);
-        geode::log::info("completed level {}, sending itemid {}", level, levelID + gdBaseID);
+        APUtils::sendItem(levelID + 130820130);
+        geode::log::info("completed level {}, sending itemid {}", level, levelID + 130820130);
         PlayLayer::levelComplete();
     }
 };
