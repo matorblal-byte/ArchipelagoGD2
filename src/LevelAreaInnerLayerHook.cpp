@@ -62,7 +62,7 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
         }
     void onDoor(CCObject* sender) {
         auto id = this->m_levelID;
-        log::info(id);
+        log::info(std::to_string(id));
         if (id == 5001) {
              if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
                 FLAlertLayer::create("Locked", "You have not recieved this level yet.", "OK")->show();
