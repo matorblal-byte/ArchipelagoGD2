@@ -32,12 +32,28 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
         }
         log::info("main menu");
         auto TheTowerDoor = menu->getChildByID("level-5001-door");
+        if (!TheTowerDoor) {
+            log::warn("could not find tower door");
+            return true;
+        }
         log::info("the tower door");
         auto TheSewersDoor = menu->getChildByID("level-5002-door");
+        if (!TheSewersDoor) {
+            log::warn("could not find sewers door");
+            return true;
+        }
         log::info("the sewers door");
         auto TheCellarDoor = menu->getChildByID("level-5003-door");
+        if (!TheCellarDoor) {
+            log::warn("could not find cellar door");
+            return true;
+        }
         log::info("the cellar door");
         auto TheSecretHollowDoor = menu->getChildByID("level-5004-door");
+        if (!TheSecretHollowDoor) {
+            log::warn("could not find secret hollow door");
+            return true;
+        }
         log::info("the secret hollow door");
         log::info("setting up doors");
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
