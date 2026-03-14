@@ -143,7 +143,6 @@ bool APUtils::checkPortal(int id) {
 void APUtils::getStartingLevels(std::string ids) {
     Loader::get()->queueInMainThread(
         [ids]{
-    geode::log::info("ima do this if u dont mind");
     std::istringstream iss(ids);
     std::vector<std::string> levelIds((std::istream_iterator<std::string>(iss)),
     std::istream_iterator<std::string>());
@@ -154,7 +153,7 @@ void APUtils::getStartingLevels(std::string ids) {
             id.erase(pos, 1);
         }
         if (id == "\"") {
-            continue;
+            return; // presumably this is the end of the list so return
         }
         geode::log::info("got starting level {}", id);
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
