@@ -157,6 +157,7 @@ void APUtils::getStartingLevels(std::string ids) {
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
         int levelInt = levelIntRes.unwrap();
         auto level = APUtils::levels.at(levelInt);
+        gode::log::info("aka {}", level);
         Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
     }
 }
