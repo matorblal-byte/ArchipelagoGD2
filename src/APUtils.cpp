@@ -149,7 +149,6 @@ void APUtils::getStartingLevels(std::string ids) {
     std::istream_iterator<std::string>());
 
     for (auto& id : levelIds) {
-        geode::log::info("got starting level {}", id);
         if (id.contains("\"")) {
             size_t pos = id.find("\"");
             id.erase(pos, 1);
@@ -157,6 +156,7 @@ void APUtils::getStartingLevels(std::string ids) {
         if (id == "\"") {
             continue;
         }
+        geode::log::info("got starting level {}", id);
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
         int levelInt = levelIntRes.unwrap();
         auto level = APUtils::levels.at(levelInt);
