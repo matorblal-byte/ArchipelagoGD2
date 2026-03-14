@@ -27,7 +27,9 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
         log::info("the secret hollow door");
         log::info("setting up doors");
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
+            log::info("finding sprite");
             auto sprite = static_cast<CCSprite*>(TheTowerDoor->getChildByTag(1));
+            log::info("setting frame");
             sprite->setDisplayFrame(lockedDoor);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
