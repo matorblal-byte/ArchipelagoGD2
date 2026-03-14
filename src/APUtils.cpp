@@ -140,7 +140,7 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
-static void APUtils::getStartingLevels(std::string ids) {
+void APUtils::getStartingLevels(std::string ids) {
     Loader::get()->queueInMainThread(
         [ids]{
     geode::log::info("ima do this if u dont mind");
