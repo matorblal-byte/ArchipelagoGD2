@@ -140,7 +140,9 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
-static void APUtils::getStartingLevels(std::string ids) {
+void APUtils::getStartingLevels(std::string ids) {
+    Loader::get()->queueInMainThread(
+        [ids]{
     geode::log::info("ima do this if u dont mind");
     std::istringstream iss(ids);
     std::vector<std::string> levelIds((std::istream_iterator<std::string>(iss)),
@@ -154,8 +156,10 @@ static void APUtils::getStartingLevels(std::string ids) {
         Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
     }
 }
+);
+}
 
-static void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
+void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
     auto values = Mod::get()->getSaveDir();
         for (auto& level : APUtils::levels) {
             if (Mod::get()->getSavedValue<bool>(level, true)) {
