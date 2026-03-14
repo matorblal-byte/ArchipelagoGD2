@@ -131,7 +131,7 @@ bool APUtils::checkPortal(int id) {
         return Mod::get()->getSavedValue<bool>("UFO Portal", true);
         case 660:
         return Mod::get()->getSavedValue<bool>("Wave Portal", true);
-        case 745:
+        case 745:  
         return Mod::get()->getSavedValue<bool>("Robot Portal", true);
         case 1331:
         return Mod::get()->getSavedValue<bool>("Spider Portal", true);
@@ -140,7 +140,7 @@ bool APUtils::checkPortal(int id) {
     }
 }
 
-void APUtils::getStartingLevels(std::string ids) {
+static void APUtils::getStartingLevels(std::string ids) {
     Loader::get()->queueInMainThread(
         [ids]{
     geode::log::info("ima do this if u dont mind");
