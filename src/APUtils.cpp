@@ -90,8 +90,8 @@ void APUtils::clearItemState() {
 }
 
 void APUtils::checkLocationCallback(int64_t id) {
-    int64_t id = id - gdBaseID;
-    std::string locationChecked = APUtils::levels.at(id);
+    int64_t uid = id - gdBaseID;
+    std::string locationChecked = APUtils::levels.at(uid);
     Loader::get()->queueInMainThread(
         [locationChecked]{APUtils::createNotification(locationChecked, true);}
     );
