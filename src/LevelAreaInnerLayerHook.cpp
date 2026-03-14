@@ -20,8 +20,16 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
         auto lockedDoor = CCSpriteFrameCache::get()->spriteFrameByName("towerDoor_locked_001.png");
         log::info("locked door");
         auto mainNode = this->getChildByID("main-node");
+        if (!mainNode) {
+            log::warn("could not find main node");
+            return true;
+        }
         log::info("main node");
         auto menu = mainNode->getChildByID("main-menu");
+        if (!menu) {
+            log::warn("could not find menu");
+            return true;
+        }
         log::info("main menu");
         auto TheTowerDoor = menu->getChildByID("level-5001-door");
         log::info("the tower door");
