@@ -14,7 +14,6 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
 		if (!LevelAreaInnerLayer::init(p0)) {
 			return false;
 		    }
-        auto lockedDoor = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
         auto mainNode = this->getChildByID("main-node");
         if (!mainNode) {
             log::warn("could not find main node");
@@ -46,16 +45,20 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
             return true;
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
-            TheTowerDoor->setNormalImage(lockedDoor);
+            auto lockedDoor5001 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
+            TheTowerDoor->setNormalImage(lockedDoor5001);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
-            TheSewersDoor->setNormalImage(lockedDoor);
+            auto lockedDoor5002 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
+            TheSewersDoor->setNormalImage(lockedDoor5002);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
-            TheCellarDoor->setNormalImage(lockedDoor);
+            auto lockedDoor5003 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
+            TheCellarDoor->setNormalImage(lockedDoor5003);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Secret Hollow: Unlock", false)) {
-            TheSecretHollowDoor->setNormalImage(lockedDoor);
+            auto lockedDoor5004 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
+            TheSecretHollowDoor->setNormalImage(lockedDoor5004);
         }
         return true;
         }
