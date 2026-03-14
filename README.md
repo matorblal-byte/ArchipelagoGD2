@@ -1,8 +1,4 @@
 # ArchipelagoGD
-Lets see if i can make this work idk
-
-Original description:
-This is where she makes a mod.
 
 <img src="logo.png" width="150" alt="the mod's logo" />
 
@@ -10,9 +6,9 @@ This is where she makes a mod.
 
 This is a currently unofficial and unfinished mod that adds support for Geometry Dash in the [Archipelago MultiWorld Randomizer](https://archipelago.gg/).
 
-It uses a (currently outdated) [fork](https://github.com/Tiago1257/APCpp-gd) of N00byKing's [APCpp](https://github.com/N00byKing/APCpp) which switches to static linking, for better use with the Geode SDK.
+It uses a [fork](https://github.com/matorblal=byte/APCpp-gd) of N00byKing's [APCpp](https://github.com/N00byKing/APCpp) which switches to static linking, for better use with the Geode SDK.
 
-The also unfinished and very broken code for the .apworld can be found [here](https://github.com/Tiago1257/Archipelago).
+The also unfinished code for the .apworld can be found [here](https://github.com/matorblal-byte/Archipelago).
 
 ## Special Thanks:
 - [N00byKing](https://github.com/N00byKing) - APCpp and general help with Archipelago
