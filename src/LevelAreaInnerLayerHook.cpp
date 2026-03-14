@@ -2,7 +2,6 @@
 #include <Geode/modify/LevelAreaInnerLayer.hpp>
 #include "APUtils.hpp"
 // this is the tower btw
-auto const id = 1;
 using namespace geode::prelude;
 class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
     static void onModify(auto& self) {
@@ -62,7 +61,7 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
         }
     void onDoor(CCObject* sender) {
         auto const id = this->m_levelID;
-        log::info(std::to_string(id));
+        log::info("{}", id);
         if (id == 5001) {
              if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
                 FLAlertLayer::create("Locked", "You have not recieved this level yet.", "OK")->show();
