@@ -5,6 +5,12 @@
 using namespace geode::prelude;
 
 class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
+    static void onModify(auto& self) {
+        if (!self.setHookPriority("LevelAreaInnerLayer::init", -1)) {
+            log::warn("uh oh");
+        }
+    }
+
 	bool init(bool p0) {
         log::info("init func");
 		if (!LevelAreaInnerLayer::init(p0)) {

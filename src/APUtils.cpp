@@ -90,8 +90,10 @@ void APUtils::clearItemState() {
 }
 
 void APUtils::checkLocationCallback(int64_t id) {
+    int64_t id = id - gdBaseID;
+    std::string locationChecked = APUtils::levels.at(id);
     Loader::get()->queueInMainThread(
-        []{APUtils::createNotification("ligma balls", true);}
+        [locationChecked]{APUtils::createNotification(locationChecked, true);}
     );
 }
 
