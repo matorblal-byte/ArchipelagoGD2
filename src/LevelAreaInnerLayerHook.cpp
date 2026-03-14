@@ -6,16 +6,26 @@ using namespace geode::prelude;
 
 class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
 	bool init(bool p0) {
+        log::info("init func");
 		if (!LevelAreaInnerLayer::init(p0)) {
 			return false;
 		    }
+        log::info("defining stuffs");
         auto lockedDoor = CCSpriteFrameCache::get()->spriteFrameByName("towerDoor_locked_001.png");
+        log::info("locked door");
         auto mainNode = this->getChildByID("main-node");
+        log::info("main node");
         auto menu = mainNode->getChildByID("main-menu");
+        log::info("main menu");
         auto TheTowerDoor = menu->getChildByID("level-5001-door");
+        log::info("the tower door");
         auto TheSewersDoor = menu->getChildByID("level-5002-door");
+        log::info("the sewers door");
         auto TheCellarDoor = menu->getChildByID("level-5003-door");
+        log::info("the cellar door");
         auto TheSecretHollowDoor = menu->getChildByID("level-5004-door");
+        log::info("the secret hollow door");
+        log::info("setting up doors");
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
             auto sprite = static_cast<CCSprite*>(TheTowerDoor->getChildByTag(1));
             sprite->setDisplayFrame(lockedDoor);
@@ -32,6 +42,7 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
             auto sprite = static_cast<CCSprite*>(TheSecretHollowDoor->getChildByTag(1));
             sprite->setDisplayFrame(lockedDoor);
         }
+        log::info("hey man i finished");
         return true;
         }
     void onDoor(CCObject* sender) {
