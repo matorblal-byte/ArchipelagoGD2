@@ -144,13 +144,16 @@ void APUtils::getStartingLevels(std::string ids) {
     Loader::get()->queueInMainThread(
         [ids]{
     geode::log::info("ima do this if u dont mind");
-    ids.erase(std::remove(ids.begin(), ids.end(), '\"'), ids.end());
     std::istringstream iss(ids);
     std::vector<std::string> levelIds((std::istream_iterator<std::string>(iss)),
     std::istream_iterator<std::string>());
 
     for (auto& id : levelIds) {
         geode::log::info("got starting level {}", id);
+        if (id.contains("\"")) {
+            size_t pos = id.find("\"");
+            id.erase(pos, 1);
+        }
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
         int levelInt = levelIntRes.unwrap();
         auto level = APUtils::levels.at(levelInt);
