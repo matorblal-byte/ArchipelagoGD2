@@ -6,6 +6,7 @@
 
 class $modify(APPlayLayer, PlayLayer) {
     void levelComplete() {
+        geode::log::info("is this mic on");
         auto levelID = this->m_level->m_levelID.value() - 1; // -1 because of 0 indexing
         if (levelID > 100) {
             return; // reaches into thje zone of normal levels
