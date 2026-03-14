@@ -44,19 +44,19 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
             log::warn("could not find secret hollow door");
             return true;
         }
-        if (Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
+        if (!Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
             auto lockedDoor5001 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
             TheTowerDoor->setNormalImage(lockedDoor5001);
         }
-        if (Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
+        if (!Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
             auto lockedDoor5002 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
             TheSewersDoor->setNormalImage(lockedDoor5002);
         }
-        if (Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
+        if (!Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
             auto lockedDoor5003 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
             TheCellarDoor->setNormalImage(lockedDoor5003);
         }
-        if (Mod::get()->getSavedValue<bool>("The Secret Hollow: Unlock", false)) {
+        if (!Mod::get()->getSavedValue<bool>("The Secret Hollow: Unlock", false)) {
             auto lockedDoor5004 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
             TheSecretHollowDoor->setNormalImage(lockedDoor5004);
         }
@@ -65,28 +65,28 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
     void onDoor(CCObject* sender) {
         auto id = sender->getTag();
         if (id == 5001) {
-             if (Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
+             if (!Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
                 FLAlertLayer::create("Locked", "You have not recieved this level yet.", "OK")->show();
             }
             else {
                 LevelAreaInnerLayer::onDoor(sender);
             }
         } else if (id == 5002) {
-             if (Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
+             if (!Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
                 FLAlertLayer::create("Locked", "You have not recieved this level yet.", "OK")->show();
             }
             else {
                 LevelAreaInnerLayer::onDoor(sender);
             }
         } else if (id == 5003) {
-             if (Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
+             if (!Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
                 FLAlertLayer::create("Locked", "You have not recieved this level yet.", "OK")->show();
             }
             else {
                 LevelAreaInnerLayer::onDoor(sender);
             }
         } else if (id == 5004) {
-             if (Mod::get()->getSavedValue<bool>("The Secret Hollow: Unlock", false)) {
+             if (!Mod::get()->getSavedValue<bool>("The Secret Hollow: Unlock", false)) {
                 FLAlertLayer::create("Locked", "You have not recieved this level yet.", "OK")->show();
             }
             else {
