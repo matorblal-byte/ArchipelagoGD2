@@ -154,6 +154,9 @@ void APUtils::getStartingLevels(std::string ids) {
             size_t pos = id.find("\"");
             id.erase(pos, 1);
         }
+        if (id == "\"") {
+            continue;
+        }
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
         int levelInt = levelIntRes.unwrap();
         auto level = APUtils::levels.at(levelInt);
