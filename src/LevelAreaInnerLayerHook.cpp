@@ -49,7 +49,7 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
             TheTowerDoor->setNormalImage(lockedDoor);
         }
-        if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {;
+        if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
             TheSewersDoor->setNormalImage(lockedDoor);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
