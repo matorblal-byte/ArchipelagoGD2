@@ -2,8 +2,8 @@
 #include <Geode/modify/LevelAreaInnerLayer.hpp>
 #include "APUtils.hpp"
 // this is the tower btw
+auto const id = 1;
 using namespace geode::prelude;
-
 class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
     static void onModify(auto& self) {
         if (!self.setHookPriority("LevelAreaInnerLayer::init", -1)) {
