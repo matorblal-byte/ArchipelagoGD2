@@ -5,7 +5,6 @@
 using namespace geode::prelude;
 
 class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
-static void onModify(auto& self) {
 	bool init(bool p0) {
 		if (!LevelAreaInnerLayer::init(p0)) {
 			return false;
@@ -18,20 +17,23 @@ static void onModify(auto& self) {
         auto TheCellarDoor = menu->getChildByID("level-5003-door");
         auto TheSecretHollowDoor = menu->getChildByID("level-5004-door");
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
-            TheTowerDoor->setDisplayFrame(lockedDoor);
+            auto sprite = static_cast<CCSprite*>(TheTowerDoor->getChildByTag(1));
+            sprite->setDisplayFrame(lockedDoor);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
-            TheSewersDoor->setDisplayFrame(lockedDoor);
+            auto sprite = static_cast<CCSprite*>(TheSewersDoor->getChildByTag(1));
+            sprite->setDisplayFrame(lockedDoor);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
-            TheCellarDoor->setDisplayFrame(lockedDoor);
+            auto sprite = static_cast<CCSprite*>(TheCellarDoor->getChildByTag(1));
+            sprite->setDisplayFrame(lockedDoor);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Secret Hollow: Unlock", false)) {
-            TheSecretHollowDoor->setDisplayFrame(lockedDoor);
+            auto sprite = static_cast<CCSprite*>(TheSecretHollowDoor->getChildByTag(1));
+            sprite->setDisplayFrame(lockedDoor);
         }
         return true;
         }
-    }
     void onDoor(CCObject* sender) {
         auto id = this->m_levelID;
         if (id == 5001) {
@@ -66,7 +68,5 @@ static void onModify(auto& self) {
             geode::log::warn("unrecognized door {}", id);
             LevelAreaInnerLayer::onDoor(sender);
         }
-
-
-    }
 };  
+};
