@@ -120,6 +120,8 @@ void APUtils::deathLinkRecieved() {
 }
 
 bool APUtils::checkPortal(int id) {
+    return true; // temp for alpha 1
+    /*
     switch (id) {
         default:
         return true;
@@ -138,6 +140,7 @@ bool APUtils::checkPortal(int id) {
         case 1933:
         return Mod::get()->getSavedValue<bool>("Swing Portal", true);
     }
+        */
 }
 
 void APUtils::getStartingLevels(std::string ids) {
@@ -158,7 +161,7 @@ void APUtils::getStartingLevels(std::string ids) {
         int levelInt = levelIntRes.unwrap();
         auto level = APUtils::levels.at(levelInt);
         geode::log::info("aka {}", level);
-        Mod::get()->setSavedValue<bool>(level, true);
+        Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
     }
 }
 );
@@ -166,8 +169,8 @@ void APUtils::getStartingLevels(std::string ids) {
 
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
         for (auto& level : APUtils::levels) {
-            if (Mod::get()->getSavedValue<bool>(level, true)) {
-                Mod::get()->setSavedValue<bool>(level, false);
+            if (Mod::get()->getSavedValue<bool>(level + ": Unlock", true)) {
+                Mod::get()->setSavedValue<bool>(level + ": Unlock", false);
             }
         }
     AP_Init(url, "Geometry Dash", slot, pass);
