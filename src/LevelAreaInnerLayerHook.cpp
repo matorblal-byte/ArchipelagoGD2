@@ -15,7 +15,7 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
 		if (!LevelAreaInnerLayer::init(p0)) {
 			return false;
 		    }
-        auto lockedDoor = CCSpriteFrameCache::get()->spriteFrameByName("towerDoor_locked_001.png");
+        auto lockedDoor = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
         auto mainNode = this->getChildByID("main-node");
         if (!mainNode) {
             log::warn("could not find main node");
@@ -26,41 +26,37 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
             log::warn("could not find menu");
             return true;
         }
-        auto TheTowerDoor = menu->getChildByID("level-5001-button");
-        if (!TheTowerDoor) {
+        auto TheTowerDoor = geode::cast::typeinfo_cast<CCMenuItemSpriteExtra*>(menu->getChildByID("level-5001-button"));
+;        if (!TheTowerDoor) {
             log::warn("could not find tower door");
             return true;
         }
-        auto TheSewersDoor = menu->getChildByID("level-5002-button");
+        auto TheSewersDoor = geode::cast::typeinfo_cast<CCMenuItemSpriteExtra*>(menu->getChildByID("level-5002-button"));
         if (!TheSewersDoor) {
             log::warn("could not find sewers door");
             return true;
         }
-        auto TheCellarDoor = menu->getChildByID("level-5003-button");
+        auto TheCellarDoor = geode::cast::typeinfo_cast<CCMenuItemSpriteExtra*>(menu->getChildByID("level-5003-button"));
         if (!TheCellarDoor) {
             log::warn("could not find cellar door");
             return true;
         }
-        auto TheSecretHollowDoor = menu->getChildByID("level-5004-button");
+        auto TheSecretHollowDoor = geode::cast::typeinfo_cast<CCMenuItemSpriteExtra*>(menu->getChildByID("level-5004-button"));
         if (!TheSecretHollowDoor) {
             log::warn("could not find secret hollow door");
             return true;
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Tower: Unlock", false)) {
-            auto sprite = static_cast<CCSprite*>(TheTowerDoor->getChildByTag(0));
-            sprite->setDisplayFrame(lockedDoor);
+            TheTowerDoor->setNormalImage(lockedDoor);
         }
-        if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {
-            auto sprite = static_cast<CCSprite*>(TheSewersDoor->getChildByTag(0));
-            sprite->setDisplayFrame(lockedDoor);
+        if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Sewers: Unlock", false)) {;
+            TheSewersDoor->setNormalImage(lockedDoor);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Cellar: Unlock", false)) {
-            auto sprite = static_cast<CCSprite*>(TheCellarDoor->getChildByTag(0));
-            sprite->setDisplayFrame(lockedDoor);
+            TheCellarDoor->setNormalImage(lockedDoor);
         }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>("The Secret Hollow: Unlock", false)) {
-            auto sprite = static_cast<CCSprite*>(TheSecretHollowDoor->getChildByTag(0));
-            sprite->setDisplayFrame(lockedDoor);
+            TheSecretHollowDoor->setNormalImage(lockedDoor);
         }
         return true;
         }
