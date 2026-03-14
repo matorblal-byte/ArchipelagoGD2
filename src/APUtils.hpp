@@ -31,6 +31,8 @@ namespace APUtils {
         "The Secret Hollow",
     };
 
+    int checkIfTower(int id);
+
     void recieveItem(int64_t id, bool notify);
 
     void clearItemState();

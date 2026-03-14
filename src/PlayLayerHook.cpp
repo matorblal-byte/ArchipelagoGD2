@@ -6,10 +6,11 @@
 
 class $modify(APPlayLayer, PlayLayer) {
     void levelComplete() {
-        geode::log::info("is this mic on");
         auto levelID = this->m_level->m_levelID.value();
+        levelID = APUtils::checkIfTower(levelID);
         geode::log::info("level id is {}", levelID);
         if (levelID > 100) {
+            PlayLayer::levelComplete();
             return; // reaches into thje zone of normal levels
         }
         auto level = APUtils::levels.at(levelID);

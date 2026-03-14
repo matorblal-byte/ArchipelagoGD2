@@ -48,6 +48,19 @@ int gdBaseID = 130820130;
     // note to index staff: this is due to the way Archipelago itself works 
     // fun fact, this is the GD release date in DD/MM/YYYY and a 0
 
+int APUtils::checkIfTower(int id) {
+        if (id == 5001) {
+            return 22; // The Tower
+        } else if (id == 5002) {
+            return 23; // The Sewers
+        } else if (id == 5003) {
+            return 24; // The Cellar
+        } else if (id == 5004) {
+            return 25; // The Secret Hollow
+        } else {
+            return id;
+        }
+    }
 void APUtils::recieveItem(int64_t id, bool notify) {
     std::string itemToRecieve = items[id - gdBaseID];
     // orbs and coins are wip and have no real code
@@ -83,6 +96,7 @@ void APUtils::checkLocationCallback(int64_t id) {
 }
 
 void APUtils::sendItem(int64_t id) {
+    id = checkIfTower(id);
     if (id < 23) {
         AP_SendItem(id + gdBaseID);
     } else {
@@ -159,6 +173,7 @@ void APUtils::getStartingLevels(std::string ids) {
         geode::log::info("got starting level {}", id);
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
         int levelInt = levelIntRes.unwrap();
+        levelInt = checkIfTower(levelInt);
         auto level = APUtils::levels.at(levelInt);
         geode::log::info("aka {}", level);
         Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
