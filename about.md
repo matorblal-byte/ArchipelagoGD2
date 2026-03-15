@@ -6,11 +6,11 @@ All levels are locked by default, but the number unlocked is decided by what you
 temp: no win condition
 # More information
 ## <cr>Partial Incompatabilities</c>
-BetterProgression by ItzKiba - Does progression on the Archipelago save \
-Main Level Pages by Capeling - temp: probably breaks to placing of lock and ap logo (Overcharged Main Levels though!) \
-Backups by HJfod - Backsup the Archipelago save which is probably not desired \
-Overcharged Main Menu by Weebify - Covers Archipelago buttons \
-Globed by dank_meme (can probably work, but can break some things and can be used to completely break progression) \
+<co>BetterProgression by ItzKiba</c> - Does progression on the Archipelago save \
+<co>Main Level Pages by Capeling</c> - temp: probably breaks to placing of lock and ap logo (Overcharged Main Levels though!) \
+<co>Backups by HJfod</c> - Backsup the Archipelago save which is probably not desired \
+<co>Overcharged Main</c> Menu by Weebify - Covers Archipelago buttons \
+<co>Globed by dank_meme</c> - Can probably work, but can break some things and can be used to completely break progression \
 And possibly more! \
 Mods that are fully incompatible will not load. \
 ## Thanks
