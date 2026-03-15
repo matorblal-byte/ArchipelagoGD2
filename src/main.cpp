@@ -14,7 +14,6 @@ class $modify(APMenuLayer, MenuLayer) {
             this,
             menu_selector(APMenuLayer::onArchipelago)
         );
-/*
         auto otherBtn = CCMenuItemSpriteExtra::create(
             CircleButtonSprite::createWithSprite("APLogo.png"_spr, 1.0f, CircleBaseColor::Green, CircleBaseSize::SmallAlt),
             this,
@@ -25,12 +24,13 @@ class $modify(APMenuLayer, MenuLayer) {
             this,
             menu_selector(APMenuLayer::debug2)
         );
-        */
         auto trm = static_cast<CCMenu*>(this->getChildByID("top-right-menu"));
         trm->addChild(apBtn);
-        /*trm->addChild(otherBtn);
+        trm->addChild(otherBtn);
         trm->addChild(anotherBtn);
-        trm->updateLayout();*/
+        otherBtn->setVisible(false);
+        anotherBtn->setVisible(false);
+        trm->updateLayout();
         
         return true;
     }
@@ -39,7 +39,7 @@ class $modify(APMenuLayer, MenuLayer) {
         ConnectPopup::create()->show();
     }
 
-  /* void debug(CCObject*) {
+    void debug(CCObject*) {
         Mod::get()->setSavedValue<bool>("Deadlocked: Unlock", true);
         AchievementNotifier::sharedState()->notifyAchievement("Deadlocked has been unlocked", "deadlocked is unlocked", "APLogo.png"_spr, true);
        APUtils::recieveItem(130820149, false);
@@ -49,6 +49,6 @@ class $modify(APMenuLayer, MenuLayer) {
         Mod::get()->setSavedValue<bool>("Deadlocked: Unlock", false);
         AchievementNotifier::sharedState()->notifyAchievement("Deadlocked has been locked", "deadlocked is locked", "APLogo.png"_spr, true);
     }
-        */
+        
 };
 
