@@ -5,5 +5,5 @@ Added starting levels (randomized levels when you get into the server) \
 Added The Tower support \
 Added sending items \
 Other small things 
-## Inital Github Upload (or v1.0.0-alpha.0) \
+## Inital Github Upload (or v1.0.0-alpha.0) 
 Inital mod
