@@ -99,7 +99,7 @@ void APUtils::checkLocationCallback(int64_t id) {
 
 void APUtils::sendItem(int64_t id) {
     id = checkIfTower(id);
-    if (id < 23) {
+    if (id < 30) {
         AP_SendItem(id + gdBaseID);
     } else {
         switch (id) {
