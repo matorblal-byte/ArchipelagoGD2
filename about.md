@@ -14,7 +14,7 @@ temp: no win condition
 And possibly more! \
 Mods that are fully incompatible will not load. 
 # Thanks
-<cb>Tiago1257</c> - Making the orginal, yet unfinished mod, and letting others fork it! Your orginal code helped massively for me \
+<cb>Tiago1257 (1257Plays)</c> - Making the orginal, yet unfinished mod, and letting others fork it! Your orginal code helped massively for me \
 Others who helped original mod creator with this: \
 <cb>N00byKing</c> - APCpp and general help with Archipelago \
 <cb>dankmeme01</c> - Help with Geode SDK + cross-compiling (and like 2 lines of code i yoinked from globed) \
