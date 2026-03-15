@@ -11,7 +11,7 @@ It uses a [fork](https://github.com/matorblal-byte/APCpp-gd) of N00byKing's [APC
 The also unfinished code for the .apworld can be found [here](https://github.com/matorblal-byte/APWorldForGDArch).
 
 ## Special Thanks:
-- [Tiago1257 \(1257Plays\)[https://github.com/Tiago1257] - Making the original mod and letting others fork it! The code helped a ton with implementations!!
+- [Tiago1257 \(1257Plays\)](https://github.com/Tiago1257) - Making the original mod and letting others fork it! The code helped a ton with implementations!!
 - [N00byKing](https://github.com/N00byKing) - APCpp and general help with Archipelago
 - [dankmeme01](https://github.com/dankmeme01) - Help with Geode SDK + cross-compiling (and like 2 lines of code i yoinked from globed)
 - [matcool](https://github.com/matcool) - Help with Geode SDK + cross-compiling
