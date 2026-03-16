@@ -7,7 +7,6 @@
 
 class $modify(APPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
-        geode::log::info("init");
         if (!init(level, useReplay, dontCreateObjects)) {
             return false;
         }
