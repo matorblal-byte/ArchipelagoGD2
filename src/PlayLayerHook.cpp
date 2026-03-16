@@ -9,7 +9,7 @@ class $modify(APPlayLayer, PlayLayer) {
     void init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         auto levelID = level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
-        if (!(levelID > 50)) {
+        if (levelID < 50) {
         auto ccsched = cocos2d::CCScheduler::get();
     if (!(APUtils::speed == 100)) {
         double calctw = APUtils::speed/100;
