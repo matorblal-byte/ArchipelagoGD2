@@ -6,7 +6,10 @@
 
 
 class $modify(APPlayLayer, PlayLayer) {
-    void init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+    bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+        if (!init(level, useReplay, dontCreateObjects)) {
+            return false;
+        }
         geode::log::info("speed: {}", APUtils::speed);
         auto levelID = level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
@@ -20,6 +23,7 @@ class $modify(APPlayLayer, PlayLayer) {
         double weightedcalctw = calctw * (1.1 - (randWeight * diffNum));
         double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
         ccsched->setTimeScale(fullycalcedtw);
+        return true;
     }
 }
     }
