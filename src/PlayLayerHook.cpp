@@ -7,9 +7,7 @@
 
 class $modify(APPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
-        if (!init(level, useReplay, dontCreateObjects)) {
-            return false;
-        }
+        if (!init(level, useReplay, dontCreateObjects)) return false;
          geode::log::info("passed if");
         auto levelID = level->m_levelID.value();
          geode::log::info("got level id");
