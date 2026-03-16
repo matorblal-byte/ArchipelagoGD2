@@ -48,7 +48,7 @@ int gdBaseID = 130820130;
     // note to index staff: this is due to the way Archipelago itself works 
     // fun fact, this is the GD release date in DD/MM/YYYY and a 0
 
-int speed = 100;
+int APUtils::speed = 100;
 
 int APUtils::checkIfTower(int id) {
         if (id == 5001) {
@@ -191,7 +191,7 @@ void APUtils::getIfModifers(std::string val) {
 }
 */
 void APUtils::setSpeed(int val) {
-    int speed = val;
+    APUtils::speed = val;
 }
 
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
