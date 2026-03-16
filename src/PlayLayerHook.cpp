@@ -7,8 +7,11 @@
 
 class $modify(APPlayLayer, PlayLayer) {
     void init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+        auto levelID = level->m_levelID.value();
+        levelID = APUtils::checkIfTower(levelID);
+        if (!(levelID > 50)) {
         auto ccsched = cocos2d::CCScheduler::get();
-    if (!APUtils::speed == 100) {
+    if (!(APUtils::speed == 100)) {
         double calctw = APUtils::speed/100;
         auto difficulty = level->m_difficulty;
         auto diffNum = static_cast<int>(difficulty);
@@ -18,12 +21,13 @@ class $modify(APPlayLayer, PlayLayer) {
         ccsched->setTimeScale(fullycalcedtw);
     }
 }
+    }
     void levelComplete() {
         auto ccsched = cocos2d::CCScheduler::get();
         auto levelID = this->m_level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
         geode::log::info("level id is {}", levelID);
-        if (!ccsched->getTimeScale() == 1.00) {
+        if (!(ccsched->getTimeScale() == 1.00)) {
             this->m_isTestMode = true;
             ccsched->setTimeScale(1.00);
         }
