@@ -17,7 +17,7 @@ class $modify(APPlayLayer, PlayLayer) {
         auto difficulty = level->m_difficulty;
         auto diffNum = static_cast<int>(difficulty);
         double randWeight = geode::utils::random::generate(0.004, 0.01);
-        double base = calctw * (1.1 - ((randWeight) * (diffNum * 2)));
+        double base = calctw * (1.1 - ((randWeight) * (diffNum * 1.1));
         double exp = 0.8-(randWeight * 40);
         double weightedcalctw = std::pow(base, exp);
         double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
