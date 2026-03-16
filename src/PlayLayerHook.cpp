@@ -21,7 +21,7 @@ class $modify(APPlayLayer, PlayLayer) {
         double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
         geode::log::info("speed set: {}", fullycalcedtw);
         ccsched->setTimeScale(fullycalcedtw);
-        FMODAudioEngine::sharedEngine()->update(fullycalcedtw);
+        FMODAudioEngine::get()->update(fullycalcedtw);
     }
 }
         return true;
@@ -35,7 +35,7 @@ class $modify(APPlayLayer, PlayLayer) {
         if (!(ccsched->getTimeScale() == 1.00)) {
             this->m_isTestMode = true;
             ccsched->setTimeScale(1.00);
-            FMODAudioEngine::sharedEngine()->update(1.00);
+            FMODAudioEngine::get()->update(1.00);
         }
         if (levelID > 100 || this->m_isPracticeMode) {
             PlayLayer::levelComplete();
