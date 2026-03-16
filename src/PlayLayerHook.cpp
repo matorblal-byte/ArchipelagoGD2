@@ -21,7 +21,7 @@ class $modify(APPlayLayer, PlayLayer) {
         double randWeight = geode::utils::random::generate(0.03, 0.05);
         double weightedcalctw = calctw * (1.1 - (randWeight * diffNum));
         double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
-        ccsched->setTimeScale(fullycalcedtw);
+        //ccsched->setTimeScale(fullycalcedtw);
     }
 }
         return true;
