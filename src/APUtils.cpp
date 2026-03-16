@@ -48,6 +48,8 @@ int gdBaseID = 130820130;
     // note to index staff: this is due to the way Archipelago itself works 
     // fun fact, this is the GD release date in DD/MM/YYYY and a 0
 
+int speed = 100;
+
 int APUtils::checkIfTower(int id) {
         if (id == 5001) {
             return 22; // The Tower
