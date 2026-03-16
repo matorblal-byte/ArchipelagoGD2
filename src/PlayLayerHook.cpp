@@ -23,9 +23,9 @@ class $modify(APPlayLayer, PlayLayer) {
         double weightedcalctw = calctw * (1.1 - (randWeight * diffNum));
         double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
         ccsched->setTimeScale(fullycalcedtw);
-        return true;
     }
 }
+        return true;
     }
     void levelComplete() {
         auto ccsched = cocos2d::CCScheduler::get();
