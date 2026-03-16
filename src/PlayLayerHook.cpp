@@ -7,6 +7,7 @@
 
 class $modify(APPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+        if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
          geode::log::info("passed if");
         auto levelID = level->m_levelID.value();
          geode::log::info("got level id");
@@ -36,6 +37,7 @@ class $modify(APPlayLayer, PlayLayer) {
 }
         return true;
     }
+
     void levelComplete() {
         auto ccsched = cocos2d::CCScheduler::get();
         auto levelID = this->m_level->m_levelID.value();
