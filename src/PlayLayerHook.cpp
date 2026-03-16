@@ -9,7 +9,7 @@ class $modify(APPlayLayer, PlayLayer) {
         auto levelID = this->m_level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
         geode::log::info("level id is {}", levelID);
-        if (levelID > 100 && !(5000 < levelID) && !(levelID < 5100)) {
+        if (levelID > 100 || this->m_isPracticeMode) {
             PlayLayer::levelComplete();
             return; // reaches into thje zone of normal levels
         }
