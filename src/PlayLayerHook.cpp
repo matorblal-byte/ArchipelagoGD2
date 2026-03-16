@@ -7,6 +7,7 @@
 
 class $modify(APPlayLayer, PlayLayer) {
     void init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+        geode::log::info("speed: {}", APUtils::speed);
         auto levelID = level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
         if (levelID < 50) {
