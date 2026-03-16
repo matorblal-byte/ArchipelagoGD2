@@ -2,6 +2,10 @@
 
 namespace APUtils {
 
+    extern int speed;
+
+    extern auto modifiers;
+
     static std::vector<std::string> levels = {
         "Stereo Madness",
         "Back On Track",
@@ -48,6 +52,10 @@ namespace APUtils {
     bool checkPortal(int id);
 
     void getStartingLevels(std::string ids);
+
+    void setSpeed(int val);
+
+    void getIfModifers(std::string val);
 
     void startArchipelago(const char* url, const char* slot, const char* pass);
 }

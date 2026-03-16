@@ -1,14 +1,32 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#include <Geode/utils/random.hpp>
 #include "APUtils.hpp"
 
 
 
 class $modify(APPlayLayer, PlayLayer) {
+    void init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+        auto ccsched = cocos2d::CCScheduler::get();
+    if (!APUtils::speed == 100) {
+        double calctw = APUtils::speed/100;
+        auto difficulty = level->m_difficulty;
+        auto diffNum = static_cast<int>(difficulty);
+        double randWeight = geode::utils::random::generate(0.03, 0.05);
+        double weightedcalctw = calctw * (1.1 - (randWeight * diffNum));
+        double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
+        ccsched->setTimeScale(fullycalcedtw);
+    }
+}
     void levelComplete() {
+        auto ccsched = cocos2d::CCScheduler::get();
         auto levelID = this->m_level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
         geode::log::info("level id is {}", levelID);
+        if (!ccsched->getTimeScale() == 1.00) {
+            this->m_isTestMode = true;
+            ccsched->setTimeScale(1.00);
+        }
         if (levelID > 100 || this->m_isPracticeMode) {
             PlayLayer::levelComplete();
             return; // reaches into thje zone of normal levels
