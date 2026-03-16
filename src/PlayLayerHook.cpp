@@ -16,7 +16,7 @@ class $modify(APPlayLayer, PlayLayer) {
         double calctw = APUtils::speed/100;
         auto difficulty = level->m_difficulty;
         auto diffNum = static_cast<int>(difficulty);
-        double randWeight = geode::utils::random::generate(0.01, 0.03);
+        double randWeight = geode::utils::random::generate(0.002, 0.006);
         double weightedcalctw = calctw * (1.1 - (randWeight * diffNum));
         double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
         geode::log::info("speed set: {}", fullycalcedtw);
