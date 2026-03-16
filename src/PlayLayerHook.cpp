@@ -17,7 +17,9 @@ class $modify(APPlayLayer, PlayLayer) {
         auto difficulty = level->m_difficulty;
         auto diffNum = static_cast<int>(difficulty);
         double randWeight = geode::utils::random::generate(0.004, 0.01);
-        double weightedcalctw = calctw * (1.1 - (randWeight) * diffNum);
+        double base = calctw * (1.1 - ((randWeight) * diffNum));
+        double exp = 0.75-(randWeight * 50);
+        double weightedcalctw = std::pow(base, exp);
         double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
         geode::log::info("speed set: {}", fullycalcedtw);
         ccsched->setTimeScale(fullycalcedtw);
