@@ -21,5 +21,5 @@ Others who helped original mod creator with this: \
 <cb>matcool</c> - Help with Geode SDK + cross-compiling \
 <cb>Prevter</c> - Help with CMake and APCpp-gd \
 <cb>Erymanthus, hiimjasmine00, SpaghettDev, km7dev, underscored (TechStudent10), Uproxide, TimeStepYT and many others</c> - Additional C++ and Geode Help \
-<cb>The Archipelago, Rhythm Doctor Lounge and Geode SDK Discord Servers<c> - Emotional Support + Progression Planning \
+<cb>The Archipelago, Rhythm Doctor Lounge and Geode SDK Discord Servers</c> - Emotional Support + Progression Planning \
 If you find a bug, contact ericg8403 on Discord!
