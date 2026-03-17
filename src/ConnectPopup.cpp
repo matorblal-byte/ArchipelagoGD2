@@ -111,7 +111,7 @@ void onClick(CCObject* sender) {
                         log::warn("The game directory is literally not existent.");
                     }
                     if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
-                        log::warm("The backup dir is literally not existent.")
+                        log::warn("The backup dir is literally not existent.");
                     }
                     return;
                 }
