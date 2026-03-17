@@ -12,7 +12,7 @@ class $modify(APPlayLayer, PlayLayer) {
         levelID = APUtils::checkIfTower(levelID);
         if (levelID < 50) {
         auto ccsched = cocos2d::CCScheduler::get();
-    if (!(APUtils::speed == 100)) {
+    if (APUtils::speed != 100) {
         double calctw = APUtils::speed/100;
         auto difficulty = level->m_difficulty;
         auto diffNum = static_cast<int>(difficulty);
