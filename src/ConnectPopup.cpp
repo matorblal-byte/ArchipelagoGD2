@@ -102,7 +102,7 @@ void onClick(CCObject* sender) {
                 std::filesystem::copy_file(saves / "CCLocalLevels2.dat", dir / "ArchGDBackedupSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
                 std::filesystem::create_directory(dir / "ArchGDBackedupSave" / "inArchModeFlag.archgd", error);
                 if (error) {
-                    FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok");
+                    FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok")->show();
                     log::warn("Unable to copy file to ArchGDBackedupSave: Error: {} Code: {}", error.message(), error.value());
                     if (!std::filesystem::exists(dirs::getSaveDir())) {
                         log::warn("The save directory is literally not existent.");
@@ -121,7 +121,7 @@ void onClick(CCObject* sender) {
                 std::filesystem::remove(saves / "CCGameManager2.dat", error);
                 std::filesystem::remove(saves / "CCLocalLevels2.dat", error);
                 if (error) {
-                    FLAlertLayer::create("Error", "Unable to delete save data. Please check the logs for errors!", "Ok");
+                    FLAlertLayer::create("Error", "Unable to delete save data. Please check the logs for errors!", "Ok")->show();
                     log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
                 }
                 geode::utils::game::restart(false);

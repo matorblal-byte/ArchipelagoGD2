@@ -29,7 +29,11 @@ class $modify(APLoadingLayer, LoadingLayer) {
             std::filesystem::copy_file(dir / "ArchGDBackedupSave" / "CCLocalLevels.dat", saves / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
             std::filesystem::copy_file(dir / "ArchGDBackedupSave" / "CCGameManager2.dat", saves / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
             std::filesystem::copy_file(dir / "ArchGDBackedupSave" / "CCLocalLevels2.dat", saves / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::remove(dir / "ArchGDBackedupSave" / "inArchModeFlag.archgd");
+            std::filesystem::remove(dir / "ArchGDBackedupSave" / "inArchModeFlag.archgd", error);
+            if (error) {
+                FLAlertLayer::create("Error", "Unable to load your save data! Please retrieve it manually!! Error logs in logs", "Ok")->show();
+                log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
+            }
             }
             auto apLabel = CCLabelBMFont::create("ArchipelagoGD: Not connected", "goldFont.fnt");
             apLabel->setPosition(CCDirector::get()->getWinSize().width / 2, CCDirector::get()->getWinSize().height - 10);
