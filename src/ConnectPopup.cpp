@@ -104,6 +104,15 @@ void onClick(CCObject* sender) {
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok");
                     log::warn("Unable to copy file to ArchGDBackedupSave: Error: {} Code: {}", error.message(), error.value());
+                    if (!std::filesystem::exists(dirs::getSaveDir())) {
+                        log::warn("The save directory is literally not existent.");
+                    }
+                    if (!std::filesystem::exists(dirs::getGameDir())) {
+                        log::warn("The game directory is literally not existent.");
+                    }
+                    if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
+                        log::warm("The backup dir is literally not existent.")
+                    }
                     return;
                 }
                 log::info("deleting files!!! ahhhh scary!");
