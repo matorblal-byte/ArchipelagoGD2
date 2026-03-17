@@ -2,6 +2,7 @@
 #include <Geode/binding/ButtonSprite.hpp>
 #include <Geode/binding/CCMenuItemSpriteExtra.hpp>
 #include <Geode/binding/FLAlertLayer.hpp>
+#include <Geode/loader/Dirs.hpp>
 #include <Geode/cocos/cocoa/CCObject.h>
 #include <Geode/ui/Popup.hpp>
 #include <Geode/ui/TextInput.hpp>
@@ -81,19 +82,47 @@ void onClick(CCObject* sender) {
     log::info("Clicked connect");
     geode::createQuickPopup(
         "Connect",
-        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
+        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. This will <cr>DELETE YOUR SAVE</c> and back it up locally. You might want to save on the cloud. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
         "No", "Yes",
         [this](auto, bool btn2) { 
             if (btn2) {
+                std::error_code error;
                 std::string url = urlInput->getString();
                 std::string slot = slotInput->getString();
                 std::string pass = passInput->getString();
-                FLAlertLayer::create("stuff", "currently trying to connect - give me a sec and check your multiworld panel", "cool")->show();
+                auto saves = dirs::getSaveDir();
+                auto dir = dirs::getGameDir();
+                if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
+                    std::filesystem::create_directory(dir / "ArchGDBackupedSave", error);
+                }
+                std::filesystem::copy_file(saves / "CCGameManager.dat", dir / "ArchGDBackedupSave" / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
+                std::filesystem::copy_file(saves / "CCLocalLevels.dat", dir / "ArchGDBackedupSave" / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
+                // backup the backups too
+                std::filesystem::copy_file(saves / "CCGameManager2.dat", dir / "ArchGDBackedupSave" / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
+                std::filesystem::copy_file(saves / "CCLocalLevels2.dat", dir / "ArchGDBackedupSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
+                std::filesystem::create_directory(dir / "ArchGDBackedupSave" / "inArchModeFlag.archgd", error);
+                if (error) {
+                    FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok");
+                    log::warn("Unable to copy file to ArchGDBackedupSave: Error: {} Code: {}", error.message(), error.value());
+                    return;
+                }
+                log::info("deleting files!!! ahhhh scary!");
+                std::filesystem::remove(saves / "CCGameManager.dat", error);
+                std::filesystem::remove(saves / "CCLocalLevels.dat", error);
+                std::filesystem::remove(saves / "CCGameManager2.dat", error);
+                std::filesystem::remove(saves / "CCLocalLevels2.dat", error);
+                if (error) {
+                    FLAlertLayer::create("Error", "Unable to delete save data. Please check the logs for errors!", "Ok");
+                    log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
+                }
+                geode::utils::game::restart(false);
+                /*
                 APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
                 Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
                 Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
                 Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
                 log::info("Connected to AP with url {}, slot {}, pass {}", url, slot, pass);
+                */
             }
         }
      );
