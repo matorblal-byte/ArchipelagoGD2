@@ -27,7 +27,6 @@ class $modify(APLoadingLayer, LoadingLayer) {
             this->addChild(apLabel);
             std::filesystem::remove(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt", error);
             if (error) {
-                FLAlertLayer::create("Error", "Unable to remove arch mode flag! Logs for more info", "Ok")->show();
                 log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
             }
         } else {
@@ -37,7 +36,6 @@ class $modify(APLoadingLayer, LoadingLayer) {
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager2.dat", saves / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCLocalLevels2.dat", saves / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);;
             if (error) {
-                FLAlertLayer::create("Error", "Unable to load your save data! Please retrieve it manually!! Error logs in logs", "Ok")->show();
                 log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
             }
             }
