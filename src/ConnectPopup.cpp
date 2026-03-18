@@ -113,6 +113,12 @@ void onClick(CCObject* sender) {
                     if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
                         log::warn("The backup dir is literally not existent.");
                     }
+                    if (!std::filesystem::exists(saves / "CCGameManager.dat")) {
+                        log::warn("The save file is literally not existent.");
+                    }
+                    if (!std::filesystem::exists(saves / "CCGameManager2.dat")) {
+                        log::warn("The backup save file is literally not existent.");
+                    }
                     return;
                 }
                 log::info("deleting files!!! ahhhh scary!");
