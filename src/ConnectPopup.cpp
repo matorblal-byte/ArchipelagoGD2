@@ -139,7 +139,6 @@ void onClick(CCObject* sender) {
                     log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
                     return;
                 }
-                log::info(url);
                 geode::utils::game::restart(true);
                 /*
                 APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
