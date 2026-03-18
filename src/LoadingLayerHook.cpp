@@ -17,7 +17,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
         if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
             if (url == "") {
-                FLAlertLayer::create("Error", "The URL was marked as empty! You will not connect!", "Ok")->show();
+                log::warn("The url is empty");
             }
             APUtils::startArchipelago(url.c_str(), Mod::get()->getSavedValue<std::string>("recent-slot", "").c_str(), Mod::get()->getSavedValue<std::string>("recent-pass", "").c_str());
             auto apLabel = CCLabelBMFont::create(("ArchipelagoGD: Connecting to " + url).c_str(), "goldFont.fnt");
