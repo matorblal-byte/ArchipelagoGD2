@@ -121,6 +121,10 @@ void onClick(CCObject* sender) {
                     }
                     return;
                 }
+                if (!std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.archgd")) {
+                    log::warn("Couldnt find the flag!!!!");
+                    return;
+                }
                 log::info("deleting files!!! ahhhh scary!");
                 std::filesystem::remove(saves / "CCGameManager.dat", error);
                 std::filesystem::remove(saves / "CCLocalLevels.dat", error);
