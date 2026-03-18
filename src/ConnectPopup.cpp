@@ -139,7 +139,7 @@ void onClick(CCObject* sender) {
                     log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
                     return;
                 }
-                auto f = Mod::get()->getSavedValue<std::string>("recent-url", "def")
+                auto f = Mod::get()->getSavedValue<std::string>("recent-url", "def");
                 log::info(f);
                 geode::utils::game::restart(true);
                 /*
