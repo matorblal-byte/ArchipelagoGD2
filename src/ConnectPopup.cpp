@@ -90,6 +90,9 @@ void onClick(CCObject* sender) {
                 std::string url = urlInput->getString();
                 std::string slot = slotInput->getString();
                 std::string pass = passInput->getString();
+                Mod::get()->setSavedValue<std::string>("recent-url", url);
+                Mod::get()->setSavedValue<std::string>("recent-slot", slot);
+                Mod::get()->setSavedValue<std::string>("recent-pass", pass);
                 auto saves = dirs::getSaveDir();
                 auto dir = dirs::getGameDir();
                 if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
@@ -136,9 +139,6 @@ void onClick(CCObject* sender) {
                     log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
                     return;
                 }
-                Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
-                Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
-                Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
                 geode::utils::game::restart(false);
                 /*
                 APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
