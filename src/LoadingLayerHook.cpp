@@ -24,12 +24,12 @@ class $modify(APLoadingLayer, LoadingLayer) {
         } else {
             auto saves = dirs::getSaveDir();
             auto dir = dirs::getGameDir();
-            if (std::filesystem::exists(dir / "ArchGDBackedupSave" / "inArchModeFlag.archgd")) {
-            std::filesystem::copy_file(dir / "ArchGDBackedupSave" / "CCGameManager.dat", saves / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::copy_file(dir / "ArchGDBackedupSave" / "CCLocalLevels.dat", saves / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::copy_file(dir / "ArchGDBackedupSave" / "CCGameManager2.dat", saves / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::copy_file(dir / "ArchGDBackedupSave" / "CCLocalLevels2.dat", saves / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::remove(dir / "ArchGDBackedupSave" / "inArchModeFlag.archgd", error);
+            if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.archgd")) {
+            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager.dat", saves / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
+            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCLocalLevels.dat", saves / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
+            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager2.dat", saves / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
+            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCLocalLevels2.dat", saves / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
+            std::filesystem::remove(dir / "ArchGDBackupedSave" / "inArchModeFlag.archgd", error);
             if (error) {
                 FLAlertLayer::create("Error", "Unable to load your save data! Please retrieve it manually!! Error logs in logs", "Ok")->show();
                 log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
