@@ -31,7 +31,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
                 log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
             }
         } else {
-            if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
+            if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "CCGameManager.dat")) {
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager.dat", saves / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCLocalLevels.dat", saves / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager2.dat", saves / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
