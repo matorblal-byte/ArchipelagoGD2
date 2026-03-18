@@ -14,7 +14,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
         auto saves = dirs::getSaveDir();
         auto dir = dirs::getGameDir();
         if (!LoadingLayer::init(p0)) return false;
-        if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.archgd")) {
+        if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
             APUtils::startArchipelago(url.c_str(), Mod::get()->getSavedValue<std::string>("recent-slot", "").c_str(), Mod::get()->getSavedValue<std::string>("recent-pass", "").c_str());
             auto apLabel = CCLabelBMFont::create(("ArchipelagoGD: Connecting to " + url).c_str(), "goldFont.fnt");
@@ -22,13 +22,13 @@ class $modify(APLoadingLayer, LoadingLayer) {
             apLabel->setScale(.45f);
             apLabel->setID("ap-status-label"_spr);
             this->addChild(apLabel);
-            std::filesystem::remove(dir / "ArchGDBackupedSave" / "inArchModeFlag.archgd", error);
+            std::filesystem::remove(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt", error);
             if (error) {
                 FLAlertLayer::create("Error", "Unable to remove arch mode flag! Logs for more info", "Ok")->show();
                 log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
             }
         } else {
-            if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.archgd")) {
+            if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager.dat", saves / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCLocalLevels.dat", saves / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
             std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager2.dat", saves / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
