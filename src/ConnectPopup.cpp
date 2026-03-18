@@ -100,7 +100,11 @@ void onClick(CCObject* sender) {
                 // backup the backups too
                 std::filesystem::copy_file(saves / "CCGameManager2.dat", dir / "ArchGDBackupedSave" / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
                 std::filesystem::copy_file(saves / "CCLocalLevels2.dat", dir / "ArchGDBackupedSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
-                std::filesystem::create_directory(dir / "ArchGDBackupedSave" / "inArchModeFlag.archgd", error);
+                std::ofstream flag(dir.string() + "/ArchGDBackupedSave/inArchModeFlag.archgd");
+                if (flag.is_open()) {
+                    flag << "ArchMode";
+                    flag.close();
+                }
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok")->show();
                     log::warn("Unable to copy file to ArchGDBackedupSave: Error: {} Code: {}", error.message(), error.value());
