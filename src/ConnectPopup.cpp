@@ -129,13 +129,14 @@ void onClick(CCObject* sender) {
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to delete save data. Please check the logs for errors!", "Ok")->show();
                     log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
+                    return;
                 }
-                geode::utils::game::restart(false);
-                /*
-                APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
                 Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
                 Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
                 Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
+                geode::utils::game::restart(false);
+                /*
+                APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
                 log::info("Connected to AP with url {}, slot {}, pass {}", url, slot, pass);
                 */
             }
