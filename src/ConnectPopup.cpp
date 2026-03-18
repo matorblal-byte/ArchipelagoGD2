@@ -140,7 +140,7 @@ void onClick(CCObject* sender) {
                     return;
                 }
                 log::info(Mod::get()->getSavedValue<std::string>("recent-url", "def"));
-                geode::utils::game::restart(true);+
+                geode::utils::game::restart(true);
                 /*
                 APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
                 log::info("Connected to AP with url {}, slot {}, pass {}", url, slot, pass);
