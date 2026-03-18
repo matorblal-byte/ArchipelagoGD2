@@ -6,13 +6,14 @@
 #include <Geode/cocos/cocoa/CCObject.h>
 #include <Geode/ui/Popup.hpp>
 #include <Geode/ui/TextInput.hpp>
+#include <Geode/loader/ModSettingsManager.hpp>
 #include <fmt/core.h>
 #include <string>
 #include <wincrypt.h>
 #include <Archipelago.h>
 #include "APUtils.hpp"
 
-using namespace geode::prelude;
+using namespace geode::prelude; 
 class ConnectPopup : public Popup {
     protected:
 
@@ -93,6 +94,7 @@ void onClick(CCObject* sender) {
                 Mod::get()->setSavedValue<std::string>("recent-url", url);
                 Mod::get()->setSavedValue<std::string>("recent-slot", slot);
                 Mod::get()->setSavedValue<std::string>("recent-pass", pass);
+                Mod::get()->saveData();
                 auto saves = dirs::getSaveDir();
                 auto dir = dirs::getGameDir();
                 if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
@@ -139,7 +141,7 @@ void onClick(CCObject* sender) {
                     log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
                     return;
                 }
-                //geode::utils::game::restart(true);
+                geode::utils::game::restart(true);
                 /*
                 APUtils::startArchipelago(url.c_str(), slot.c_str(), pass.c_str());
                 log::info("Connected to AP with url {}, slot {}, pass {}", url, slot, pass);
