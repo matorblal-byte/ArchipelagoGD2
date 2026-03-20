@@ -24,6 +24,9 @@ class $modify(APPlayLayer, PlayLayer) {
         geode::log::info("speed set: {}", fullycalcedtw);
         ccsched->setTimeScale(fullycalcedtw);
         FMODAudioEngine::get()->update(fullycalcedtw);
+        FMOD::ChannelGroup* masterGroup;
+        if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return;
+            masterGroup->setPitch(1.00);
     }
 }
         return true;
@@ -38,7 +41,10 @@ class $modify(APPlayLayer, PlayLayer) {
             this->m_isTestMode = true;
             ccsched->setTimeScale(1.00);
             FMODAudioEngine::get()->update(1.00);
-        }
+            FMOD::ChannelGroup* masterGroup;
+            if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return;
+                masterGroup->setPitch(1.00);
+        }   
         if (levelID > 100 || this->m_isPracticeMode) {
             PlayLayer::levelComplete();
             return; // reaches into thje zone of normal levels
