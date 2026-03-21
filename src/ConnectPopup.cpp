@@ -137,10 +137,10 @@ void onClick(CCObject* sender) {
                     return;
                 }
                 log::info("renaming files");
-                std::filesystem::rename(saves / "CCGameManager.dat", saves / "CCGameManager.datSaved", error);
-                std::filesystem::rename(saves / "CCLocalLevels.dat", saves / "CCLocalLevels.datSaved", error);
-                std::filesystem::rename(saves / "CCLocalLevels2.dat", saves / "CCLocalLevels2.datSaved", error);
-                std::filesystem::rename(saves / "CCGameManager2.dat", saves / "CCGameManager2.datSaved", error);
+                std::filesystem::rename(saves / "CCGameManager.dat", saves / "CCGameManagerSaved.datSaved", error);
+                std::filesystem::rename(saves / "CCLocalLevels.dat", saves / "CCLocalLevelsSaved.datSaved", error);
+                std::filesystem::rename(saves / "CCLocalLevels2.dat", saves / "CCLocalLevels2Saved.datSaved", error);
+                std::filesystem::rename(saves / "CCGameManager2.dat", saves / "CCGameManager2Saved.datSaved", error);
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to rename save data. Please check the logs for errors!", "Ok")->show();
                     log::warn("Unable to rename save. Error: {} Code: {}", error.message(), error.value());
