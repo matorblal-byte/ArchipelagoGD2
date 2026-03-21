@@ -17,6 +17,7 @@ add_library(${PROJECT_NAME} SHARED
     src/LoadingLayerHook.cpp
     src/PlayLayerHook.cpp
     src/LevelAreaInnerLayerHook.cpp
+    src/GManagerHook.cpp
     # Add any extra C++ source files here
 )
 

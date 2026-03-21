@@ -25,20 +25,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
             apLabel->setScale(.45f);
             apLabel->setID("ap-status-label"_spr);
             this->addChild(apLabel);
-            std::filesystem::remove(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt", error);
-            if (error) {
-                log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
-            }
         } else {
-            if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "CCGameManager.dat")) {
-            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager.dat", saves / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCLocalLevels.dat", saves / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCGameManager2.dat", saves / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
-            std::filesystem::copy_file(dir / "ArchGDBackupedSave" / "CCLocalLevels2.dat", saves / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);;
-            if (error) {
-                log::warn("Unable to restore save data: Error: {} Code: {}", error.message(), error.value());        
-            }
-            }
             auto apLabel = CCLabelBMFont::create("ArchipelagoGD: Not connected", "goldFont.fnt");
             apLabel->setPosition(CCDirector::get()->getWinSize().width / 2, CCDirector::get()->getWinSize().height - 10);
             apLabel->setScale(.45f);

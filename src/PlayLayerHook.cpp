@@ -25,7 +25,7 @@ class $modify(APPlayLayer, PlayLayer) {
         ccsched->setTimeScale(fullycalcedtw);
         FMODAudioEngine::get()->update(fullycalcedtw);
         FMOD::ChannelGroup* masterGroup;
-        if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return;
+        if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return false;
             masterGroup->setPitch(1.00);
     }
 }

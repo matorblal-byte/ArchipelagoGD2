@@ -83,7 +83,7 @@ void onClick(CCObject* sender) {
     log::info("Clicked connect");
     geode::createQuickPopup(
         "Connect",
-        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. This will <cr>DELETE YOUR SAVE</c> and back it up locally. You might want to save on the cloud. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
+        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. This will <cr>RESET YOUR GAME</c> (including settings) and back your save data up locally, twice. You might want to save on the cloud. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
         "No", "Yes",
         [this](auto, bool btn2) { 
             if (btn2) {
@@ -105,7 +105,7 @@ void onClick(CCObject* sender) {
                 // backup the backups too
                 std::filesystem::copy_file(saves / "CCGameManager2.dat", dir / "ArchGDBackupedSave" / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
                 std::filesystem::copy_file(saves / "CCLocalLevels2.dat", dir / "ArchGDBackupedSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
-                std::filesystem::create_directory(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt", error);
+                std::filesystem::create_directory(saves / "ArchGDBackupedSave" / "inArchModeFlag.txt", error);
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok")->show();
                     log::warn("Unable to copy file to ArchGDBackedupSave: Error: {} Code: {}", error.message(), error.value());
@@ -126,18 +126,18 @@ void onClick(CCObject* sender) {
                     }
                     return;
                 }
-                if (!std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
+                if (!std::filesystem::exists(saves / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
 
                     log::warn("Couldnt find the flag!!!!");
                     return;
                 }
-                log::info("deleting files!!! ahhhh scary!");
-                std::filesystem::remove(saves / "CCGameManager.dat", error);
-                std::filesystem::remove(saves / "CCLocalLevels.dat", error);
-                std::filesystem::remove(saves / "CCGameManager2.dat", error);
-                std::filesystem::remove(saves / "CCLocalLevels2.dat", error);
+                log::info("renaming files");
+                std::filesystem::rename(saves / "CCGameManager.dat", saves / "CCGameManagerSaved.dat", error);
+                std::filesystem::rename(saves / "CCLocalLevels.dat", saves / "CCLocalLevelsSaved.dat", error);
+                std::filesystem::rename(saves / "CCLocalLevels2.dat", saves / "CCLocalLevelsSaved2.dat", error);
+                std::filesystem::rename(saves / "CCGameManager2.dat", saves / "CCGameManagerSaved2.dat", error);
                 if (error) {
-                    FLAlertLayer::create("Error", "Unable to delete save data. Please check the logs for errors!", "Ok")->show();
+                    FLAlertLayer::create("Error", "Unable to rename save data. Please check the logs for errors!", "Ok")->show();
                     log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
                     return;
                 }
