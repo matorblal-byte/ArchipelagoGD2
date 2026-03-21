@@ -14,7 +14,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
         auto saves = dirs::getSaveDir();
         auto dir = dirs::getGameDir();
         if (!LoadingLayer::init(p0)) return false;
-        if (std::filesystem::exists(dir / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
+        if (std::filesystem::exists(saves / "inArchModeFlag.txt")) {
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
             if (url == "") {
                 log::warn("The url is empty");
