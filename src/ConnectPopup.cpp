@@ -97,14 +97,14 @@ void onClick(CCObject* sender) {
                 Mod::get()->saveData();
                 auto saves = dirs::getSaveDir();
                 auto dir = dirs::getGameDir();
-                if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
-                    std::filesystem::create_directory(dir / "ArchGDBackupedSave", error);
+                if (!std::filesystem::exists(saves / "ArchGDBackupedSave")) {
+                    std::filesystem::create_directory(saves / "ArchGDBackupedSave", error);
                 }
-                std::filesystem::copy_file(saves / "CCGameManager.dat", dir / "ArchGDBackupedSave" / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
-                std::filesystem::copy_file(saves / "CCLocalLevels.dat", dir / "ArchGDBackupedSave" / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
+                std::filesystem::copy_file(saves / "CCGameManager.dat", saves / "ArchGDBackupedSave" / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
+                std::filesystem::copy_file(saves / "CCLocalLevels.dat", saves / "ArchGDBackupedSave" / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
                 // backup the backups too
-                std::filesystem::copy_file(saves / "CCGameManager2.dat", dir / "ArchGDBackupedSave" / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
-                std::filesystem::copy_file(saves / "CCLocalLevels2.dat", dir / "ArchGDBackupedSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
+                std::filesystem::copy_file(saves / "CCGameManager2.dat", saves / "ArchGDBackupedSave" / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
+                std::filesystem::copy_file(saves / "CCLocalLevels2.dat", saves / "ArchGDBackupedSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
                 std::filesystem::create_directory(saves / "inArchModeFlag.txt", error);
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok")->show();
@@ -115,7 +115,7 @@ void onClick(CCObject* sender) {
                     if (!std::filesystem::exists(dirs::getGameDir())) {
                         log::warn("The game directory is literally not existent.");
                     }
-                    if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
+                    if (!std::filesystem::exists(saves / "ArchGDBackupedSave")) {
                         log::warn("The backup dir is literally not existent.");
                     }
                     if (!std::filesystem::exists(saves / "CCGameManager.dat")) {
