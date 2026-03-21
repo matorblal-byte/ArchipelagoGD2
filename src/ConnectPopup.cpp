@@ -133,15 +133,14 @@ void onClick(CCObject* sender) {
                     return;
                 }
                 if (!std::filesystem::exists(saves / "inArchModeFlag.txt")) {
-
                     log::warn("Couldnt find the flag!!!!");
                     return;
                 }
                 log::info("renaming files");
-                std::filesystem::rename(saves / "CCGameManager.dat", saves / "CCGameManagerSaved.dat", error);
-                std::filesystem::rename(saves / "CCLocalLevels.dat", saves / "CCLocalLevelsSaved.dat", error);
-                std::filesystem::rename(saves / "CCLocalLevels2.dat", saves / "CCLocalLevelsSaved2.dat", error);
-                std::filesystem::rename(saves / "CCGameManager2.dat", saves / "CCGameManagerSaved2.dat", error);
+                std::filesystem::rename(saves / "CCGameManager.dat", saves / "CCGameManager.datSaved", error);
+                std::filesystem::rename(saves / "CCLocalLevels.dat", saves / "CCLocalLevels.datSaved", error);
+                std::filesystem::rename(saves / "CCLocalLevels2.dat", saves / "CCLocalLevels2.datSaved", error);
+                std::filesystem::rename(saves / "CCGameManager2.dat", saves / "CCGameManager2.datSaved", error);
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to rename save data. Please check the logs for errors!", "Ok")->show();
                     log::warn("Unable to rename save. Error: {} Code: {}", error.message(), error.value());
