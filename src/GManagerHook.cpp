@@ -16,7 +16,7 @@ class $modify(APGManager, GManager) {
             if (error) {
                 geode::log::warn("Could not rename saves: Error {} Code: {}, backups saved in your gd folder! (where the application is)", error.message(), error.value());
             }
-            GManager::setup();
         }
+        GManager::setup();
     }
 };
