@@ -124,6 +124,12 @@ void onClick(CCObject* sender) {
                     if (!std::filesystem::exists(saves / "CCGameManager2.dat")) {
                         log::warn("The backup save file is literally not existent.");
                     }
+                    if (!std::filesystem::exists(saves / "CCLocalLevels.dat")) {
+                        log::warn("The level file is literally not existent.");
+                    }
+                    if (!std::filesystem::exists(saves / "CCLocalLevels.dat")) {
+                        log::warn("The backup level file is literally not existent.");
+                    }
                     return;
                 }
                 if (!std::filesystem::exists(saves / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
