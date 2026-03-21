@@ -5,7 +5,7 @@ using namespace geode::prelude;
 
 class $modify(APGManager, GManager) {
     void setup() {
-        auto saves = geode::getSaveDir()
+        auto saves = geode::dirs::getSaveDir();
         if (std::filesystem::exists(saves / "CCGameManagerSaved.dat") && std::filesystem::exists(saves / "CCLocalLevelsSaved.dat") && std::filesystem::exists(saves / "inArchModeFlag.txt")) {
             std::error_code* error;
             std::filesystem::rename(saves / "CCLocalLevelsSaved.dat", saves / "CCLocalLevels.dat");
@@ -16,7 +16,7 @@ class $modify(APGManager, GManager) {
             if (error) {
                 geode::log::warn("Could not rename saves: Error {} Code: {}, backups saved in your gd folder! (where the application is)", error.message(), error.value());
             }
-            GManager::setup()
+            GManager::setup();
         }
     }
 };
