@@ -10,14 +10,11 @@ class $modify(APGManager, GManager) {
             std::error_code error;
             std::filesystem::rename(saves / "CCLocalLevelsSaved.dat", saves / "CCLocalLevels.dat", error);
             std::filesystem::rename(saves / "CCLocalLevelsSaved2.dat", saves / "CCLocalLevels2.dat", error);
-            std::filesystem::rename(saves / "CCGameManagerSaved.dat", saves / "CCGameManger.dat", error);
-            std::filesystem::rename(saves / "CCGameManagerSaved2.dat", saves / "CCGameManger2.dat", error);
+            std::filesystem::rename(saves / "CCGameManagerSaved.dat", saves / "CCGameManager.dat", error);
+            std::filesystem::rename(saves / "CCGameManagerSaved2.dat", saves / "CCGameManager2.dat", error);
             if (error) {
                 geode::log::warn("Could not rename saves: Error {} Code: {}, backups saved in your gd folder! (where the application is)", error.message(), error.value());
             }
-        }
-        if (std::filesystem::exists(saves / "inArchModeFlag.txt")) {
-            std::filesystem::remove(saves / "inArchModeFlag.txt");
         }
         GManager::setup();
     }

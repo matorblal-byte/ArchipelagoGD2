@@ -25,6 +25,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
             apLabel->setScale(.45f);
             apLabel->setID("ap-status-label"_spr);
             this->addChild(apLabel);
+            std::filesystem::remove(saves / "inArchModeFlag.txt");
         } else {
             auto apLabel = CCLabelBMFont::create("ArchipelagoGD: Not connected", "goldFont.fnt");
             apLabel->setPosition(CCDirector::get()->getWinSize().width / 2, CCDirector::get()->getWinSize().height - 10);
