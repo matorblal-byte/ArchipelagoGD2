@@ -83,7 +83,7 @@ void onClick(CCObject* sender) {
     log::info("Clicked connect");
     geode::createQuickPopup(
         "Connect",
-        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. This will <cr>RESET YOUR GAME</c> (including settings) and back your save data up locally, twice. You might want to save on the cloud. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
+        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. This will <cr>RESET YOUR GAME</c> (including settings) and back your save data up locally. You might want to save on the cloud. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
         "No", "Yes",
         [this](auto, bool btn2) { 
             if (btn2) {
@@ -100,11 +100,13 @@ void onClick(CCObject* sender) {
                 if (!std::filesystem::exists(dir / "ArchGDBackupedSave")) {
                     std::filesystem::create_directory(dir / "ArchGDBackupedSave", error);
                 }
+                /*
                 std::filesystem::copy_file(saves / "CCGameManager.dat", dir / "ArchGDBackupedSave" / "CCGameManager.dat", std::filesystem::copy_options::overwrite_existing, error);
                 std::filesystem::copy_file(saves / "CCLocalLevels.dat", dir / "ArchGDBackupedSave" / "CCLocalLevels.dat", std::filesystem::copy_options::overwrite_existing, error);
                 // backup the backups too
                 std::filesystem::copy_file(saves / "CCGameManager2.dat", dir / "ArchGDBackupedSave" / "CCGameManager2.dat", std::filesystem::copy_options::overwrite_existing, error);
                 std::filesystem::copy_file(saves / "CCLocalLevels2.dat", dir / "ArchGDBackupedSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
+                */
                 std::filesystem::create_directory(saves / "ArchGDBackupedSave" / "inArchModeFlag.txt", error);
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok")->show();
@@ -144,7 +146,7 @@ void onClick(CCObject* sender) {
                 std::filesystem::rename(saves / "CCGameManager2.dat", saves / "CCGameManagerSaved2.dat", error);
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to rename save data. Please check the logs for errors!", "Ok")->show();
-                    log::warn("Unable to delete save. Error: {} Code: {}", error.message(), error.value());
+                    log::warn("Unable to rename save. Error: {} Code: {}", error.message(), error.value());
                     return;
                 }
                 geode::utils::game::restart(false);
