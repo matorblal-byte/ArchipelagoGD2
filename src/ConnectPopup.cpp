@@ -132,7 +132,7 @@ void onClick(CCObject* sender) {
                     }
                     return;
                 }
-                if (!std::filesystem::exists(saves / "ArchGDBackupedSave" / "inArchModeFlag.txt")) {
+                if (!std::filesystem::exists(saves / "inArchModeFlag.txt")) {
 
                     log::warn("Couldnt find the flag!!!!");
                     return;
