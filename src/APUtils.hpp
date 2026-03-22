@@ -55,7 +55,5 @@ namespace APUtils {
 
     void setSpeed(int val);
 
-    // void getIfModifers(std::string val);
-
     void startArchipelago(const char* url, const char* slot, const char* pass);
 }

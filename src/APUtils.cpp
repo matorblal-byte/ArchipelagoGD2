@@ -185,11 +185,7 @@ void APUtils::getStartingLevels(std::string ids) {
 }
 );
 }
-/*
-void APUtils::getIfModifers(std::string val) {
-    auto modifers = val;
-}
-*/
+
 void APUtils::setSpeed(int val) {
     APUtils::speed = val;
 }
@@ -208,6 +204,5 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
     AP_RegisterSlotDataRawCallback("startinglevels", &APUtils::getStartingLevels);
     AP_RegisterSlotDataIntCallback("speed", &APUtils::setSpeed);
-   // AP_RegisterSlotDataRawCallback("modifiers", &APUtils::getIfModifers);
     AP_Start();
 }
