@@ -6,7 +6,7 @@
 	"version": "v1.0.0-alpha.2",
 	"id": "1257plays.archipelagogd",
 	"name": "ArchipelagoGD",
-	"developer": "1257Plays",
+	"developers": ["1257Plays", "ericg"],
 	"description": "Archipelago support for Geometry Dash!",
 	"early-load": true,
 	"resources": {

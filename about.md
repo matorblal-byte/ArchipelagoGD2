@@ -9,7 +9,7 @@ temp: no win condition
 <co>BetterProgression by ItzKiba</c> - Does progression on the Archipelago save \
 <co>Main Level Pages by Capeling</c> - temp: probably breaks to placing of lock and ap logo (Overcharged Main Levels though!) \
 <co>Backups by HJfod</c> - Backsup the Archipelago save which is probably not desired \
-<co>Overcharged Main</c> Menu by Weebify - Covers Archipelago buttons \
+<co>Overcharged Main Menu by Weebify</c> - Covers Archipelago buttons \
 <co>Globed by dank_meme</c> - Can probably work, but can break some things and can be used to completely break progression \
 And possibly more! \
 Mods that are fully incompatible will not load. 
