@@ -8,17 +8,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 project(ArchipelagoGDAgain VERSION 1.0.0)
 
 add_library(${PROJECT_NAME} SHARED
-    src/main.cpp
-    src/ConnectPopup.cpp
-    src/LevelSelectLayerHook.cpp
-    src/PortalLogic.cpp
-    src/APUtils.cpp
-    src/AchievementBarHook.cpp
-    src/LoadingLayerHook.cpp
-    src/PlayLayerHook.cpp
-    src/LevelAreaInnerLayerHook.cpp
-    src/GManagerHook.cpp
-    # Add any extra C++ source files here
+    src/*.cpp
 )
 
 if (NOT DEFINED ENV{GEODE_SDK})

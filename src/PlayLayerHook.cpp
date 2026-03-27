@@ -32,6 +32,12 @@ class $modify(APPlayLayer, PlayLayer) {
         return true;
     }
 
+    // delete portals when needed
+    void addObject(GameObject* p0) {
+    if (APUtils::checkPortal(p0->m_objectID)) 
+        PlayLayer::addObject(p0);
+    }   
+
     void levelComplete() {
         auto ccsched = cocos2d::CCScheduler::get();
         auto levelID = this->m_level->m_levelID.value();
