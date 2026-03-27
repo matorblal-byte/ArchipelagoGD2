@@ -108,7 +108,7 @@ void onClick(CCObject* sender) {
                 std::filesystem::create_directory(saves / "inArchModeFlag.txt", error);
                 if (error) {
                     FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok")->show();
-                    log::warn("Unable to copy file to ArchGDBackedupSave: Error: {} Code: {}", error.message(), error.value());
+                    log::warn("Unable to copy file to ArchGDBackupedSave: Error: {} Code: {}", error.message(), error.value());
                     if (!std::filesystem::exists(dirs::getSaveDir())) {
                         log::warn("The save directory is literally not existent.");
                     }
@@ -145,6 +145,20 @@ void onClick(CCObject* sender) {
                     FLAlertLayer::create("Error", "Unable to rename save data. Please check the logs for errors!", "Ok")->show();
                     log::warn("Unable to rename save. Error: {} Code: {}", error.message(), error.value());
                     return;
+                }
+                // to be 100%%%%%%%%%%%%% safe 
+                auto normalSize = std::filesystem::file_size(saves / "CCGameManager.dat", error);
+                auto backupSize = std::filesystem::file_size(saves / "CCGameManagerSaved.datSaved", error);
+                auto backup2Size = std::filesystem::file_size(saves / "ArchGDBackupedSave" / "CCGameManager.dat", error);
+                if (normalSize == backupSize && normalSize == backup2Size) {
+                    log::info("Backup sucess");
+                } else {
+                    FLAlertLayer::create("Error", "The file size of your data and the backed up one is not the same! Please check logs", "Ok")->show();
+                    log::warn("The normal save file size is {}, but the backup that was renamed size was {}, and the copied saved file size was {}.", normalSize, backupSize, backup2Size);
+                    return;
+                }
+                if (error) {
+                    log::warn("couldnt confirm file sizes: Error: {} Code: {}", error.message(), error.value());
                 }
                 geode::utils::game::restart(false);
                 /*
