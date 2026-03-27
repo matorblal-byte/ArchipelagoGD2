@@ -51,14 +51,13 @@ class $modify(APPlayLayer, PlayLayer) {
         }
         auto level = APUtils::levels.at(levelID);
         APUtils::sendItem(levelID);
-        geode::log::info("completed level {}, sending itemid {}", level, levelID + 130820130);
-        PlayLayer::levelComplete();
-
         // lets see if the player won the apworld
+        geode::log::info("completed level {}, sending itemid {}", level, levelID + 130820130);
         auto stars = GameStatsManager::sharedState()->getStat("st");
         if (stars > 180) {
             APUtils::goal();
             AchievementNotifier::sharedState()->notifyAchievement("Win", "You have released all your locations! Good win", "APLogo.png"_spr, true);
         }
+        PlayLayer::levelComplete();
     }
 };
