@@ -55,7 +55,7 @@ namespace APUtils {
 
     void setSpeed(int val);
 
-    void goal()
+    void goal();
 
     void startArchipelago(const char* url, const char* slot, const char* pass);
 }
