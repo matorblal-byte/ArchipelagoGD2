@@ -138,13 +138,12 @@ void APUtils::deathLinkRecieved() {
 }
 
 bool APUtils::checkPortal(int id) {
-    return true; // temp for alpha 1
-    /*
     switch (id) {
         default:
         return true;
         case 13:
-        return Mod::get()->getSavedValue<bool>("Ship Portal", true);
+        //return Mod::get()->getSavedValue<bool>("Ship Portal", true);
+        return true;
         case 47:
         return Mod::get()->getSavedValue<bool>("Ball Portal", true);
         case 111:
@@ -158,7 +157,6 @@ bool APUtils::checkPortal(int id) {
         case 1933:
         return Mod::get()->getSavedValue<bool>("Swing Portal", true);
     }
-        */
 }
 
 void APUtils::getStartingLevels(std::string ids) {
@@ -186,6 +184,9 @@ void APUtils::getStartingLevels(std::string ids) {
 );
 }
 
+void APUtils::goal() {
+    AP_StoryComplete();
+}
 void APUtils::setSpeed(int val) {
     APUtils::speed = val;
 }

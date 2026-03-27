@@ -8,6 +8,13 @@
 	"name": "ArchipelagoGD",
 	"developers": ["1257Plays", "ericg"],
 	"description": "Archipelago support for Geometry Dash!",
+	"links": {
+		"source": "https://github.com/matorblal-byte/ArchipelagoGD2",
+		"community": "https://discord.gg/Ftjr3TnpUC"
+	},
+	"issues": {
+		"info": "Report issues in the archipelago discord server, under #future-game-design on the 'Geometry Dash' thread!"
+	},
 	"early-load": true,
 	"resources": {
 		"sprites": [
@@ -35,5 +42,9 @@
 			"version": "*",
 			"breaking": true
 		}
-	}
+	},
+	"tags": [
+		"universal",
+		"online"
+	]
 }
