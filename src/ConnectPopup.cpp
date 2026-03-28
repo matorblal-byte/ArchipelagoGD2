@@ -137,6 +137,7 @@ void onClick(CCObject* sender) {
                     return;
                 }
                 log::info("renaming files");
+                auto normalSize = std::filesystem::file_size(saves / "CCGameManager.dat", error);
                 std::filesystem::rename(saves / "CCGameManager.dat", saves / "CCGameManagerSaved.datSaved", error);
                 std::filesystem::rename(saves / "CCLocalLevels.dat", saves / "CCLocalLevelsSaved.datSaved", error);
                 std::filesystem::rename(saves / "CCLocalLevels2.dat", saves / "CCLocalLevels2Saved.datSaved", error);
@@ -147,7 +148,6 @@ void onClick(CCObject* sender) {
                     return;
                 }
                 // to be 100%%%%%%%%%%%%% safe 
-                auto normalSize = std::filesystem::file_size(saves / "CCGameManager.dat", error);
                 auto backupSize = std::filesystem::file_size(saves / "CCGameManagerSaved.datSaved", error);
                 auto backup2Size = std::filesystem::file_size(saves / "ArchGDBackupedSave" / "CCGameManager.dat", error);
                 if (normalSize == backupSize && normalSize == backup2Size) {
@@ -155,6 +155,7 @@ void onClick(CCObject* sender) {
                 } else {
                     FLAlertLayer::create("Error", "The file size of your data and the backed up one is not the same! Please check logs", "Ok")->show();
                     log::warn("The normal save file size is {}, but the backup that was renamed size was {}, and the copied saved file size was {}.", normalSize, backupSize, backup2Size);
+                    std::filesystem::remove(saves / "inArchModeFlag.txt");
                     return;
                 }
                 if (error) {
