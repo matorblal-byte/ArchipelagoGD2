@@ -32,6 +32,21 @@ class $modify(APLoadingLayer, LoadingLayer) {
             apLabel->setScale(.45f);
             apLabel->setID("ap-status-label"_spr);
             this->addChild(apLabel);
+            for (auto& hook : Mod::get()->getHooks()) {
+                if (hook->isEnabled() && !(hook->getDisplayName() == "LoadingLayer::init")){
+                    hook->disable();
+                }
+                if ( // enable back the menu hooks so we can connect
+                hook->getDisplayName() == "ConnectPopup::onConnect" || 
+                hook->getDisplayName() == "GManager::setup" ||
+                hook->getDisplayName() == "MenuLayer::init" ||
+                hook->getDisplayName() == "MenuLayer::onArchipelago" ||
+                hook->getDisplayName() == "MenuLayer::debug" ||
+                hook->getDisplayName() == "MenuLayer::debug2"
+                ) {
+                    hook->enable();
+                }
+            }
         }
 
         return true;
