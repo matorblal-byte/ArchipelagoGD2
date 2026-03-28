@@ -60,6 +60,7 @@ class $modify(APPlayLayer, PlayLayer) {
         // lets see if the player won the apworld
         geode::log::info("completed level {}, sending itemid {}", level, levelID + 130820130);
         auto stars = GameStatsManager::sharedState()->getStat("st");
+        geode::log::info("number of stars: {}", stars);
         if (stars > 180) {
             APUtils::goal();
             AchievementNotifier::sharedState()->notifyAchievement("Win", "You have released all your locations! Good win", "APLogo.png"_spr, true);
