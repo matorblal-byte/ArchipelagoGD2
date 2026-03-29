@@ -50,7 +50,7 @@ bool init() {
             "bigFont.fnt"
         );
         infoLabel->setScale(0.45f);
-        infoLabel->setPosition(0.f, 0.f);
+        infoLabel->setPosition(0.f, 5.f);
         auto menu = CCMenu::create();
         menu->addChild(infoLabel);
         auto disconnectButton = CCMenuItemSpriteExtra::create(

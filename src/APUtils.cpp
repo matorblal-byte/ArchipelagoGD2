@@ -100,6 +100,10 @@ void APUtils::checkLocationCallback(int64_t id) {
 }
 
 void APUtils::sendItem(int64_t id) {
+    if (id >= 1000) {
+        AP_SendItem(id);
+        return;
+    }
     id = checkIfTower(id);
     if (id < 30) {
         AP_SendItem(id + gdBaseID);

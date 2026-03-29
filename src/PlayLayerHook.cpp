@@ -66,6 +66,23 @@ class $modify(APPlayLayer, PlayLayer) {
             FLAlertLayer::create("Warning", "Because you have goaled, you are unable to gain rewards from levels. Exit Archipelago mode to gain rewards again.", "Ok")->show();
             this->m_isTestMode = true;
         }
+        auto levelObj = this->m_level;
+        if (levelID < 100) {
+            for (int i = 0; i < 3; i++) {
+                auto key = levelObj->getCoinKey(i+1);
+                auto hasCoin = GameStatsManager::sharedState()->hasSecretCoin(key);
+                if (hasCoin) {
+                    auto itemID = (levelID * 1000) + (i+1) + 130820130;
+                    APUtils::sendItem(itemID);
+                    geode::log::info("sent coin item with id {}", itemID);
+                } else {
+                    if (!key) {
+                        geode::log::warn("couldnt find key for coin {}, level {}, id {}", i+1, levelID, levelObj->m_levelID.value());
+                    }
+                }
+            }
+        }
+
         PlayLayer::levelComplete();
     }
 };
