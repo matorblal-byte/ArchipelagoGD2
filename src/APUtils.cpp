@@ -229,6 +229,9 @@ void APUtils::setSpeed(int val) {
     APUtils::speed = val;
 }
 
+void APUtils::setCoinsBool(int val) {
+    geode::log::info("coins is {}", val);
+}
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
         for (auto& level : APUtils::levels) {
             if (Mod::get()->getSavedValue<bool>(level + ": Unlock", true)) {
@@ -243,5 +246,6 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
     AP_RegisterSlotDataRawCallback("startinglevels", &APUtils::getStartingLevels);
     AP_RegisterSlotDataIntCallback("speed", &APUtils::setSpeed);
+    AP_RegisterSlotDataIntCallback("coins", &APUtils::setCoinsBool);
     AP_Start();
 }
