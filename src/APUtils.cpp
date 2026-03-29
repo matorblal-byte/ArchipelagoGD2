@@ -33,7 +33,7 @@ std::vector<std::string> items = {
     "The Sewers: Unlock",
     "The Cellar: Unlock",
     "The Secret Hollow: Unlock",
-    "Ship Portal",
+    //"Ship Portal",
     "Ball Portal",
     "UFO Portal",
     "Wave Portal",
@@ -41,7 +41,7 @@ std::vector<std::string> items = {
     "Spider Portal",
     "Swing Portal",
     "100 Mana Orbs",
-    "Secret Coin"
+    "5 Diamonds"
 };
 
 int gdBaseID = 130820130;
