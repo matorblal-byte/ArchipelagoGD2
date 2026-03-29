@@ -65,15 +65,14 @@ int APUtils::checkIfTower(int id) {
     }
 void APUtils::recieveItem(int64_t id, bool notify) {
     std::string itemToRecieve = items[id - gdBaseID];
-    // orbs and coins are wip and have no real code
-    /*
     if (itemToRecieve == "100 Mana Orbs") {
-        AchievementNotifier::sharedState()->notifyAchievement("100 mana orvs", "mana orb", "GJ_lockGray_001.png", true);
+        GameStatsManager::sharedState()->incrementStat("mo", 100);
+        APUtils::createNotification("100 Mana Orbs", false);
     }
-    else if (itemToRecieve == "Secret Coin") {
-        AchievementNotifier::sharedState()->notifyAchievement("secret coin", "coiner", "GJ_lockGray_001.png", true);
+    else if (itemToRecieve == "5 Diamonds") {
+        GameStatsManager::sharedState()->incrementStat("di", 5);
+        APUtils::createNotification("5 Diamonds", false);
     }
-    */
         Mod::get()->setSavedValue<bool>(itemToRecieve, true);
         if (notify) {
                 Loader::get()->queueInMainThread(
