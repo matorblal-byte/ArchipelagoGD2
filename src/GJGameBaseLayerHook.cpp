@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 
-class $modify(APGJGameBaseLayer, GJGameBaseLayer) {
+class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
     void processItems() {
         auto stars = GameStatsManager::sharedState()->getStat("6");
         geode::log::info("number of stars: {}", stars);
@@ -12,7 +12,7 @@ class $modify(APGJGameBaseLayer, GJGameBaseLayer) {
             FLAlertLayer::create("Warning", "Because you have goaled, you are unable to gain rewards from levels. Exit Archipelago mode to gain rewards again.", "Ok")->show();
             PlayLayer::get()->m_isTestMode = true;
         }
-        void GJGameBaseLayer::processItems();
+        GJBaseGameLayer::processItems();
         stars = GameStatsManager::sharedState()->getStat("6"); // get it again because stars were presumably added
         geode::log::info("number of stars: {}", stars);
         if (stars > 180) {
@@ -41,4 +41,4 @@ class $modify(APGJGameBaseLayer, GJGameBaseLayer) {
             }
         }
     }
-}
+};
