@@ -54,6 +54,7 @@ class $modify(APPlayLayer, PlayLayer) {
             PlayLayer::levelComplete();
             return; // reaches into thje zone of normal levels
         }
+        levelID -= 1; // 0 indexing ahhhhhhhhhhhhhhhh
         auto level = APUtils::levels.at(levelID);
         APUtils::sendItem(levelID); 
         // lets see if the player won the apworld
