@@ -75,7 +75,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
             APUtils::manaOrbsToAdd += 100; // buffering the addition of mana orbs cuz it will crash
             geode::log::info("{} orbs", APUtils::manaOrbsToAdd);
         } else {
-            GameStatsManager::sharedState()->incrementStat("mana orbs", 100);
+            GameStatsManager::sharedState()->incrementStat("14", 100);
         }
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("100 Mana Orbs", false);}
@@ -86,7 +86,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
             APUtils::diamondsToAdd += 5;
             geode::log::info("{} diamonds", APUtils::diamondsToAdd);
         } else {
-            GameStatsManager::sharedState()->incrementStat("diamonds", 5);
+            GameStatsManager::sharedState()->incrementStat("13", 5);
         }
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("5 Diamonds", false);}
@@ -119,9 +119,8 @@ void APUtils::checkLocationCallback(int64_t id) {
         auto levelName = APUtils::levels.at(id);
         geode::log::info("checked location {}, coin number {}", levelName, coinNum);
         levelName += " - Coin " + std::to_string(coinNum);
-        auto locationChecked = levelName;
         Loader::get()->queueInMainThread(
-        [locationChecked]{APUtils::createNotification(locationChecked, true);}
+        [levelName]{APUtils::createNotification(levelName, true);}
     );
     } else {
     id -= 1;

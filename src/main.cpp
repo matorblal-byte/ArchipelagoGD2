@@ -31,10 +31,10 @@ class $modify(APMenuLayer, MenuLayer) {
         trm->addChild(anotherBtn);
         trm->updateLayout();
         if (APUtils::manaOrbsToAdd != 0) {
-            GameStatsManager::sharedState()->incrementStat("mana orbs", APUtils::manaOrbsToAdd);
+            GameStatsManager::sharedState()->incrementStat("14", APUtils::manaOrbsToAdd);
         }
         if (APUtils::diamondsToAdd != 0) {
-            GameStatsManager::sharedState()->incrementStat("diamonds", APUtils::diamondsToAdd);
+            GameStatsManager::sharedState()->incrementStat("13", APUtils::diamondsToAdd);
         }
         return true;
     
