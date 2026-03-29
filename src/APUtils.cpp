@@ -73,6 +73,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
     if (itemToRecieve == "100 Mana Orbs") {
         if (APUtils::inLoadingLayer) {
             APUtils::manaOrbsToAdd += 100; // buffering the addition of mana orbs cuz it will crash
+            geode::log::info("{} orbs", APUtils::manaOrbsToAdd);
         } else {
             GameStatsManager::sharedState()->incrementStat("mo", 100);
         }
@@ -83,6 +84,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
     else if (itemToRecieve == "5 Diamonds") {
         if (APUtils::inLoadingLayer) {
             APUtils::diamondsToAdd += 5;
+            geode::log::info("{} diamonds", APUtils::diamondsToAdd);
         } else {
             GameStatsManager::sharedState()->incrementStat("di", 5);
         }
