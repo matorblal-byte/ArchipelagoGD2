@@ -49,7 +49,7 @@ bool init() {
             ).c_str(),
             "bigFont.fnt"
         );
-        infoLabel->setScale(1.f);
+        infoLabel->setScale(0.45f);
         infoLabel->setPosition(0.f, 20.f);
         auto menu = CCMenu::create();
         menu->addChild(infoLabel);
