@@ -53,7 +53,7 @@ int APUtils::speed = 100;
 int APUtils::manaOrbsToAdd = 0;
 int APUtils::diamondsToAdd = 0;
 
-bool APUtils::inLoadingLayer = false;
+bool APUtils::inLoadingLayer = true;
 
 int APUtils::checkIfTower(int id) {
         if (id == 5001) {
@@ -144,6 +144,7 @@ void APUtils::sendItem(int64_t id) {
 };
 
 void APUtils::createNotification(std::string name, bool location) {
+    if (APUtils::inLoadingLayer) return;
     const char* title;
     std::string desc;
     if (location) {
