@@ -98,6 +98,7 @@ void APUtils::checkLocationCallback(int64_t id) {
         id -= coinNum;
         id /= 1000;
         auto levelName = APUtils::levels.at(id);
+        geode::log::info("checked location {}, coin number {}", levelName, coinNum);
         levelName += " - Coin " + std::to_string(coinNum);
         auto locationChecked = levelName;
         Loader::get()->queueInMainThread(
