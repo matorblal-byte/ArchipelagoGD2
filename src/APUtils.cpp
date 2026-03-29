@@ -92,6 +92,7 @@ void APUtils::clearItemState() {
 }
 
 void APUtils::checkLocationCallback(int64_t id) {
+    geode::log::info("id {}", id);
     if (id >= 1000) {
         id -= gdBaseID;
         auto coinNum = id % 1000;
