@@ -4,7 +4,11 @@ namespace APUtils {
 
     extern int speed;
 
-    //extern auto modifiers;
+    extern int manaOrbsToAdd;
+    extern int diamondsToAdd;
+
+    extern bool inLoadingLayer;
+    //extern bool modifiers;
 
     static std::vector<std::string> levels = {
         "Stereo Madness",

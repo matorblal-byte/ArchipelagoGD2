@@ -50,6 +50,11 @@ int gdBaseID = 130820130;
 
 int APUtils::speed = 100;
 
+int APUtils::manaOrbsToAdd = 0;
+int APUtils::diamondsToAdd = 0;
+
+bool APUtils::inLoadingLayer = false;
+
 int APUtils::checkIfTower(int id) {
         if (id == 5001) {
             return 22; // The Tower
@@ -66,11 +71,19 @@ int APUtils::checkIfTower(int id) {
 void APUtils::recieveItem(int64_t id, bool notify) {
     std::string itemToRecieve = items[id - gdBaseID];
     if (itemToRecieve == "100 Mana Orbs") {
-        GameStatsManager::sharedState()->incrementStat("mo", 100);
+        if (APUtils::inLoadingLayer) {
+            APUtils::manaOrbsToAdd += 100; // buffering the addition of mana orbs cuz it will crash
+        } else {
+            GameStatsManager::sharedState()->incrementStat("mo", 100);
+        }
         APUtils::createNotification("100 Mana Orbs", false);
     }
     else if (itemToRecieve == "5 Diamonds") {
-        GameStatsManager::sharedState()->incrementStat("di", 5);
+        if (APUtils::inLoadingLayer) {
+            APUtils::diamondsToAdd += 5;
+        } else {
+            GameStatsManager::sharedState()->incrementStat("di", 5);
+        }
         APUtils::createNotification("5 Diamonds", false);
     }
         Mod::get()->setSavedValue<bool>(itemToRecieve, true);

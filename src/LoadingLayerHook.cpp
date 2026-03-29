@@ -11,6 +11,7 @@ using namespace geode::prelude;
 class $modify(APLoadingLayer, LoadingLayer) {
     bool init(bool p0) {
         std::error_code error;
+        APUtils::inLoadingLayer = true;
         auto saves = dirs::getSaveDir();
         auto dir = dirs::getGameDir();
         if (!LoadingLayer::init(p0)) return false;

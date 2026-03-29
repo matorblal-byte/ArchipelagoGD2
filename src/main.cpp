@@ -9,7 +9,7 @@ class $modify(APMenuLayer, MenuLayer) {
     bool init() {
         if (!MenuLayer::init())
             return false;
-        
+        APUtils::inLoadingLayer = false;
         auto apBtn = CCMenuItemSpriteExtra::create(
             CircleButtonSprite::createWithSprite("APLogo.png"_spr, 1.0f, CircleBaseColor::Gray, CircleBaseSize::SmallAlt),
             this,
@@ -30,7 +30,12 @@ class $modify(APMenuLayer, MenuLayer) {
         trm->addChild(otherBtn);
         trm->addChild(anotherBtn);
         trm->updateLayout();
-        
+        if (APUtils::manaOrbsToAdd != 0) {
+            GameStatsManager::sharedState()->incrementStat("mo", APUtils::manaOrbsToAdd);
+        }
+        if (APUtils::diamondsToAdd != 0) {
+            GameStatsManager::sharedState()->incrementStat("di", APUtils::diamondsToAdd);
+        }
         return true;
     
         if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
