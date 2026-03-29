@@ -92,9 +92,8 @@ void APUtils::clearItemState() {
 }
 
 void APUtils::checkLocationCallback(int64_t id) {
-    geode::log::info("id {}", id);
+    id -= gdBaseID;
     if (id >= 1000) {
-        id -= gdBaseID;
         auto coinNum = id % 1000;
         id -= coinNum;
         id /= 1000;
@@ -106,8 +105,8 @@ void APUtils::checkLocationCallback(int64_t id) {
         [locationChecked]{APUtils::createNotification(locationChecked, true);}
     );
     } else {
-    int64_t uid = id - gdBaseID - 1;
-    std::string locationChecked = APUtils::levels.at(uid);
+    id -= 1;
+    std::string locationChecked = APUtils::levels.at(id);
     Loader::get()->queueInMainThread(
         [locationChecked]{APUtils::createNotification(locationChecked, true);}
     );
