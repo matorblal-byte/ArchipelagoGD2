@@ -69,7 +69,7 @@ class $modify(APPlayLayer, PlayLayer) {
         auto levelObj = this->m_level;
         if (levelID < 100) {
             for (int i = 0; i < 3; i++) {
-                auto key = levelObj->getCoinKey(i);
+                auto key = levelObj->getCoinKey(i+1);
                 auto hasCoin = GameStatsManager::sharedState()->hasSecretCoin(key);
                 if (hasCoin) {
                     auto itemID = (levelID * 1000) + (i+1) + 130820130;
