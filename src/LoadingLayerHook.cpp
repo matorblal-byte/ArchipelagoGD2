@@ -25,6 +25,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
             apLabel->setScale(.45f);
             apLabel->setID("ap-status-label"_spr);
             this->addChild(apLabel);
+            Mod::get()->setSavedValue("InArchMode", true); // 2 checks for if your in arch mode because why not shhh (only used for connectpopup)
             std::filesystem::remove(saves / "inArchModeFlag.txt");
         } else {
             auto apLabel = CCLabelBMFont::create("ArchipelagoGD: Not connected", "goldFont.fnt");
@@ -46,6 +47,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
                 ) {
                     hook->enable();
                 }
+            Mod::get()->setSavedValue("InArchMode", false);
             }
         }
 

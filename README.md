@@ -2,7 +2,7 @@
 
 <img src="logo.png" width="150" alt="the mod's logo" />
 
-## This is not in a playable state! Contributions are welcome!
+## This is in a unfinished state! Contributions are welcome!
 
 This is a currently unofficial and unfinished mod that adds support for Geometry Dash in the [Archipelago MultiWorld Randomizer](https://archipelago.gg/).
 

@@ -1,6 +1,7 @@
 #include <Geode/modify/MenuLayer.hpp>
 #include "ConnectPopup.cpp"
 #include "APUtils.hpp"
+#include "Archipelago.h"
 
 using namespace geode::prelude;
 
@@ -31,6 +32,13 @@ class $modify(APMenuLayer, MenuLayer) {
         trm->updateLayout();
         
         return true;
+    
+        if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
+            auto status = AP_GetConnectionStatus();
+            if (status != AP_ConnectionStatus::Connected && status != AP_ConnectionStatus::Authenticated) {
+                FLAlertLayer::create("Error", "You are not connected to AP currently! You might be slow to connect, but if not please check your internet connection", "Ok")->show();
+            }
+        }
     }
 
     void onArchipelago(CCObject*) {
