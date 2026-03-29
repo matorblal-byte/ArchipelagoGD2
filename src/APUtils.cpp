@@ -76,7 +76,9 @@ void APUtils::recieveItem(int64_t id, bool notify) {
         } else {
             GameStatsManager::sharedState()->incrementStat("mo", 100);
         }
-        APUtils::createNotification("100 Mana Orbs", false);
+        Loader::get()->queueInMainThread(
+        []{APUtils::createNotification("100 Mana Orbs", false);}
+    );
     }
     else if (itemToRecieve == "5 Diamonds") {
         if (APUtils::inLoadingLayer) {
@@ -84,7 +86,9 @@ void APUtils::recieveItem(int64_t id, bool notify) {
         } else {
             GameStatsManager::sharedState()->incrementStat("di", 5);
         }
-        APUtils::createNotification("5 Diamonds", false);
+        Loader::get()->queueInMainThread(
+        []{APUtils::createNotification("5 Diamonds", false);}
+    );
     }
         Mod::get()->setSavedValue<bool>(itemToRecieve, true);
         if (notify) {
