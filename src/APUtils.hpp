@@ -8,6 +8,9 @@ namespace APUtils {
     extern int diamondsToAdd;
 
     extern bool inLoadingLayer;
+    extern bool coinsEnabled;
+    extern bool coinLocksEnabled;
+    extern bool ultimatesEnabled;
     //extern bool modifiers;
 
     static std::vector<std::string> levels = {
@@ -60,6 +63,10 @@ namespace APUtils {
     void setSpeed(int val);
 
     void setCoinsBool(int val);
+
+    void setCoinLocksBool(int val);
+
+    void setUltimatesBool(int val);
 
     void goal();
 

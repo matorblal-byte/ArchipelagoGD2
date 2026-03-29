@@ -54,6 +54,9 @@ int APUtils::manaOrbsToAdd = 0;
 int APUtils::diamondsToAdd = 0;
 
 bool APUtils::inLoadingLayer = true;
+bool APUtils::coinsEnabled = true;
+bool APUtils::coinLocksEnabled = true;
+bool APUtils::ultimatesEnabled = false;
 
 int APUtils::checkIfTower(int id) {
         if (id == 5001) {
@@ -230,8 +233,29 @@ void APUtils::setSpeed(int val) {
 }
 
 void APUtils::setCoinsBool(int val) {
-    geode::log::info("coins is {}", val);
+    if (val == 0) {
+      APUtils::coinsEnabled = false;  
+    } else {
+      APUtils::coinsEnabled = true;
+    }
 }
+
+void APUtils::setUltimatesBool(int val) {
+    if (val == 0) {
+      APUtils::ultimatesEnabled = false;  
+    } else {
+      APUtils::ultimatesEnabled = true;
+    }
+}
+
+void APUtils::setCoinLocksBool(int val) {
+    if (val == 0) {
+      APUtils::coinLocksEnabled = false;  
+    } else {
+      APUtils::coinLocksEnabled = true;
+    }
+}
+
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
         for (auto& level : APUtils::levels) {
             if (Mod::get()->getSavedValue<bool>(level + ": Unlock", true)) {
@@ -247,5 +271,7 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_RegisterSlotDataRawCallback("startinglevels", &APUtils::getStartingLevels);
     AP_RegisterSlotDataIntCallback("speed", &APUtils::setSpeed);
     AP_RegisterSlotDataIntCallback("coins", &APUtils::setCoinsBool);
+    AP_RegisterSlotDataIntCallback("coinlocks", &APUtils::setCoinLocksBool);
+    AP_RegisterSlotDataIntCallback("ultimates", &APUtils::setUltimatesBool);
     AP_Start();
 }

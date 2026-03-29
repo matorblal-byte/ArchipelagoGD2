@@ -1,4 +1,5 @@
 #include <Geode/modify/LevelPage.hpp>
+#include "APUtils.hpp"
 
 using namespace geode::prelude;
 
@@ -11,6 +12,11 @@ class $modify(APLevelPage, LevelPage) {
     }
 
     void onPlay(CCObject* sender) {
+        // disable ther coin locks on play
+        if (!APUtils::coinLocksEnabled) {
+            m_level->m_requiredCoins = 0;
+		    LevelPage::onPlay(sender);
+        }
         // here we also check for button-menu because only the tower's levelpage has that so we can not lock it by accident
         if (bool canPlay = !Mod::get()->getSavedValue<bool>(this->m_level->m_levelName + ": Unlock", false) and !getChildByIDRecursive("button-menu")) {
             FLAlertLayer::create("Locked", "You have not recieved this level yet.", "OK")->show();
@@ -21,6 +27,10 @@ class $modify(APLevelPage, LevelPage) {
     }
 
     void updateDynamicPage(GJGameLevel* p0) {
+        if (!APUtils::coinLocksEnabled) {
+            p0->m_requiredCoins = 0;
+		    LevelPage::updateDynamicPage(p0);
+        }
         if (bool canPlay = !Mod::get()->getSavedValue<bool>(p0->m_levelName + ": Unlock", false)) {
             LevelPage::updateDynamicPage(p0);
 
