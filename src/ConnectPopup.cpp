@@ -44,7 +44,7 @@ bool init() {
         auto time = info.time;
         auto infoLabel = CCLabelBMFont::create(
             fmt::format(
-                "AP Version: {}.{}.{}\nSeed Name: {}\nPassword Required: {}\nHint Cost: {}\nLocation Checkpoints: {}\nTime: {} seconds\nTags: {}",
+                "AP Version: {}.{}.{}\nSeed Name: {}\nPassword Required: {}\nHint Cost: {}\nLocation Checkpoints: {}\nServer uptime: {} seconds\nTags: {}",
                 APVersion.major, APVersion.minor, APVersion.build, seedName, passwordRequired ? "Yes" : "No", hintCost, locationCheckPoints, time, fmt::join(tags, ", ")
             ).c_str(),
             "bigFont.fnt"
