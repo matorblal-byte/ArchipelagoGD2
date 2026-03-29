@@ -99,13 +99,17 @@ void APUtils::checkLocationCallback(int64_t id) {
         id /= 1000;
         auto levelName = APUtils::levels.at(id);
         levelName += " - Coin " + std::to_string(coinNum);
+        auto locationChecked = levelName;
+        Loader::get()->queueInMainThread(
+        [locationChecked]{APUtils::createNotification(locationChecked, true);}
+    );
     } else {
     int64_t uid = id - gdBaseID - 1;
     std::string locationChecked = APUtils::levels.at(uid);
-    }
     Loader::get()->queueInMainThread(
         [locationChecked]{APUtils::createNotification(locationChecked, true);}
     );
+}
 }
 
 void APUtils::sendItem(int64_t id) {
