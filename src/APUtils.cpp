@@ -75,7 +75,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
             APUtils::manaOrbsToAdd += 100; // buffering the addition of mana orbs cuz it will crash
             geode::log::info("{} orbs", APUtils::manaOrbsToAdd);
         } else {
-            GameStatsManager::sharedState()->incrementStat("mo", 100);
+            GameStatsManager::sharedState()->incrementStat("mana orbs", 100);
         }
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("100 Mana Orbs", false);}
@@ -86,7 +86,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
             APUtils::diamondsToAdd += 5;
             geode::log::info("{} diamonds", APUtils::diamondsToAdd);
         } else {
-            GameStatsManager::sharedState()->incrementStat("di", 5);
+            GameStatsManager::sharedState()->incrementStat("diamonds", 5);
         }
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("5 Diamonds", false);}

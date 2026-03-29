@@ -55,10 +55,10 @@ class $modify(APPlayLayer, PlayLayer) {
             return; // reaches into thje zone of normal levels
         }
         auto level = APUtils::levels.at(levelID);
-        APUtils::sendItem(levelID);
+        APUtils::sendItem(levelID); 
         // lets see if the player won the apworld
         geode::log::info("completed level {}, sending itemid {}", level, levelID + 130820130);
-        auto stars = GameStatsManager::sharedState()->getStat("st");
+        auto stars = GameStatsManager::sharedState()->getStat("stars");
         geode::log::info("number of stars: {}", stars);
         if (stars > 180) {
             APUtils::goal();
