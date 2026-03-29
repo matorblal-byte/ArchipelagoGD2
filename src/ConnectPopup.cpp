@@ -44,13 +44,13 @@ bool init() {
         auto time = info.time;
         auto infoLabel = CCLabelBMFont::create(
             fmt::format(
-                "AP Version: {}.{}.{}\nSeed Name: {}\nPassword Required: {}\nHint Cost: {}\nLocation Checkpoints: {}\nServer uptime: {} seconds\nTags: {}",
+                "AP Version: {}.{}.{}\n\nSeed: {}\n\nPassword Required: {}\n\nHint Cost: {}\n\nLocation Checkpoints: {}\n\nServer uptime: {} seconds\n\nTags: {}",
                 APVersion.major, APVersion.minor, APVersion.build, seedName, passwordRequired ? "Yes" : "No", hintCost, locationCheckPoints, time, fmt::join(tags, ", ")
             ).c_str(),
             "bigFont.fnt"
         );
         infoLabel->setScale(0.45f);
-        infoLabel->setPosition(0.f, 20.f);
+        infoLabel->setPosition(0.f, 0.f);
         auto menu = CCMenu::create();
         menu->addChild(infoLabel);
         auto disconnectButton = CCMenuItemSpriteExtra::create(
@@ -157,7 +157,7 @@ void onClick(CCObject* sender) {
                 std::filesystem::copy_file(saves / "CCLocalLevels2.dat", saves / "ArchGDBackupedSave" / "CCLocalLevels2.dat", std::filesystem::copy_options::overwrite_existing, error);
                 std::filesystem::create_directory(saves / "inArchModeFlag.txt", error);
                 if (error) {
-                    FLAlertLayer::create("Error", "Unable to backup your save data, errors printed to logs please check that!", "Ok")->show();
+                    FLAlertLayer::create("Error", fmt::format("Unable to backup your save data, Error: {} Code: {} Extra information printed to logs", error.message(), error.value()), "Ok")->show();
                     log::warn("Unable to copy file to ArchGDBackupedSave: Error: {} Code: {}", error.message(), error.value());
                     if (!std::filesystem::exists(dirs::getSaveDir())) {
                         log::warn("The save directory is literally not existent.");
@@ -193,7 +193,7 @@ void onClick(CCObject* sender) {
                 std::filesystem::rename(saves / "CCLocalLevels2.dat", saves / "CCLocalLevels2Saved.datSaved", error);
                 std::filesystem::rename(saves / "CCGameManager2.dat", saves / "CCGameManager2Saved.datSaved", error);
                 if (error) {
-                    FLAlertLayer::create("Error", "Unable to rename save data. Please check the logs for errors!", "Ok")->show();
+                    FLAlertLayer::create("Error", fmt::format("Unable to rename save data. Error: {} Code: {}", error.message(), error.value()), "Ok")->show();
                     log::warn("Unable to rename save. Error: {} Code: {}", error.message(), error.value());
                     return;
                 }
@@ -203,7 +203,7 @@ void onClick(CCObject* sender) {
                 if (normalSize == backupSize && normalSize == backup2Size) {
                     log::info("Backup sucess");
                 } else {
-                    FLAlertLayer::create("Error", "The file size of your data and the backed up one is not the same! Please check logs", "Ok")->show();
+                    FLAlertLayer::create("Error", fmt::format("The file size of your data and the backed up one is not the same: The normal save file size is {}, but the backup that was renamed size was {}, and the copied saved file size was {}.", normalSize, backupSize, backup2Size), "Ok")->show();
                     log::warn("The normal save file size is {}, but the backup that was renamed size was {}, and the copied saved file size was {}.", normalSize, backupSize, backup2Size);
                     std::filesystem::remove(saves / "inArchModeFlag.txt");
                     return;

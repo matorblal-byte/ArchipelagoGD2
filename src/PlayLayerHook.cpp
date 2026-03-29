@@ -44,7 +44,6 @@ class $modify(APPlayLayer, PlayLayer) {
         levelID = APUtils::checkIfTower(levelID);
         geode::log::info("level id is {}", levelID);
         if (!(ccsched->getTimeScale() == 1.00)) {
-            this->m_isTestMode = true;
             ccsched->setTimeScale(1.00);
             FMODAudioEngine::get()->update(1.00);
             FMOD::ChannelGroup* masterGroup;
@@ -64,6 +63,8 @@ class $modify(APPlayLayer, PlayLayer) {
         if (stars > 180) {
             APUtils::goal();
             AchievementNotifier::sharedState()->notifyAchievement("Win", "You have released all your locations! Good win", "APLogo.png"_spr, true);
+            FLAlertLayer::create("Warning", "Because you have goaled, you are unable to gain rewards from levels. Exit Archipelago mode to gain rewards again.", "Ok")->show();
+            this->m_isTestMode = true;
         }
         PlayLayer::levelComplete();
     }
