@@ -17,7 +17,7 @@ add_library(${PROJECT_NAME} SHARED
     src/PlayLayerHook.cpp
     src/LevelAreaInnerLayerHook.cpp
     src/GManagerHook.cpp
-    src/GameBaseLayerHook.cpp
+    src/GJGameBaseLayerHook.cpp
     # Add any extra C++ source files here
 )
 
