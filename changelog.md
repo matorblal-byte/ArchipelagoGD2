@@ -4,6 +4,7 @@
 - Portal support
 - You can goal now
 - Can get orbs and diamonds from items now
+- Speed modifiers
 - Probably more
 # v1.0.0-alpha.1
 - Ported to Geode v5.3.0 
