@@ -83,6 +83,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("100 Mana Orbs", false);}
     );
+        return;
     }
     else if (itemToRecieve == "5 Diamonds") {
         if (APUtils::inLoadingLayer) {
@@ -94,6 +95,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("5 Diamonds", false);}
     );
+        return;
     }
         Mod::get()->setSavedValue<bool>(itemToRecieve, true);
         if (notify) {

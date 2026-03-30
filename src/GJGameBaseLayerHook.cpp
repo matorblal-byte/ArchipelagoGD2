@@ -14,13 +14,6 @@ class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
         }
         GJBaseGameLayer::processItems();
         stars = GameStatsManager::sharedState()->getStat("6"); // get it again because stars were presumably added
-        geode::log::info("number of stars: {}", stars);
-        if (stars > 180) {
-            APUtils::goal();
-            AchievementNotifier::sharedState()->notifyAchievement("Win", "You have released all your locations! Good win", "APLogo.png"_spr, true);
-            FLAlertLayer::create("Warning", "Because you have goaled, you are unable to gain rewards from levels. Exit Archipelago mode to gain rewards again.", "Ok")->show();
-            PlayLayer::get()->m_isTestMode = true;
-        }
         auto levelObj = PlayLayer::get()->m_level;
         if (APUtils::coinsEnabled) {
             auto levelID = levelObj->m_levelID.value();
