@@ -7,7 +7,7 @@ using namespace geode::prelude;
 class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
     void processItems() {
         GJBaseGameLayer::processItems();
-        stars = GameStatsManager::sharedState()->getStat("6"); // get it again because stars were presumably added
+        auto stars = GameStatsManager::sharedState()->getStat("6"); // get it again because stars were presumably added
         auto levelObj = PlayLayer::get()->m_level;
         if (APUtils::coinsEnabled) {
             auto levelID = levelObj->m_levelID.value();
