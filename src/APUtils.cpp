@@ -181,6 +181,7 @@ void APUtils::deathLinkRecieved() {
 }
 
 bool APUtils::checkPortal(int id) {
+    if (!coinsEnabled) return true;
     switch (id) {
         default:
         return true;
