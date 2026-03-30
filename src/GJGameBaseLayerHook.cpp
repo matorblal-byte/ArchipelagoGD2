@@ -6,12 +6,6 @@ using namespace geode::prelude;
 
 class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
     void processItems() {
-        auto stars = GameStatsManager::sharedState()->getStat("6");
-        geode::log::info("number of stars: {}", stars);
-        if (stars > 180) {
-            FLAlertLayer::create("Warning", "Because you have goaled, you are unable to gain rewards from levels. Exit Archipelago mode to gain rewards again.", "Ok")->show();
-            PlayLayer::get()->m_isTestMode = true;
-        }
         GJBaseGameLayer::processItems();
         stars = GameStatsManager::sharedState()->getStat("6"); // get it again because stars were presumably added
         auto levelObj = PlayLayer::get()->m_level;
