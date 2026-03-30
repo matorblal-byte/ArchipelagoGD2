@@ -1,10 +1,10 @@
 #include "Archipelago.h"
 #include <Geode/modify/GameStatsManager.hpp>
-
+#include "APUtils.hpp"
 using namespace geode::prelude;
 
 class $modify(APGameStatsManager, GameStatsManager) {
-    void incrementStat(std::string key, int amount) {
+    void incrementStat(char* key, int amount) {
         if (key == "6") {
             GameStatsManager::incrementStat(key, amount);
             auto stars = GameStatsManager::sharedState()->getStat("6");
