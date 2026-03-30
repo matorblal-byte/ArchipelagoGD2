@@ -25,11 +25,22 @@ class $modify(APMenuLayer, MenuLayer) {
             this,
             menu_selector(APMenuLayer::debug2)
         );
+        if (geode::Loader::get()->getLoadedMod("ninxout.redash")) {
+            auto bm = this->getChildByID("bottom-menu");
+            bm->addChild(apBtn);
+            bm->addChild(otherBtn);
+            bm->addChild(anotherBtn);
+            bm->updateLayout();
+        } else {
         auto trm = static_cast<CCMenu*>(this->getChildByID("top-right-menu"));
         trm->addChild(apBtn);
         trm->addChild(otherBtn);
         trm->addChild(anotherBtn);
         trm->updateLayout();
+        }
+        apBtn->setID("APConnectBtn"_spr);
+        otherBtn->setID("APDebug1Btn"_spr);
+        anotherBtn->setID("APDebug2Btn"_spr);
         if (APUtils::manaOrbsToAdd != 0) {
             GameStatsManager::sharedState()->incrementStat("14", APUtils::manaOrbsToAdd);
             APUtils::manaOrbsToAdd = 0;

@@ -9,7 +9,6 @@ You can win by reaching 180 or more stars!
 <co>BetterProgression by ItzKiba</c> - Does progression on the Archipelago save \
 <co>Main Level Pages by Capeling</c> - temp: probably breaks to placing of lock and ap logo (Overcharged Main Levels though!) \
 <co>Backups by HJfod</c> - <cb>You should probably have this enabled just in case, but it may</c> backup the Archipelago save which is probably not desired \
-<co>Overcharged Main Menu by Weebify</c> - Covers Archipelago buttons \
 <co>Globed by dank_meme</c> - Can probably work, but can break some things and can be used to completely break progression \
 And possibly more! \
 Mods that are fully incompatible will not load. 
