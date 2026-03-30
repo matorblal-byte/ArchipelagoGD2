@@ -3,7 +3,7 @@
 #include <Geode/utils/random.hpp>
 #include "APUtils.hpp"
 
-
+using namespace geode::prelude;
 
 class $modify(APPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
@@ -57,6 +57,12 @@ class $modify(APPlayLayer, PlayLayer) {
         auto level = APUtils::levels.at(levelID);
         APUtils::sendItem(levelID); 
         // lets see if the player won the apworld
+        auto stars = GameStatsManager::sharedState()->getStat("6");
+        geode::log::info("number of stars: {}", stars);
+        if (stars > 180) {
+            FLAlertLayer::create("Warning", "Because you have goaled, you are unable to gain rewards from levels. Exit Archipelago mode to gain rewards again.", "Ok")->show();
+            PlayLayer::get()->m_isTestMode = true;
+        }
         geode::log::info("completed level {}, sending itemid {}", level, levelID + 130820130);
         PlayLayer::levelComplete();
     }
