@@ -3,7 +3,7 @@ A mod for bridging Archipelago to Geometry Dash!
 At the top right, you should see a Archipelago button, click it and enter the URL to the server, your slot name (basically player name) and password if it has it! You should be connected to the game, and you can start playing levels! 
 ## Progression (wip)
 All levels are locked by default, but the number unlocked is decided by what you set in the options. Each level you complete releases a check \
-temp: no win condition
+You can win by reaching 180 or more stars!
 # More information
 ## <cr>Partial Incompatabilities</c>
 <co>BetterProgression by ItzKiba</c> - Does progression on the Archipelago save \

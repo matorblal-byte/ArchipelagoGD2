@@ -1,3 +1,10 @@
+# v1.0.0-alpha.2
+- Added coin support
+- Updated the APWorld with lots of rules
+- Portal support
+- You can goal now
+- Can get orbs and diamonds from items now
+- Probably more
 # v1.0.0-alpha.1
 - Ported to Geode v5.3.0 
 - Updated APCpp 
