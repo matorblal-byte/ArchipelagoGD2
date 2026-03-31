@@ -236,7 +236,6 @@ void APUtils::setSpeed(int val) {
 }
 
 void APUtils::setCoinsBool(int val) {
-    geode::log::info("coins {}", val);
     if (val == 0) {
       APUtils::coinsEnabled = false;  
     } else {
@@ -245,7 +244,6 @@ void APUtils::setCoinsBool(int val) {
 }
 
 void APUtils::setUltimatesBool(int val) {
-    geode::log::info("ultimates {}", val);
     if (val == 0) {
       APUtils::ultimatesEnabled = false;  
     } else {
@@ -254,7 +252,6 @@ void APUtils::setUltimatesBool(int val) {
 }
 
 void APUtils::setCoinLocksBool(int val) {
-    geode::log::info("coin locks {}", val);
     if (val == 0) {
       APUtils::coinLocksEnabled = false;  
     } else {
@@ -277,7 +274,7 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_RegisterSlotDataRawCallback("startinglevels", &APUtils::getStartingLevels);
     AP_RegisterSlotDataIntCallback("speed", &APUtils::setSpeed);
     AP_RegisterSlotDataIntCallback("coins", &APUtils::setCoinsBool);
-    AP_RegisterSlotDataIntCallback("coinlocks", &APUtils::setCoinLocksBool);
-    AP_RegisterSlotDataIntCallback("ultimates", &APUtils::setUltimatesBool);
+    AP_RegisterSlotDataIntCallback("coin_locks", &APUtils::setCoinLocksBool);
+    AP_RegisterSlotDataIntCallback("ultimate", &APUtils::setUltimatesBool);
     AP_Start();
 }
