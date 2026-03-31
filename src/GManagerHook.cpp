@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/GManager.hpp>
-
+#include "APUtils.hpp"
 using namespace geode::prelude;
 
 class $modify(APGManager, GManager) {
@@ -24,7 +24,9 @@ class $modify(APGManager, GManager) {
             }
             }
             if (error) {
+                auto message = fmt::format("Could not rename saves: Error {} Code: {}, backups saved in your gd folder! (where the application is)", error.message(), error.value());
                 geode::log::warn("Could not rename saves: Error {} Code: {}, backups saved in your gd folder! (where the application is)", error.message(), error.value());
+                APUtils::errorMessage = message;
             }
         }
         GManager::setup();

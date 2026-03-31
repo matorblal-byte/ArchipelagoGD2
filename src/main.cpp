@@ -57,6 +57,9 @@ class $modify(APMenuLayer, MenuLayer) {
                 FLAlertLayer::create("Error", "You are not connected to AP currently! You might be slow to connect, but if not please check your internet connection", "Ok")->show();
             }
         }
+        if (APUtils::errorMessage != "") {
+            FLAlertLayer::create("Error", APUtils::errorMessage.c_str(), "Ok")->show();
+        }
     }
 
     void onArchipelago(CCObject*) {

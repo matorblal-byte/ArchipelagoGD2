@@ -2,6 +2,8 @@
 
 namespace APUtils {
 
+    extern std::string errorMessage; // used for errors before the main menu is up because them it will just crash
+
     extern int speed;
 
     extern int manaOrbsToAdd;
