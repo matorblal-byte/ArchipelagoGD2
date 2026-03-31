@@ -49,8 +49,6 @@ class $modify(APMenuLayer, MenuLayer) {
             GameStatsManager::sharedState()->incrementStat("13", APUtils::diamondsToAdd);
             APUtils::diamondsToAdd = 0;
         }
-        return true;
-    
         if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
             auto status = AP_GetConnectionStatus();
             if (status == AP_ConnectionStatus::Disconnected || status == AP_ConnectionStatus::ConnectionRefused) {
@@ -60,6 +58,7 @@ class $modify(APMenuLayer, MenuLayer) {
         if (APUtils::errorMessage != "") {
             FLAlertLayer::create("Error", APUtils::errorMessage.c_str(), "Ok")->show();
         }
+        return true;
     }
 
     void onArchipelago(CCObject*) {
