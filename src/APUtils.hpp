@@ -42,7 +42,7 @@ namespace APUtils {
         "The Secret Hollow",
     };
 
-    int checkIfTower(int id);
+    int checkIfTower(int id, bool adjForZeroIdx);
 
     void recieveItem(int64_t id, bool notify);
 

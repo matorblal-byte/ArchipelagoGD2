@@ -9,7 +9,7 @@ class $modify(APPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
         auto levelID = level->m_levelID.value();
-        levelID = APUtils::checkIfTower(levelID);
+        levelID = APUtils::checkIfTower(levelID, false);
         if (levelID < 50) {
         auto ccsched = cocos2d::CCScheduler::get();
     if (APUtils::speed != 100) {
@@ -41,7 +41,8 @@ class $modify(APPlayLayer, PlayLayer) {
     void levelComplete() {
         auto ccsched = cocos2d::CCScheduler::get();
         auto levelID = this->m_level->m_levelID.value();
-        levelID = APUtils::checkIfTower(levelID);
+        levelID = APUtils::checkIfTower(levelID, true);
+        levelID -= 1;
         geode::log::info("level id is {}", levelID);
         if (!(ccsched->getTimeScale() == 1.00)) {
             ccsched->setTimeScale(1.00);

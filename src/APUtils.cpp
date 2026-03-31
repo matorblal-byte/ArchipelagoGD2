@@ -58,15 +58,31 @@ bool APUtils::coinsEnabled = true;
 bool APUtils::coinLocksEnabled = true;
 bool APUtils::ultimatesEnabled = false;
 
-int APUtils::checkIfTower(int id) {
+int APUtils::checkIfTower(int id, bool adjForZeroIdx) { // adjust for zero index bool because sometimes wee need to go to a vector to get something
         if (id == 5001) {
-            return 23; // The Tower
+            if (!adjForZeroIdx) {
+                return 23; // The Tower
+            } else {
+            return 23 + 1; // The Tower
+            }
         } else if (id == 5002) {
-            return 24; // The Sewers
+            if (!adjForZeroIdx) {
+                return 24; // The Sewers
+            } else {
+            return 24 + 1; // The Sewers
+            }
         } else if (id == 5003) {
-            return 25; // The Cellar
+            if (!adjForZeroIdx) {
+                return 25; // The Cellar
+            } else {
+                return 25 + 1; // The Cellar
+            }
         } else if (id == 5004) {
-            return 26; // The Secret Hollow
+            if (!adjForZeroIdx) {
+                return 26; // The Secret Hollow
+            } else {
+                return 26 + 1; // The Secret Hollow
+            }
         } else {
             return id;
         }
@@ -141,7 +157,7 @@ void APUtils::sendItem(int64_t id) {
         AP_SendItem(id);
         return;
     } else {
-        id = checkIfTower(id);
+        id = checkIfTower(id, false);
         if (id < 30) {
             AP_SendItem(id + gdBaseID);
         } else {
@@ -219,7 +235,7 @@ void APUtils::getStartingLevels(std::string ids) {
         geode::log::info("got starting level {}", id);
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
         int levelInt = levelIntRes.unwrap();
-        levelInt = checkIfTower(levelInt);
+        levelInt = checkIfTower(levelInt, false);
         auto level = APUtils::levels.at(levelInt);
         geode::log::info("aka {}", level);
         Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
