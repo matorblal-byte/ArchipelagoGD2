@@ -13,6 +13,7 @@ namespace APUtils {
     extern bool coinsEnabled;
     extern bool coinLocksEnabled;
     extern bool ultimatesEnabled;
+    extern bool checkShopEnabled;
     //extern bool modifiers;
 
     static std::vector<std::string> levels = {
@@ -44,7 +45,7 @@ namespace APUtils {
         "The Secret Hollow",
     };
 
-    int checkIfTower(int id, bool adjForZeroIdx);
+    int checkIfTower(int id);
 
     void recieveItem(int64_t id, bool notify);
 
@@ -69,6 +70,8 @@ namespace APUtils {
     void setCoinLocksBool(int val);
 
     void setUltimatesBool(int val);
+
+    void setCheckShopBool(int val);
 
     void goal();
 

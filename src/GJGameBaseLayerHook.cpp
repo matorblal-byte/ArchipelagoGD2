@@ -10,7 +10,8 @@ class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
         auto levelObj = PlayLayer::get()->m_level;
         if (APUtils::coinsEnabled) {
             auto levelID = levelObj->m_levelID.value();
-            levelID = APUtils::checkIfTower(levelID, false);
+            levelID = APUtils::checkIfTower(levelID);
+            levelID -= 1;
             if (levelID < 100) {
                 for (int i = 0; i < 3; i++) {
                     auto key = levelObj->getCoinKey(i+1);

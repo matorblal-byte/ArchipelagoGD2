@@ -59,32 +59,17 @@ bool APUtils::inLoadingLayer = true;
 bool APUtils::coinsEnabled = true;
 bool APUtils::coinLocksEnabled = true;
 bool APUtils::ultimatesEnabled = false;
+bool APUtils::checkShopEnabled = true;
 
-int APUtils::checkIfTower(int id, bool adjForZeroIdx) { // adjust for zero index bool because sometimes wee need to go to a vector to get something
+int APUtils::checkIfTower(int id) { // adjust for zero index bool because sometimes wee need to go to a vector to get something
         if (id == 5001) {
-            if (!adjForZeroIdx) {
-                return 23; // The Tower
-            } else {
-            return 23 + 1; // The Tower
-            }
+            return 23; // The Tower
         } else if (id == 5002) {
-            if (!adjForZeroIdx) {
-                return 24; // The Sewers
-            } else {
-            return 24 + 1; // The Sewers
-            }
+            return 24; // The Sewers
         } else if (id == 5003) {
-            if (!adjForZeroIdx) {
-                return 25; // The Cellar
-            } else {
-                return 25 + 1; // The Cellar
-            }
+            return 25; // The Cellar
         } else if (id == 5004) {
-            if (!adjForZeroIdx) {
-                return 26; // The Secret Hollow
-            } else {
-                return 26 + 1; // The Secret Hollow
-            }
+            return 26; // The Secret Hollow
         } else {
             return id;
         }
@@ -159,8 +144,7 @@ void APUtils::sendItem(int64_t id) {
         AP_SendItem(id);
         return;
     } else {
-        id = checkIfTower(id, false);
-        if (id < 30) {
+        if (id < 128) {
             AP_SendItem(id + gdBaseID);
         } else {
             switch (id) {
@@ -237,7 +221,7 @@ void APUtils::getStartingLevels(std::string ids) {
         geode::log::info("got starting level {}", id);
         auto levelIntRes = geode::utils::numFromString<int>(id, 10);
         int levelInt = levelIntRes.unwrap();
-        levelInt = checkIfTower(levelInt, false);
+        levelInt = checkIfTower(levelInt);
         auto level = APUtils::levels.at(levelInt);
         geode::log::info("aka {}", level);
         Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
@@ -277,6 +261,14 @@ void APUtils::setCoinLocksBool(int val) {
     }
 }
 
+void APUtils::setCheckShopBool(int val) {
+    if (val == 0) {
+      APUtils::checkShopEnabled = false;  
+    } else {
+      APUtils::checkShopEnabled = true;
+    }
+}
+
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
         for (auto& level : APUtils::levels) {
             if (Mod::get()->getSavedValue<bool>(level + ": Unlock", true)) {
@@ -294,5 +286,7 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_RegisterSlotDataIntCallback("coins", &APUtils::setCoinsBool);
     AP_RegisterSlotDataIntCallback("coin_locks", &APUtils::setCoinLocksBool);
     AP_RegisterSlotDataIntCallback("ultimate", &APUtils::setUltimatesBool);
+    AP_RegisterSlotDataIntCallback("check_shop", &APUtils::setCheckShopBool);
+
     AP_Start();
 }

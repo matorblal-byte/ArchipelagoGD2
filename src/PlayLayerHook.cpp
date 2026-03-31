@@ -9,7 +9,7 @@ class $modify(APPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
         auto levelID = level->m_levelID.value();
-        levelID = APUtils::checkIfTower(levelID, false);
+        levelID = APUtils::checkIfTower(levelID);
         if (levelID < 50) {
         auto ccsched = cocos2d::CCScheduler::get();
     if (APUtils::speed != 100) {
@@ -41,7 +41,7 @@ class $modify(APPlayLayer, PlayLayer) {
     void levelComplete() {
         auto ccsched = cocos2d::CCScheduler::get();
         auto levelID = this->m_level->m_levelID.value();
-        levelID = APUtils::checkIfTower(levelID, true);
+        levelID = APUtils::checkIfTower(levelID);
         levelID -= 1;
         geode::log::info("level id is {}", levelID);
         if (!(ccsched->getTimeScale() == 1.00)) {
@@ -51,7 +51,7 @@ class $modify(APPlayLayer, PlayLayer) {
             if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return;
                 masterGroup->setPitch(1.00);
         }   
-        if (levelID > 100 || this->m_isPracticeMode) {
+        if (levelID > 128 || this->m_isPracticeMode) {
             PlayLayer::levelComplete();
             return; // reaches into thje zone of normal levels
         }
