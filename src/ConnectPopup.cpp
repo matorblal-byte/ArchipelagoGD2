@@ -110,6 +110,13 @@ bool init() {
     menu->addChild(passLabel);
     menu->addChild(connectButton);
     this->addChild(menu);
+    urlInput->setID("APUrlInput"_spr);
+    slotInput->setID("APSlotInput"_spr);
+    passInput->setID("APPassInput"_spr);
+    urlLabel->setID("APUrlLabel"_spr);
+    slotLabel->setID("APSlotLabel"_spr);
+    passLabel->setID("APPassLabel"_spr);
+    menu->setID("APConnectMenu"_spr);
 
     return true;
 }

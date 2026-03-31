@@ -60,13 +60,13 @@ bool APUtils::ultimatesEnabled = false;
 
 int APUtils::checkIfTower(int id) {
         if (id == 5001) {
-            return 22; // The Tower
+            return 23; // The Tower
         } else if (id == 5002) {
-            return 23; // The Sewers
+            return 24; // The Sewers
         } else if (id == 5003) {
-            return 24; // The Cellar
+            return 25; // The Cellar
         } else if (id == 5004) {
-            return 25; // The Secret Hollow
+            return 26; // The Secret Hollow
         } else {
             return id;
         }
