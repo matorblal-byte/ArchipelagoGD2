@@ -236,6 +236,7 @@ void APUtils::setSpeed(int val) {
 }
 
 void APUtils::setCoinsBool(int val) {
+    geode::log::info("coins {}", val);
     if (val == 0) {
       APUtils::coinsEnabled = false;  
     } else {
@@ -244,6 +245,7 @@ void APUtils::setCoinsBool(int val) {
 }
 
 void APUtils::setUltimatesBool(int val) {
+    geode::log::info("ultimates {}", val);
     if (val == 0) {
       APUtils::ultimatesEnabled = false;  
     } else {
@@ -252,6 +254,7 @@ void APUtils::setUltimatesBool(int val) {
 }
 
 void APUtils::setCoinLocksBool(int val) {
+    geode::log::info("coin locks {}", val);
     if (val == 0) {
       APUtils::coinLocksEnabled = false;  
     } else {
