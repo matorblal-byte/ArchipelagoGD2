@@ -28,8 +28,8 @@ class $modify(APMenuLayer, MenuLayer) {
         if (geode::Loader::get()->getLoadedMod("ninxout.redash")) {
             auto bm = this->getChildByID("bottom-menu");
             bm->addChild(apBtn);
-            bm->addChild(otherBtn);
-            bm->addChild(anotherBtn);
+            //bm->addChild(otherBtn);
+            //bm->addChild(anotherBtn);
             bm->updateLayout();
         } else {
         auto trm = static_cast<CCMenu*>(this->getChildByID("top-right-menu"));
@@ -53,7 +53,7 @@ class $modify(APMenuLayer, MenuLayer) {
     
         if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
             auto status = AP_GetConnectionStatus();
-            if (status != AP_ConnectionStatus::Connected && status != AP_ConnectionStatus::Authenticated) {
+            if (status == AP_ConnectionStatus::Disconnected || status == AP_ConnectionStatus::ConnectionRefused) {
                 FLAlertLayer::create("Error", "You are not connected to AP currently! You might be slow to connect, but if not please check your internet connection", "Ok")->show();
             }
         }
@@ -64,9 +64,9 @@ class $modify(APMenuLayer, MenuLayer) {
     }
 
     void debug(CCObject*) {
-        Mod::get()->setSavedValue<bool>("Deadlocked: Unlock", true);
-        AchievementNotifier::sharedState()->notifyAchievement("Deadlocked has been unlocked", "deadlocked is unlocked", "APLogo.png"_spr, true);
-       APUtils::recieveItem(130820149, false);
+        for (auto& level : APUtils::levels) {
+                Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
+            }
     }
 
     void debug2(CCObject*) {
