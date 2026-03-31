@@ -1,3 +1,8 @@
+# v1.0.0-alpha.3
+- Fixed The Tower levels from not giving items  when you get coins
+- Fix checking wrong location
+- Fix some variables not being passed to the game
+- Geode bumped to v5.4.1
 # v1.0.0-alpha.2
 - Added coin support
 - Updated the APWorld with lots of rules
