@@ -28,6 +28,18 @@ class $modify(APLoadingLayer, LoadingLayer) {
             this->addChild(apLabel);
             Mod::get()->setSavedValue("InArchMode", true); // 2 checks for if your in arch mode because why not shhh (only used for connectpopup)
             std::filesystem::remove(saves / "inArchModeFlag.txt");
+            // add shop items
+            if (APUtils::checkShopEnabled) {
+                auto shopKeeperShop = GameStatsManager::sharedState()->shopTypeForItemID(1);
+                auto archImage = CCSprite::create("APLogo.png"_spr);
+                archImage->setTag(100);
+                GameStatsManager::sharedState()->addStoreItem(121, 0, 1000, 1000, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(122, 0, 1000, 1000, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(123, 0, 1000, 1000, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(124, 0, 1000, 1000, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(125, 0, 1000, 1000, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(126, 0, 1000, 1000, shopKeeperShop);
+            }
         } else {
             auto apLabel = CCLabelBMFont::create("ArchipelagoGD: Not connected", "goldFont.fnt");
             apLabel->setPosition(CCDirector::get()->getWinSize().width / 2, CCDirector::get()->getWinSize().height - 10);

@@ -45,6 +45,15 @@ namespace APUtils {
         "The Secret Hollow",
     };
 
+    static std::vector<std::string> shopItems = {
+        "Check Shop #1",
+        "Check Shop #2",
+        "Check Shop #3",
+        "Check Shop #4",
+        "Check Shop #5",
+        "Check Shop #6"
+    };
+    
     int checkIfTower(int id);
 
     void recieveItem(int64_t id, bool notify);

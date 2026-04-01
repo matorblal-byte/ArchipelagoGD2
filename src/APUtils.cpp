@@ -131,11 +131,18 @@ void APUtils::checkLocationCallback(int64_t id) {
         [levelName]{APUtils::createNotification(levelName, true);}
     );
     } else {
-    id -= 1;
-    std::string locationChecked = APUtils::levels.at(id);
-    Loader::get()->queueInMainThread(
-        [locationChecked]{APUtils::createNotification(locationChecked, true);}
-    );
+        if (id > 99) {
+            auto locationChecked = APUtils::shopItems.at(id - 100);
+            Loader::get()->queueInMainThread(
+            [locationChecked]{APUtils::createNotification(locationChecked, true);}
+        );
+        return;
+        }
+        id -= 1;
+        auto locationChecked = APUtils::levels.at(id);
+        Loader::get()->queueInMainThread(
+            [locationChecked]{APUtils::createNotification(locationChecked, true);}
+        );
 }
 }
 
