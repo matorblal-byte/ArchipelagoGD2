@@ -18,8 +18,10 @@ add_library(${PROJECT_NAME} SHARED
     src/LevelAreaInnerLayerHook.cpp
     src/GManagerHook.cpp
     src/GJGameBaseLayerHook.cpp
-    src/GameStatsManagerHook.cpp
-    src/GJShopLayerHook.cpp
+    src/shopHooks/GameStatsManagerHook.cpp
+    src/shopHooks/GJShopLayerHook.cpp
+    src/shopHooks/GJItemIconHook.cpp
+    src/shopHooks/PurchaseItemPopupHook.cpp
     # Add any extra C++ source files here
 )
 

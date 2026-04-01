@@ -1,3 +1,6 @@
+# <cg>v1.0.0-alpha.4
+- NOW SUPER VERY NICE
+- Added check shop!</c>
 # v1.0.0-alpha.3
 - Fixed The Tower levels from not giving items  when you get coins
 - Fix checking wrong location

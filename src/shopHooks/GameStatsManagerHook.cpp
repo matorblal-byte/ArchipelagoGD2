@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/GameStatsManager.hpp>
-#include "APUtils.hpp"
+#include "../APUtils.hpp"
 
 using namespace geode::prelude;
 
