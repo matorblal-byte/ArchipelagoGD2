@@ -138,7 +138,6 @@ void APUtils::checkLocationCallback(int64_t id) {
         );
         return;
         }
-        id -= 1;
         auto locationChecked = APUtils::levels.at(id);
         Loader::get()->queueInMainThread(
             [locationChecked]{APUtils::createNotification(locationChecked, true);}

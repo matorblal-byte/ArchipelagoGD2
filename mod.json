@@ -1,9 +1,9 @@
 {
-	"geode": "5.4.1",
+	"geode": "5.5.3",
 	"gd": {
 		"win": "2.2081"
 	},
-	"version": "v1.0.0-alpha.3",
+	"version": "v1.0.0-alpha.5",
 	"id": "1257plays.archipelagogd",
 	"name": "ArchipelagoGD",
 	"developers": ["1257Plays", "ericg"],

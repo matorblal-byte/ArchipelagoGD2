@@ -1,3 +1,6 @@
+# v1.0.0-alpha.5
+- Fixed visual bug with completing levels
+- Fixed coins
 # <cg>v1.0.0-alpha.4
 - NOW SUPER VERY NICE
 - Added check shop!</c>

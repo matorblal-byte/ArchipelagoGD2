@@ -17,7 +17,7 @@ class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
                     auto key = levelObj->getCoinKey(i+1);
                     auto hasCoin = GameStatsManager::sharedState()->hasSecretCoin(key);
                     if (hasCoin) {
-                        auto itemID = (levelID * 1000) + (i+1) + 130820130;
+                        auto itemID = (levelID * 1000) + (i+1) + 130820130 + 1;
                         APUtils::sendItem(itemID);
                         geode::log::info("sent coin item with id {}", itemID);
                     } else {
