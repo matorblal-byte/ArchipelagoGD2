@@ -4,6 +4,8 @@
 
 ## This is in a unfinished state! Contributions are welcome!
 
+[Setup](https://github.com/matorblal-byte/APWorldForGDArch/blob/main/worlds/geometrydash/docs/setup_en.md)
+
 This is a currently unofficial and unfinished mod that adds support for Geometry Dash in the [Archipelago MultiWorld Randomizer](https://archipelago.gg/).
 
 It uses a [fork](https://github.com/matorblal-byte/APCpp-gd) of N00byKing's [APCpp](https://github.com/N00byKing/APCpp) which switches to static linking, for better use with the Geode SDK.
