@@ -31,15 +31,15 @@
 	},
 	"incompatibilities": {
 		"km7dev.gdps-switcher": {
-			"version": "*",
+			"version": ">=1.0.0",
 			"breaking": true
 		},
 		"teamtcm.geometry-dash-odyssey": {
-			"version": "*",
+			"version": ">=1.0.0",
 			"breaking": true
 		},
 		"capeling.geometry-dash-lunar": {
-			"version": "*",
+			"version": ">=1.0.0",
 			"breaking": true
 		}
 	},
