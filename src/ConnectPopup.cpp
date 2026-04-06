@@ -1,3 +1,4 @@
+#include <Geode/Geode.hpp>
 #include <Geode/binding/ButtonSprite.hpp>
 #include <Geode/binding/CCMenuItemSpriteExtra.hpp>
 #include <Geode/binding/FLAlertLayer.hpp>
@@ -30,7 +31,16 @@ bool init() {
         AP_RoomInfo info;
         auto res = AP_GetRoomInfo(&info);
         if (res != 0) {
-            FLAlertLayer::create("Error", "You are not connected to AP!", "OK")->show();
+            geode::Notification::create("You are currently not connected to Archipelago!", geode::NotificationIcon::None, 4.f)->show();
+            auto menu = CCMenu::create();
+            auto disconnectButton = CCMenuItemSpriteExtra::create(
+            ButtonSprite::create("Disconnect"),
+            this,
+            menu_selector(ConnectPopup::onClick)
+            );
+            disconnectButton->setPosition(0.f, -105.f);
+            menu->addChild(disconnectButton);
+            this->addChild(menu);
             return true;
         }
         auto APVersion = info.version;

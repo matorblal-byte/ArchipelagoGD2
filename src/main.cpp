@@ -52,11 +52,11 @@ class $modify(APMenuLayer, MenuLayer) {
         if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
             auto status = AP_GetConnectionStatus();
             if (status == AP_ConnectionStatus::Disconnected || status == AP_ConnectionStatus::ConnectionRefused) {
-                FLAlertLayer::create("Error", "You are not connected to AP currently! You might be slow to connect, but if not please check your internet connection", "Ok")->show();
+                geode::Notification::create("Error: You currently aren't connected to Archipelago!", geode::NotificationIcon::None, 4.f)->show();
             }
         }
         if (APUtils::errorMessage != "") {
-            FLAlertLayer::create("Error", APUtils::errorMessage.c_str(), "Ok")->show();
+            geode::Notification::create(APUtils::errorMessage.c_str(), geode::NotificationIcon::None, 4.f)->show();
         }
         return true;
     }

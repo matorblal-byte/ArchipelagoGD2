@@ -9,8 +9,7 @@ class $modify(GJAPShopLayer, GJShopLayer) {
         auto ret = GJShopLayer::scene(type);
         auto shopKeeperShop = GameStatsManager::sharedState()->shopTypeForItemID(1);
         if (APUtils::checkShopEnabled && type == shopKeeperShop) {
-            // we have to use these unreliable methods because nodeids doesnt support the shop layer Yay! This took me so long to figure out bro this took like 7 hours to get these icons to be on the items
-            // after boom scroll layer is ExtendedLayer -> ListButtonPage (page 5) -> ccmenu (holds items)
+            // we have to use these unreliable methods because nodeids doesnt support the shop layer Yay!
             auto gjsl = ret->getChildByType<GJShopLayer>(0);
             if (!gjsl) {
                 log::error("Couldn't find the GJShopLayer!");

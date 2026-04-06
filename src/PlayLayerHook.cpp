@@ -2,6 +2,7 @@
 #include <Geode/modify/PlayLayer.hpp>
 #include <Geode/utils/random.hpp>
 #include "APUtils.hpp"
+#include "Archipelago.h"
 
 using namespace geode::prelude;
 
@@ -65,6 +66,10 @@ class $modify(APPlayLayer, PlayLayer) {
             PlayLayer::get()->m_isTestMode = true;
         }
         geode::log::info("completed level {}, sending itemid {}", level, levelID + 130820130);
+        auto status = AP_GetConnectionStatus();
+        if (status == AP_ConnectionStatus::Disconnected || status == AP_ConnectionStatus::ConnectionRefused) {
+            geode::Notification::create("Error: You currently aren't connected to Archipelago!", geode::NotificationIcon::None, 4.f)->show();
+        }
         PlayLayer::levelComplete();
     }
 };
