@@ -17,7 +17,6 @@ bool init(GJGameLevel* level) {
         APUtils::goal();
         AchievementNotifier::sharedState()->notifyAchievement("Win", "You have released all your locations! Good win", "APLogo.png"_spr, true);
         FLAlertLayer::create("Warning", "Because you have goaled, you are unable to gain rewards from levels. Exit Archipelago mode to gain rewards again.", "Ok")->show();
-        PlayLayer::get()->m_isTestMode = true;
     }
     return true;
 }

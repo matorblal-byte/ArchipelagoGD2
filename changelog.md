@@ -2,6 +2,7 @@
 - Fixed visual bug with completing levels
 - Fixed coins
 - Switched a few notifications from flalertlayer to geode notifs
+- Fixed a bug where changing your display settings would register you as not in Archipelago if you were
 # <cg>v1.0.0-alpha.4
 - NOW SUPER VERY NICE
 - Added check shop!</c>
