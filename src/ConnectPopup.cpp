@@ -157,6 +157,10 @@ void onClick(CCObject* sender) {
                 std::string url = urlInput->getString();
                 std::string slot = slotInput->getString();
                 std::string pass = passInput->getString();
+                if (url == "" || url == void || slot == "" || slot == void) {
+                    FLAlertLayer::create("Error", "You haven't provided a url and/or slot name! Please fill out those fields. If you need help, look at the setup guide!", "Ok")->show()
+                    return;
+                }
                 Mod::get()->setSavedValue<std::string>("recent-url", url);
                 Mod::get()->setSavedValue<std::string>("recent-slot", slot);
                 Mod::get()->setSavedValue<std::string>("recent-pass", pass);
