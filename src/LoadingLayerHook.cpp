@@ -15,7 +15,9 @@ class $modify(APLoadingLayer, LoadingLayer) {
         APUtils::inLoadingLayer = true;
         auto saves = dirs::getSaveDir();
         auto dir = dirs::getGameDir();
-        if (std::filesystem::exists(saves / "inArchModeFlag.txt") || Mod::get()->getSavedValue("InArchMode", false)) {
+        AP_RoomInfo info;
+        auto res = AP_GetRoomInfo(&info);
+        if (std::filesystem::exists(saves / "inArchModeFlag.txt") || res == 0) {
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
             if (url == "") {
                 log::warn("The url is empty");
