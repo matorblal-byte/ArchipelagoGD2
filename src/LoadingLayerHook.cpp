@@ -10,12 +10,12 @@ using namespace geode::prelude;
 
 class $modify(APLoadingLayer, LoadingLayer) {
     bool init(bool p0) {
+        if (!LoadingLayer::init(p0)) return false;
         std::error_code error;
         APUtils::inLoadingLayer = true;
         auto saves = dirs::getSaveDir();
         auto dir = dirs::getGameDir();
-        if (!LoadingLayer::init(p0)) return false;
-        if (std::filesystem::exists(saves / "inArchModeFlag.txt")) {
+        if (std::filesystem::exists(saves / "inArchModeFlag.txt") || Mod::get()->getSavedValue("InArchMode", false)) {
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
             if (url == "") {
                 log::warn("The url is empty");
