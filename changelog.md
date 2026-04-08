@@ -1,3 +1,6 @@
+# v1.0.0-alpha.7
+- Fixed the bug with the bugfix of changing display settungs
+- Make mod description more descriptive
 # v1.0.0-alpha.6
 - Switched a few notifications from flalertlayer to geode notifs
 - Fixed a bug where changing your display settings would register you as not in Archipelago if you were

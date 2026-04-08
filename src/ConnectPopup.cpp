@@ -164,7 +164,11 @@ void onClick(CCObject* sender) {
                 Mod::get()->setSavedValue<std::string>("recent-url", url);
                 Mod::get()->setSavedValue<std::string>("recent-slot", slot);
                 Mod::get()->setSavedValue<std::string>("recent-pass", pass);
-                Mod::get()->saveData();
+                auto res = Mod::get()->saveData();
+                if (!res.isOk()) {
+                    FLAlertLayer::create("Error", fmt::format("The mod did not save data correctly! Error: {}", res.unwrapErr()), "Ok")->show();
+                    return;
+                }
                 auto saves = dirs::getSaveDir();
                 auto dir = dirs::getGameDir();
                 if (!std::filesystem::exists(saves / "ArchGDBackupedSave")) {
