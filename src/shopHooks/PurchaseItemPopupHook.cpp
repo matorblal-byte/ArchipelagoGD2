@@ -6,6 +6,7 @@ using namespace geode::prelude;
 class $modify(APPurchaseItemPopup, PurchaseItemPopup) {
     static PurchaseItemPopup* create(GJStoreItem* item) {
         PurchaseItemPopup* ret = PurchaseItemPopup::create(item);
+        geode::log::debug("Called PurchaseItemPopup::init()");
         auto APItem1 = GameStatsManager::sharedState()->getStoreItem(121);
         auto APItem2 = GameStatsManager::sharedState()->getStoreItem(122);
         auto APItem3 = GameStatsManager::sharedState()->getStoreItem(123);
@@ -33,6 +34,7 @@ class $modify(APPurchaseItemPopup, PurchaseItemPopup) {
                 letter->setColor(ccORANGE);
             }
         }
+        geode::log::debug("Finished PurchaseItemPopup::init()");
         return ret;
     }
 };

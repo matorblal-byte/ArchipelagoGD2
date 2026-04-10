@@ -9,6 +9,7 @@ using namespace geode::prelude;
 class $modify(APPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
+        geode::log::debug("Called PlayLayer::init()");
         auto levelID = level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
         if (levelID < 50) {
@@ -30,6 +31,7 @@ class $modify(APPlayLayer, PlayLayer) {
             masterGroup->setPitch(1.00);
     }
 }
+        geode::log::debug("PlayLayer::init() finished");
         return true;
     }
 
@@ -40,6 +42,7 @@ class $modify(APPlayLayer, PlayLayer) {
     }   
 
     void levelComplete() {
+        geode::log::debug("Called PlayLayer::levelComplete()");
         auto ccsched = cocos2d::CCScheduler::get();
         auto levelID = this->m_level->m_levelID.value();
         levelID = APUtils::checkIfTower(levelID);
@@ -70,6 +73,7 @@ class $modify(APPlayLayer, PlayLayer) {
         if (status == AP_ConnectionStatus::Disconnected || status == AP_ConnectionStatus::ConnectionRefused) {
             geode::Notification::create("Error: You currently aren't connected to Archipelago!", geode::NotificationIcon::None, 4.f)->show();
         }
+        geode::log::debug("Finished PlayLayer::levelComplete()");
         PlayLayer::levelComplete();
     }
 };

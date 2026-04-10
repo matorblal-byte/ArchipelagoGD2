@@ -5,6 +5,7 @@ using namespace geode::prelude;
 
 class $modify(APGManager, GManager) {
     void setup() {
+        geode::log::debug("Called GManager::setup()");
         auto saves = geode::dirs::getSaveDir();
         if (std::filesystem::exists(saves / "ArchGDBackupedSave" / "CCGameManager.dat") && std::filesystem::exists(saves / "ArchGDBackupedSave" / "CCLocalLevels.dat") && !std::filesystem::exists(saves / "inArchModeFlag.txt")) {
             std::error_code error;
@@ -29,6 +30,7 @@ class $modify(APGManager, GManager) {
                 APUtils::errorMessage = message;
             }
         }
+        geode::log::debug("Finished GManager::setup()");
         GManager::setup();
     }
 };

@@ -7,6 +7,7 @@ using namespace geode::prelude;
 class $modify(GJAPShopLayer, GJShopLayer) {
     static CCScene* scene(ShopType type) {
         auto ret = GJShopLayer::scene(type);
+        geode::log::debug("Called GJShopLayer::scene()");
         auto shopKeeperShop = GameStatsManager::sharedState()->shopTypeForItemID(1);
         if (APUtils::checkShopEnabled && type == shopKeeperShop) {
             // we have to use these unreliable methods because nodeids doesnt support the shop layer Yay!
@@ -76,6 +77,7 @@ class $modify(GJAPShopLayer, GJShopLayer) {
                 }
             }
         }
+        geode::log::debug("Finished GJShopLayer::scene()");
         return ret;
     }
 };

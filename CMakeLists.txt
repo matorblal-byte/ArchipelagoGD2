@@ -17,7 +17,7 @@ add_library(${PROJECT_NAME} SHARED
     src/PlayLayerHook.cpp
     src/LevelAreaInnerLayerHook.cpp
     src/GManagerHook.cpp
-    src/GJGameBaseLayerHook.cpp
+    src/GJBaseGameLayerHook.cpp
     src/shopHooks/GameStatsManagerHook.cpp
     src/shopHooks/GJShopLayerHook.cpp
     src/shopHooks/GJItemIconHook.cpp

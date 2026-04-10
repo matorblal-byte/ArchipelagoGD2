@@ -9,6 +9,7 @@ class $modify(APMenuLayer, MenuLayer) {
     bool init() {
         if (!MenuLayer::init())
             return false;
+        geode::log::debug("Called MenuLayer::init()");
         APUtils::inLoadingLayer = false;
         auto apBtn = CCMenuItemSpriteExtra::create(
             CircleButtonSprite::createWithSprite("APLogo.png"_spr, 1.0f, CircleBaseColor::Gray, CircleBaseSize::SmallAlt),
@@ -60,6 +61,7 @@ class $modify(APMenuLayer, MenuLayer) {
         if (APUtils::errorMessage != "") {
             geode::Notification::create(APUtils::errorMessage.c_str(), geode::NotificationIcon::None, 4.f)->show();
         }
+        geode::log::debug("MenuLayer::init() was finshed");
         return true;
     }
 

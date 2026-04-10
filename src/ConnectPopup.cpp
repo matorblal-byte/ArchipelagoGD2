@@ -23,6 +23,7 @@ bool init() {
     if (!Popup::init(layerSize)) {
         return false;
     }
+    geode::log::debug("Called Popup::init()");
     m_noElasticity = true;
     if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
         this->setTitle("Archipelago Room Info");
@@ -126,7 +127,7 @@ bool init() {
     slotLabel->setID("APSlotLabel"_spr);
     passLabel->setID("APPassLabel"_spr);
     menu->setID("APConnectMenu"_spr);
-
+    geode::log::debug("Finished Popup::init()");
     return true;
 }
     TextInput* urlInput;

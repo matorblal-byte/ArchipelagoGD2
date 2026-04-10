@@ -75,6 +75,7 @@ int APUtils::checkIfTower(int id) { // adjust for zero index bool because someti
         }
     }
 void APUtils::recieveItem(int64_t id, bool notify) {
+    geode::log::debug("Called APUtils::recieveItem()");
     std::string itemToRecieve = items[id - gdBaseID];
     if (itemToRecieve == "100 Mana Orbs") {
         if (APUtils::inLoadingLayer) {
@@ -86,6 +87,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("100 Mana Orbs", false);}
     );
+        geode::log::debug("Finished APUtils::recieveItem()");
         return;
     }
     else if (itemToRecieve == "5 Diamonds") {
@@ -98,6 +100,7 @@ void APUtils::recieveItem(int64_t id, bool notify) {
         Loader::get()->queueInMainThread(
         []{APUtils::createNotification("5 Diamonds", false);}
     );
+        geode::log::debug("Finished APUtils::recieveItem()");
         return;
     }
         Mod::get()->setSavedValue<bool>(itemToRecieve, true);
@@ -106,18 +109,21 @@ void APUtils::recieveItem(int64_t id, bool notify) {
                     [itemToRecieve]{APUtils::createNotification(itemToRecieve, false);}
                 );
         }
+        geode::log::debug("Finished APUtils::recieveItem()");
     }
 
 void APUtils::clearItemState() {
+    geode::log::debug("Called APUtils::clearItemState()");
     std::size_t itemAmount = items.size();
     for (std::size_t index = 0; index < itemAmount; ++index) {
         std::string itemToClear = items[index];
         Mod::get()->setSavedValue<bool>(itemToClear, false);
     }
-    Mod::get()->setSavedValue<bool>("Cant Let Go: Unlock", false);
+    geode::log::debug("Finished APUtils::clearItemState()");
 }
 
 void APUtils::checkLocationCallback(int64_t id) {
+    geode::log::debug("Called APUtils::checkLocationCallback");
     id -= gdBaseID;
     if (id >= 1000) {
         auto coinNum = id % 1000;
@@ -136,6 +142,7 @@ void APUtils::checkLocationCallback(int64_t id) {
             Loader::get()->queueInMainThread(
             [locationChecked]{APUtils::createNotification(locationChecked, true);}
         );
+        geode::log::debug("Finished APUtils::checkLocationCallback()");
         return;
         }
         auto locationChecked = APUtils::levels.at(id);
@@ -143,6 +150,7 @@ void APUtils::checkLocationCallback(int64_t id) {
             [locationChecked]{APUtils::createNotification(locationChecked, true);}
         );
 }
+    geode::log::debug("Finished APUtils::checkLocationCallback()");
 }
 
 void APUtils::sendItem(int64_t id) {
@@ -163,6 +171,7 @@ void APUtils::sendItem(int64_t id) {
 
 void APUtils::createNotification(std::string name, bool location) {
     if (APUtils::inLoadingLayer) return;
+    geode::log::debug("Called APUtils::createNotification()");
     const char* title;
     std::string desc;
     if (location) {
@@ -177,6 +186,7 @@ void APUtils::createNotification(std::string name, bool location) {
     geode::log::info("{}", name);
     geode::log::info("location = {}", location);
     AchievementNotifier::sharedState()->notifyAchievement(title, desc.c_str(), "APLogo.png"_spr, true);
+    geode::log::debug("Finished APUtils::createNotification()");
 }
 
 void APUtils::deathLinkRecieved() {
@@ -212,6 +222,7 @@ bool APUtils::checkPortal(int id) {
 }
 
 void APUtils::getStartingLevels(std::string ids) {
+    geode::log::debug("Called APUtils::getStartingLevels()");
     Loader::get()->queueInMainThread(
         [ids]{
     std::istringstream iss(ids);
@@ -231,6 +242,7 @@ void APUtils::getStartingLevels(std::string ids) {
         auto level = APUtils::levels.at(levelInt);
         geode::log::info("aka {}", level);
         Mod::get()->setSavedValue<bool>(level + ": Unlock", true);
+        geode::log::debug("Finished APUtils::getStartingLevels()");
     }
 }
 );
@@ -276,6 +288,7 @@ void APUtils::setCheckShopBool(int val) {
 }
 
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
+    geode::log::debug("Called APUtils::startArchipelago()");
         for (auto& level : APUtils::levels) {
             if (Mod::get()->getSavedValue<bool>(level + ": Unlock", true)) {
                 Mod::get()->setSavedValue<bool>(level + ": Unlock", false);
@@ -293,6 +306,6 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_RegisterSlotDataIntCallback("coin_locks", &APUtils::setCoinLocksBool);
     AP_RegisterSlotDataIntCallback("ultimate", &APUtils::setUltimatesBool);
     AP_RegisterSlotDataIntCallback("check_shop", &APUtils::setCheckShopBool);
-
     AP_Start();
+    geode::log::debug("Finished APUtils::startArchipelago()");
 }

@@ -11,6 +11,7 @@ using namespace geode::prelude;
 class $modify(APLoadingLayer, LoadingLayer) {
     bool init(bool p0) {
         if (!LoadingLayer::init(p0)) return false;
+        geode::log::debug("Called LoadingLayer::init()");
         std::error_code error;
         APUtils::inLoadingLayer = true;
         auto saves = dirs::getSaveDir();
@@ -18,6 +19,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
         AP_RoomInfo info;
         auto res = AP_GetRoomInfo(&info);
         if (std::filesystem::exists(saves / "inArchModeFlag.txt") || res == 0) {
+            geode::log::debug("We're in Archipelago mode");
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
             if (url == "") {
                 log::warn("The url is empty");
@@ -44,7 +46,9 @@ class $modify(APLoadingLayer, LoadingLayer) {
                 GameStatsManager::sharedState()->addStoreItem(125, 0, 1000, 1000, shopKeeperShop);
                 GameStatsManager::sharedState()->addStoreItem(126, 0, 1000, 1000, shopKeeperShop);
             }
+            geode::log::debug("Finished setting up Archipelago mode");
         } else {
+            geode::log::debug("We're not in Archipelago mode");
             auto apLabel = CCLabelBMFont::create("ArchipelagoGD: Not connected", "goldFont.fnt");
             apLabel->setPosition(CCDirector::get()->getWinSize().width / 2, CCDirector::get()->getWinSize().height - 10);
             apLabel->setScale(.45f);
@@ -65,6 +69,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
                     hook->enable();
                 }
             Mod::get()->setSavedValue("InArchMode", false);
+            geode::log::debug("Finished disabling hooks");
             }
         }
 

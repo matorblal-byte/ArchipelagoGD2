@@ -14,6 +14,7 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
 		if (!LevelAreaInnerLayer::init(p0)) {
 			return false;
 		    }
+        geode::log::debug("Called LevelAreaInnerLayer::init()");
         auto mainNode = this->getChildByID("main-node");
         if (!mainNode) {
             log::warn("could not find main node");
@@ -60,6 +61,7 @@ class $modify(APTowerLevelPage, LevelAreaInnerLayer) {
             auto lockedDoor5004 = CCSprite::createWithSpriteFrameName("towerDoor_locked_001.png");
             TheSecretHollowDoor->setNormalImage(lockedDoor5004);
         }
+        geode::log::debug("Finished LevelAreaInnerLayer::init()");
         return true;
         }
     void onDoor(CCObject* sender) {

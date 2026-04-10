@@ -6,6 +6,7 @@ using namespace geode::prelude;
 
 class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
     void processItems() {
+        geode::log::debug("Called GJBaseGameLayer::processItems()");
         GJBaseGameLayer::processItems();
         auto levelObj = PlayLayer::get()->m_level;
         if (APUtils::coinsEnabled) {
@@ -27,5 +28,6 @@ class $modify(APGJBaseGameLayer, GJBaseGameLayer) {
                 }
             }
         }
+        geode::log::debug("Finished GJBaseGameLayer::processItems()");
     }
 };
