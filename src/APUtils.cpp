@@ -56,6 +56,8 @@ int APUtils::manaOrbsToAdd = 0;
 int APUtils::diamondsToAdd = 0;
 
 bool APUtils::inLoadingLayer = true;
+bool APUtils::GManagerRan = false;
+
 bool APUtils::coinsEnabled = true;
 bool APUtils::coinLocksEnabled = true;
 bool APUtils::ultimatesEnabled = false;

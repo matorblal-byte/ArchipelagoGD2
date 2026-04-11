@@ -10,6 +10,7 @@ namespace APUtils {
     extern int diamondsToAdd;
 
     extern bool inLoadingLayer;
+    extern bool GManagerRan;
     extern bool coinsEnabled;
     extern bool coinLocksEnabled;
     extern bool ultimatesEnabled;
