@@ -1,3 +1,6 @@
+# v1.0.0-alpha.8
+- Fixed being able to go in levels when not unlocked
+- Add debug statements
 # v1.0.0-alpha.7
 - Fixed the bug with the bugfix of changing display settungs
 - Make mod description more descriptive

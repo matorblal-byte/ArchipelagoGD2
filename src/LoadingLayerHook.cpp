@@ -68,9 +68,9 @@ class $modify(APLoadingLayer, LoadingLayer) {
                 ) {
                     hook->enable();
                 }
+            }
             Mod::get()->setSavedValue("InArchMode", false);
             geode::log::debug("Finished disabling hooks");
-            }
         }
 
         return true;
