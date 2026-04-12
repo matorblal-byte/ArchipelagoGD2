@@ -63,16 +63,17 @@ bool APUtils::coinLocksEnabled = true;
 bool APUtils::ultimatesEnabled = false;
 bool APUtils::checkShopEnabled = true;
 
-int APUtils::checkIfTower(int id) { // adjust for zero index bool because sometimes wee need to go to a vector to get something
-        if (id == 5001) {
+int APUtils::checkIfTower(int id) {
+    switch (id) {
+        case 5001:
             return 23; // The Tower
-        } else if (id == 5002) {
+        case 5002:
             return 24; // The Sewers
-        } else if (id == 5003) {
+        case 5003:
             return 25; // The Cellar
-        } else if (id == 5004) {
+        case 5004:
             return 26; // The Secret Hollow
-        } else {
+        default:
             return id;
         }
     }

@@ -1,3 +1,6 @@
+# v1.0.0-alpha.9
+- Updated APCpp to latest
+- Fix dataloss on restart
 # v1.0.0-alpha.8
 - Fixed being able to go in levels when not unlocked
 - Add debug statements
