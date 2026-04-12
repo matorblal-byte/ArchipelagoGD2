@@ -12,7 +12,7 @@ Archipelago requires hosting to actually play it, so here's how! \
 3. Open the archipelago launcher and find the shortcut called “Generate Template Options” and click it, ignore the window that will pop up when you do this
 4. Go to the "Options Creator" shortcut, set a name (this will be the slot name field on the mod), scroll down to Geometry Dash, select your desired options, and click Export Options, then save the file to Archipelago's "Players" directory (usally C:\ProgramData\Archipelago\Players on windows but if you're unsure you can click the "Browse Files" shortcut).  
 5. Click on the "Generate" shortcut. This will generate the item randomization. If there is a "Fill.FillError", try regenerating again. If it persists please report it
-6. Head to https://archipelago.gg/uploads, upload the generated file in the Outputs folder of the Archipelago directory.
+6. Head to https://archipelago.gg/uploads, upload the generated file in the Outputs folder of the Archipelago directory (You can also host locally but that requires port forwarding and disabling firewall so I don't recommend it).
 7. After the server finishes setting up it will display a url that you put into the mod to ultimately connect! 
 \
 \
