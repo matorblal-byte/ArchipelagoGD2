@@ -22,7 +22,7 @@ Also, you don't have to host if somebody else is hosting. They will likely tell 
 ## "What options are what??? Helloo???"
 Hover over the names to see their description. Also ultimates do nothing as of 1.0.0
 ## Progression (wip)
-All levels are locked by default, but the number unlocked is decided by what you set in the options. Each level you complete releases a check \
+All levels are locked by default, but the number unlocked is decided by what you set in the options. Each level you complete releases a check, every coin does aswell!\
 You can win by reaching 180 or more stars which will send out all of your unclaimed items! \
 If you enabled the check shop stetting, you can buy Archipelago items from the shop keepers shop - items will be at the last page. /
 This mod prioritizes main levels heavily. You can still progress using online levels, but you wont be able to send out items.

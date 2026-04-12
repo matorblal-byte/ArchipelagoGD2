@@ -84,7 +84,7 @@ class $modify(APGManager, GManager) {
                     std::filesystem::remove(saves / "inArchModeFlag.txt", error);
                 }  
         }
-        if (std::filesystem::exists(saves / "ArchGDBackupedSave" / "CCGameManager.dat") && std::filesystem::exists(saves / "ArchGDBackupedSave" / "CCLocalLevels.dat") && !std::filesystem::exists(saves / "inArchModeFlag.txt")) {
+        if (std::filesystem::exists(saves / "ArchGDBackupedSave" / "CCGameManager.dat") && std::filesystem::exists(saves / "ArchGDBackupedSave" / "CCLocalLevels.dat") && !std::filesystem::exists(saves / "inArchModeFlag.txt") && Mod::get()->getSavedValue("LoadBackup", false)) {
             std::error_code error;
             if (std::filesystem::exists(saves / "CCGameManagerSaved.datSaved") && std::filesystem::exists(saves / "CCLocalLevelsSaved.datSaved")) {
                 std::filesystem::rename(saves / "CCGameManagerSaved.datSaved", saves / "CCGameManager.dat", error);
@@ -105,6 +105,11 @@ class $modify(APGManager, GManager) {
                 auto message = fmt::format("Could not rename saves: Error {} Code: {}, backups saved in your gd folder! (where the application is)", error.message(), error.value());
                 geode::log::warn("Could not rename saves: Error {} Code: {}, backups saved in your gd folder! (where the application is)", error.message(), error.value());
                 APUtils::errorMessage = message;
+            }
+            Mod::get()->setSavedValue("LoadBackup", false);
+            auto res = Mod::get()->saveData();
+            if (!res.isOk()) {
+                APUtils::errorMessage = fmt::format("Couldn't save mod data: {}", res.unwrapErr());
             }
         }
         APUtils::GManagerRan = true;
