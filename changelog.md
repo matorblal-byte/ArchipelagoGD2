@@ -1,5 +1,5 @@
 # v1.0.0-alpha.11
-- Reminder: for (unsigned int j = 0; j < root[i]["checked_locations"].size(); j++) is crashing Hm what!
+- Check if keys "checked_locations" and "players" exist before accessing them
 - There are a lot of alpha versions
 # v1.0.0-alpha.10
 - Fix bug with vectors (i really hope)
