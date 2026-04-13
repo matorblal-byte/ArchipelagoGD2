@@ -9,7 +9,6 @@
 #include <Geode/loader/ModSettingsManager.hpp>
 #include <fmt/core.h>
 #include <string>
-#include <wincrypt.h>
 #include <Archipelago.h>
 #include "APUtils.hpp"
 
