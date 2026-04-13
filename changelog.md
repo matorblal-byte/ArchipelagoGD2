@@ -1,3 +1,5 @@
+# v1.0.0-alpha.10
+- Fix bug with vectors (i really hope)
 # v1.0.0-alpha.9
 - Updated APCpp to latest
 - Fix dataloss on restart

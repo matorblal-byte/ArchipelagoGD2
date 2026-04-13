@@ -133,6 +133,10 @@ void APUtils::checkLocationCallback(int64_t id) {
         id -= coinNum;
         id /= 1000;
         id -= 1;
+        if (id > APUtils::levels.size() || id < 0) {
+            geode::log::warn("The id of {} was not in the levels vector!");
+            return;
+        }
         auto levelName = APUtils::levels.at(id);
         geode::log::info("checked location {}, coin number {}", levelName, coinNum);
         levelName += " - Coin " + std::to_string(coinNum);
@@ -141,6 +145,10 @@ void APUtils::checkLocationCallback(int64_t id) {
     );
     } else {
         if (id > 99) {
+            if (id > APUtils::shopItems.size() || id < 0) {
+                geode::log::warn("The id of {} was not in the shopItems vector!");
+                return;
+            }
             auto locationChecked = APUtils::shopItems.at(id - 100);
             Loader::get()->queueInMainThread(
             [locationChecked]{APUtils::createNotification(locationChecked, true);}
@@ -148,13 +156,20 @@ void APUtils::checkLocationCallback(int64_t id) {
         geode::log::debug("Finished APUtils::checkLocationCallback()");
         return;
         }
+    }
+    if (id < 99) {
+        if (id > APUtils::levels.size() || id < 0) {
+            geode::log::warn("The id of {} was not in the levels vector!");
+            return;
+        }
         auto locationChecked = APUtils::levels.at(id);
         Loader::get()->queueInMainThread(
             [locationChecked]{APUtils::createNotification(locationChecked, true);}
         );
-}
+    }
     geode::log::debug("Finished APUtils::checkLocationCallback()");
 }
+
 
 void APUtils::sendItem(int64_t id) {
     if (id >= 1000) {
