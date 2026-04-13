@@ -1,7 +1,7 @@
 # ArchipelagoGD
 A mod for bridging Archipelago to Geometry Dash! \
 At the top right, you should see a Archipelago button, click it and enter the URL to the server, your slot name (basically player name) and password if it has it! You should be connected to the game, and you can start playing levels! \
-This mod only partially saves your progress. It will saved everything but your stats, which my be changed in the future. \
+This mod only partially saves your progress. It will save everything but your stats, which my be changed in the future. \
 \
 You may want to look at the [setup](https://github.com/matorblal-byte/APWorldForGDArch/blob/main/worlds/geometrydash/docs/setup_en.md) to see how to use this more in depth
 # Non-Archipelago Users
