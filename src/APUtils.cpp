@@ -134,7 +134,7 @@ void APUtils::checkLocationCallback(int64_t id) {
         id /= 1000;
         id -= 1;
         if (id > APUtils::levels.size() || id < 0) {
-            geode::log::warn("The id of {} was not in the levels vector!");
+            geode::log::warn("The id of {} was not in the levels vector!", id);
             return;
         }
         auto levelName = APUtils::levels.at(id);
@@ -146,7 +146,7 @@ void APUtils::checkLocationCallback(int64_t id) {
     } else {
         if (id > 99) {
             if (id > APUtils::shopItems.size() || id < 0) {
-                geode::log::warn("The id of {} was not in the shopItems vector!");
+                geode::log::warn("The id of {} was not in the shopItems vector!", id);
                 return;
             }
             auto locationChecked = APUtils::shopItems.at(id - 100);
@@ -159,7 +159,7 @@ void APUtils::checkLocationCallback(int64_t id) {
     }
     if (id < 99) {
         if (id > APUtils::levels.size() || id < 0) {
-            geode::log::warn("The id of {} was not in the levels vector!");
+            geode::log::warn("The id of {} was not in the levels vector!", id);
             return;
         }
         auto locationChecked = APUtils::levels.at(id);
