@@ -1,5 +1,5 @@
 # v1.0.0-alpha.12
-- Revamp APWorld (I do Not like working with this)
+- Revamp APWorld (Update to Archipelago 0.6.7) (I do Not like working with this)
 - Fix crash by reentering the shop once you bought an item
 - Reduce shop items price
 # v1.0.0-alpha.11
