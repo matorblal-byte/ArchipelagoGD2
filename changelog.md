@@ -1,6 +1,7 @@
 # v1.0.0-alpha.12
 - Revamp APWorld (I do Not like working with this)
 - Fix crash by reentering the shop once you bought an item
+- Reduce shop items price
 # v1.0.0-alpha.11
 - Check if keys "checked_locations" and "players" exist before accessing them
 - There are a lot of alpha versions
