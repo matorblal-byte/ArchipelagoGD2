@@ -37,8 +37,8 @@ class $modify(APMenuLayer, MenuLayer) {
         trm->addChild(apBtn);
         trm->addChild(otherBtn);
         trm->addChild(anotherBtn);
-        otherBtn->setVisible(false);
-        anotherBtn->setVisible(false);
+        //otherBtn->setVisible(false);
+        //anotherBtn->setVisible(false);
         trm->updateLayout();
         }
         apBtn->setID("APConnectBtn"_spr);
@@ -76,8 +76,9 @@ class $modify(APMenuLayer, MenuLayer) {
     }
 
     void debug2(CCObject*) {
-        Mod::get()->setSavedValue<bool>("Deadlocked: Unlock", false);
-        AchievementNotifier::sharedState()->notifyAchievement("Deadlocked has been locked", "deadlocked is locked", "APLogo.png"_spr, true);
+        if (GJAccountManager::sharedState()->m_username.empty()) { // i am NOT getting banned for this
+        GameStatsManager::sharedState()->incrementStat("14", 10000);
+        }
     }
         
 };

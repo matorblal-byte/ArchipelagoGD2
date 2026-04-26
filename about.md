@@ -21,7 +21,9 @@ If that was too confusing for you, there’s also a offical [guide](https://arch
 \
 Also, you don't have to host if somebody else is hosting. They will likely tell you what to do, then give you the URL so you can connect.
 ## "What options are what??? Helloo???"
-Hover over the names to see their description. Also ultimates do nothing as of 1.0.0
+Hover over the names to see their description.
+## Help, I'm stuck!
+Archipelago has a feature
 ## Progression (wip)
 All levels are locked by default, but the number unlocked is decided by what you set in the options. Each level you complete releases a check, every coin does aswell!\
 You can win by reaching 180 or more stars which will send out all of your unclaimed items! \

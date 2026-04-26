@@ -39,12 +39,12 @@ class $modify(APLoadingLayer, LoadingLayer) {
                 auto shopKeeperShop = GameStatsManager::sharedState()->shopTypeForItemID(1);
                 auto archImage = CCSprite::create("APLogo.png"_spr);
                 archImage->setTag(100);
-                GameStatsManager::sharedState()->addStoreItem(121, 0, 1000, 1000, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(122, 0, 1000, 1000, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(123, 0, 1000, 1000, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(124, 0, 1000, 1000, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(125, 0, 1000, 1000, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(126, 0, 1000, 1000, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(121, 0, 1000, 250, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(122, 0, 1000, 250, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(123, 0, 1000, 250, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(124, 0, 1000, 250, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(125, 0, 1000, 250, shopKeeperShop);
+                GameStatsManager::sharedState()->addStoreItem(126, 0, 1000, 250, shopKeeperShop);
             }
             geode::log::debug("Finished setting up Archipelago mode");
         } else {

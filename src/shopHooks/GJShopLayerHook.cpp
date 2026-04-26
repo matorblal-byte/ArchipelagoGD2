@@ -70,10 +70,12 @@ class $modify(GJAPShopLayer, GJShopLayer) {
                     // make index order correct
                     auto ccspr = itemico->getChildByType<CCSprite>(0);
                     auto cclbmf = itemico->getChildByType<CCLabelBMFont>(0);
+                    if (ccspr && cclbmf) { // darken shop item removes these
                     ccspr->removeFromParent();
                     cclbmf->removeFromParent();
                     itemico->addChild(cclbmf);
                     itemico->addChild(ccspr);
+                    }
                 }
             }
         }
