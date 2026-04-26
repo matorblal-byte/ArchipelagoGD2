@@ -282,6 +282,7 @@ void APUtils::setCoinsBool(int val) {
 }
 
 void APUtils::setUltimatesBool(int val) {
+    errorMessage = "Your APWorld is outdated. (Ultimates value passed)"; // had to be brief because text to  big
     if (val == 0) {
       APUtils::ultimatesEnabled = false;  
     } else {
