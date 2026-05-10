@@ -1,7 +1,9 @@
 {
 	"geode": "5.7.1",
 	"gd": {
-		"win": "2.2081"
+		"win": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
 	},
 	"version": "v1.0.0-alpha.12",
 	"id": "1257plays.archipelagogd",
