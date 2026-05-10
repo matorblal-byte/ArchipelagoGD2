@@ -21,14 +21,13 @@ class $modify(APPlayLayer, PlayLayer) {
         double randWeight = geode::utils::random::generate(0.004, 0.01);
         double base = calctw * (1.1 - ((randWeight) * (diffNum * 1.67)));
         double exp = 0.8-(randWeight * 50);
-        double weightedcalctw = std::pow(base, exp);
-        double fullycalcedtw = std::clamp(weightedcalctw, 0.75, 2.50);
-        geode::log::info("speed set: {}", fullycalcedtw);
-        ccsched->setTimeScale(fullycalcedtw);
-        FMODAudioEngine::get()->update(fullycalcedtw);
+        calctw = std::pow(base, exp);
+        calctw = std::clamp(calctw, 0.75, 2.50);
+        geode::log::info("speed set: {}", calctw);
+        ccsched->setTimeScale(calctw);
         FMOD::ChannelGroup* masterGroup;
         if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return false;
-            masterGroup->setPitch(1.00);
+            masterGroup->setPitch(calctw);
     }
 }
         geode::log::debug("PlayLayer::init() finished");
@@ -48,9 +47,8 @@ class $modify(APPlayLayer, PlayLayer) {
         levelID = APUtils::checkIfTower(levelID);
         levelID -= 1;
         geode::log::info("level id is {}", levelID);
-        if (!(ccsched->getTimeScale() == 1.00)) {
+        if (ccsched->getTimeScale() != 1.00) {
             ccsched->setTimeScale(1.00);
-            FMODAudioEngine::get()->update(1.00);
             FMOD::ChannelGroup* masterGroup;
             if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return;
                 masterGroup->setPitch(1.00);
@@ -75,5 +73,17 @@ class $modify(APPlayLayer, PlayLayer) {
         }
         geode::log::debug("Finished PlayLayer::levelComplete()");
         PlayLayer::levelComplete();
+    }
+    void onQuit() {
+        geode::log::debug("Called PlayLayer::onQuit()");
+        auto ccsched = cocos2d::CCScheduler::get();
+        if (ccsched->getTimeScale() != 1.00) {
+            ccsched->setTimeScale(1.00);
+            FMOD::ChannelGroup* masterGroup;
+            if (FMODAudioEngine::get()->m_system->getMasterChannelGroup(&masterGroup) != FMOD_OK) return;
+                masterGroup->setPitch(1.00);
+        }
+        geode::log::debug("Finished PlayLayer::onQuit()");
+        PlayLayer::onQuit();
     }
 };
