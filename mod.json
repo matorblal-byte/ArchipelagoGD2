@@ -1,5 +1,5 @@
 {
-	"geode": "5.5.3",
+	"geode": "5.7.1",
 	"gd": {
 		"win": "2.2081"
 	},
@@ -46,5 +46,13 @@
 	"tags": [
 		"universal",
 		"online"
-	]
+	],
+	"settings": {
+		"Skip Notifications": {
+			"name": "Skip Notifications",
+			"description": "Skips all queued notifications",
+			"type": "keybind",
+			"default": "Shift+S"
+		}
+	}
 }
