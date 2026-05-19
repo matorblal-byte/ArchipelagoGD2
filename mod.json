@@ -20,7 +20,7 @@
 	"early-load": true,
 	"resources": {
 		"sprites": [
-			"resources/APLogo.png"
+			"resources/*.png"
 		],
 		"spritesheets": {
 			"APLogoSheet": [

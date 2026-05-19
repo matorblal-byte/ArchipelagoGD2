@@ -1,7 +1,10 @@
 # v1.0.0-alpha.12
-- Revamp APWorld (Update to Archipelago 0.6.7) (I do Not like working with this)
+- Revamp APWorld (Update to Archipelago 0.6.7)
 - Fix crash by reentering the shop once you bought an item
 - Reduce shop items price
+- Fix music not speeding up with the speed modifier
+- Add a keybind to skip notifications (default Shift+S)
+- Mac and iOS support (Maybe?)
 # v1.0.0-alpha.11
 - Check if keys "checked_locations" and "players" exist before accessing them
 - There are a lot of alpha versions
