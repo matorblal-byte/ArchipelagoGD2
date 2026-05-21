@@ -55,6 +55,8 @@ namespace APUtils {
         "Check Shop #6"
     };
     
+    extern std::vector<std::string> shopItemsItem;
+    
     int checkIfTower(int id);
 
     void recieveItem(int64_t id, bool notify);
@@ -82,6 +84,20 @@ namespace APUtils {
     void setUltimatesBool(int val);
 
     void setCheckShopBool(int val);
+
+    void setShop1Item(std::string item);
+
+    void setShop2Item(std::string item);
+
+    void setShop3Item(std::string item);
+
+    void setShop4Item(std::string item);
+
+    void setShop5Item(std::string item);
+
+    void setShop6Item(std::string item);
+
+    const char* getImageForShopItem(std::string item);
 
     void goal();
 

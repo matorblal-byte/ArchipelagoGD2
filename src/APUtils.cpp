@@ -44,6 +44,15 @@ std::vector<std::string> items = {
     "5 Diamonds"
 };
 
+std::vector<std::string> APUtils::shopItemsItem = {
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+    };
+
 std::string APUtils::errorMessage = "";
 
 int gdBaseID = 130820130;
@@ -306,6 +315,135 @@ void APUtils::setCheckShopBool(int val) {
     }
 }
 
+void APUtils::setShop1Item(std::string item) { // set what item is binded to the shop item if that makes sense - same goes for the next functions below
+    // remove both quotation marks in the item name
+    item = item.erase(item.find("\""), 1);
+    item = item.erase(item.find("\""), 1);
+    if (item.contains("\n")) {
+        item.pop_back(); // WHY is there a new line
+    }
+    APUtils::shopItemsItem.at(0) = item;
+}
+
+void APUtils::setShop2Item(std::string item) {
+    item = item.erase(item.find("\""), 1);
+    item = item.erase(item.find("\""), 1);
+    if (item.contains("\n")) {
+        item.pop_back();
+    }
+    APUtils::shopItemsItem.at(1) = item;
+}
+
+void APUtils::setShop3Item(std::string item) {
+    item = item.erase(item.find("\""), 1);
+    item = item.erase(item.find("\""), 1);
+    if (item.contains("\n")) {
+        item.pop_back();
+    }
+    APUtils::shopItemsItem.at(2) = item;
+}
+
+void APUtils::setShop4Item(std::string item) {
+    item = item.erase(item.find("\""), 1);
+    item = item.erase(item.find("\""), 1);
+    if (item.contains("\n")) {
+        item.pop_back();
+    }
+    APUtils::shopItemsItem.at(3) = item;
+}
+
+void APUtils::setShop5Item(std::string item) {
+    item = item.erase(item.find("\""), 1);
+    item = item.erase(item.find("\""), 1);
+    if (item.contains("\n")) {
+        item.pop_back();
+    }
+    APUtils::shopItemsItem.at(4) = item;
+}
+
+void APUtils::setShop6Item(std::string item) {
+    item = item.erase(item.find("\""), 1);
+    item = item.erase(item.find("\""), 1);
+    if (item.contains("\n")) {
+        item.pop_back();
+    }
+    APUtils::shopItemsItem.at(5) = item;
+}
+
+const char* APUtils::getImageForShopItem(std::string item) { // there has GOTTA be a easier way to do ts
+    if (item == "Ball Portal") {
+        return "ballUnlock.png"_spr;
+    } else if (item == "UFO Portal") {
+        return "ufoUnlock.png"_spr;
+    } else if (item == "Wave Portal") {
+        return "waveUnlock.png"_spr;
+    } else if (item == "Robot Portal") {
+        return "robotUnlock.png"_spr;
+    } else if (item == "Spider Portal") {
+        return "spiderUnlock.png"_spr;
+    } else if (item == "Swing Portal") {
+        return "swingUnlock.png"_spr;
+    } else if (item == "Stereo Madness: Unlock") {
+        return "stereoUnlock.png"_spr;
+    } else if (item == "Back On Track: Unlock") {
+        return "backOnTrackUnlock.png"_spr;
+    } else if (item == "Polargeist: Unlock") {
+        return "polargeistUnlock.png"_spr;
+    } else if (item == "Dry Out: Unlock") {
+        return "dryOutUnlock.png"_spr;
+    } else if (item == "Base After Base: Unlock") {
+        return "baseAfterBaseUnlock.png"_spr;
+    } else if (item == "Cant Let Go: Unlock") {
+        return "cantLetGoUnlock.png"_spr;
+    } else if (item == "Jumper: Unlock") {
+        return "jumperUnlock.png"_spr;
+    } else if (item == "Time Machine: Unlock") {
+        return "timeMachineUnlock.png"_spr;
+    } else if (item == "Cycles: Unlock") {
+        return "cyclesUnlock.png"_spr;
+    } else if (item == "xStep: Unlock") {
+        return "xStepUnlock.png"_spr;
+    } else if (item == "Clutterfunk: Unlock") {
+        return "clutterfunkUnlock.png"_spr;
+    } else if (item == "Theory of Everything: Unlock") {
+        return "toeUnlock.png"_spr;
+    } else if (item == "Electroman Adventures: Unlock") {
+        return "electromanAdventuresUnlock.png"_spr;
+    } else if (item == "Clubstep: Unlock") {
+        return "clubstepUnlock.png"_spr;
+    } else if (item == "Electrodynamix: Unlock") {
+        return "electrodynamixUnlock.png"_spr;
+    } else if (item == "Hexagon Force: Unlock") {
+        return "hexagonForceUnlock.png"_spr;
+    } else if (item == "Blast Processing: Unlock") {
+        return "blastProcessingUnlock.png"_spr;
+    } else if (item == "Theory of Everything 2: Unlock") {
+        return "toe2Unlock.png"_spr;
+    } else if (item == "Geometrical Dominator: Unlock") {
+        return "geometricalDominatorUnlock.png"_spr;
+    } else if (item == "Deadlocked: Unlock") {
+        return "deadlockedUnlock.png"_spr;
+    } else if (item == "Fingerdash: Unlock") {
+        return "fingerdashUnlock.png"_spr;
+    } else if (item == "Dash: Unlock") {
+        return "dashUnlock.png"_spr;
+    } else if (item == "The Tower: Unlock") {
+        return "theTowerUnlock.png"_spr;
+    } else if (item == "The Sewers: Unlock") {
+        return "theSewersUnlock.png"_spr;
+    } else if (item == "The Cellar: Unlock") {
+        return "theCellarUnlock.png"_spr;
+    } else if (item == "The Secret Hollow: Unlock") {
+        return "theSecretHollowUnlock.png"_spr;
+    } else if (item == "100 Mana Orbs") {
+        return "currencyOrbIcon_001.png";
+    } else if (item == "5 Diamonds") {
+        return "GJ_diamondsIcon_001.png";
+    } else {
+        return "APLogo.png"_spr;
+    }
+}
+
 void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
     geode::log::debug("Called APUtils::startArchipelago()");
         for (auto& level : APUtils::levels) {
@@ -324,7 +462,12 @@ void APUtils::startArchipelago(const char *url, const char *slot, const char *pa
     AP_RegisterSlotDataIntCallback("coins", &APUtils::setCoinsBool);
     AP_RegisterSlotDataIntCallback("coin_locks", &APUtils::setCoinLocksBool);
     AP_RegisterSlotDataIntCallback("ultimate", &APUtils::setUltimatesBool);
-    AP_RegisterSlotDataIntCallback("check_shop", &APUtils::setCheckShopBool);
+    AP_RegisterSlotDataRawCallback("shop_item1", &APUtils::setShop1Item);
+    AP_RegisterSlotDataRawCallback("shop_item2", &APUtils::setShop2Item);
+    AP_RegisterSlotDataRawCallback("shop_item3", &APUtils::setShop3Item);
+    AP_RegisterSlotDataRawCallback("shop_item4", &APUtils::setShop4Item);
+    AP_RegisterSlotDataRawCallback("shop_item5", &APUtils::setShop5Item);
+    AP_RegisterSlotDataRawCallback("shop_item6", &APUtils::setShop6Item);
     AP_Start();
     geode::log::debug("Finished APUtils::startArchipelago()");
 }

@@ -46,8 +46,8 @@ class $modify(APMenuLayer, MenuLayer) {
         trm->addChild(apBtn);
         trm->addChild(otherBtn);
         trm->addChild(anotherBtn);
-        otherBtn->setVisible(false);
-        anotherBtn->setVisible(false);
+       // otherBtn->setVisible(false);
+       // anotherBtn->setVisible(false);
         trm->updateLayout();
         }
         apBtn->setID("APConnectBtn"_spr);

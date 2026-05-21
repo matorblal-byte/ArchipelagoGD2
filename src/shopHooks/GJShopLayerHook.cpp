@@ -58,15 +58,29 @@ class $modify(GJAPShopLayer, GJShopLayer) {
                 return ret;                
             }
             auto children = ccm->getChildren();
+            auto APItemCount = 0;
             for (int i = 0; i < children->count(); i++) {
                 auto item = ccm->getChildByType<CCMenuItemSpriteExtra>(i); // get the ccmenuitemspriteextra
                 auto itemico = item->getChildByType<GJItemIcon>(0); // get thhe gjitemicon 
                 if (itemico->getTag() == 1000) {
                     itemico->getChildByIndex(0)->removeFromParent();
-                    auto archImage = CCSprite::create("APLogo.png"_spr);
-                    archImage->setScale(0.3f);
-                    archImage->setPosition(CCPoint(17.f, 20.f));
-                    itemico->addChild(archImage);
+                    auto imageToCreate = APUtils::shopItemsItem.at(APItemCount);
+                    auto imageName = APUtils::getImageForShopItem(imageToCreate); // yes i am aware 2 people playing gd with the other persons item being in the shop will also have the image but yea wtv 
+                    cocos2d::CCSprite* image;
+                    if (std::string_view(imageName) == "currencyOrbIcon_001.png" || std::string_view(imageName) == "GJ_diamondsIcon_001.png") { 
+                        image = CCSprite::createWithSpriteFrameName(imageName); // these use frames but our sprites use sprites if that makes sense
+                    } else {
+                        image = CCSprite::create(imageName);
+                    }
+                    if (std::string_view(imageName) == "APLogo.png"_spr) {
+                        image->setScale(0.3f);
+                    } else if (std::string_view(imageName).contains("Unlock")) {
+                        image->setScale(0.4f);
+                    } else if (std::string_view(imageName) == "currencyOrbIcon_001.png" || std::string_view(imageName) == "GJ_diamondsIcon_001.png") {
+                        image->setScale(1.4f);
+                    }
+                    image->setPosition(CCPoint(17.f, 20.f));
+                    itemico->addChild(image);
                     // make index order correct
                     auto ccspr = itemico->getChildByType<CCSprite>(0);
                     auto cclbmf = itemico->getChildByType<CCLabelBMFont>(0);
@@ -76,6 +90,7 @@ class $modify(GJAPShopLayer, GJShopLayer) {
                     itemico->addChild(cclbmf);
                     itemico->addChild(ccspr);
                     }
+                    APItemCount += 1;
                 }
             }
         }
