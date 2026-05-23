@@ -1,10 +1,12 @@
-# v1.0.0-alpha.12
+# v1.0.0-beta.1
 - Revamp APWorld (Update to Archipelago 0.6.7)
 - Fix crash by reentering the shop once you bought an item
 - Reduce shop items price
 - Fix music not speeding up with the speed modifier
 - Add a keybind to skip notifications (default Shift+S)
 - Add icons for Geometry Dash's items (and display the name of the item you are sending)
+- Keep your savefile until you disconnect manually
+- Fix APWorld rules (i really hope)
 - Mac and iOS support (Maybe?)
 # v1.0.0-alpha.11
 - Check if keys "checked_locations" and "players" exist before accessing them
