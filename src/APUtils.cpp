@@ -72,6 +72,8 @@ bool APUtils::coinLocksEnabled = true;
 bool APUtils::ultimatesEnabled = false;
 bool APUtils::checkShopEnabled = true;
 
+bool APUtils::notifsOff = Mod::get()->getSettingValue<bool>("Disable Notifications");
+
 int APUtils::checkIfTower(int id) {
     switch (id) {
         case 5001:
@@ -198,6 +200,7 @@ void APUtils::sendItem(int64_t id) {
 
 void APUtils::createNotification(std::string name, bool location) {
     if (APUtils::inLoadingLayer) return;
+    if (notifsOff) return;
     geode::log::debug("Called APUtils::createNotification()");
     const char* title;
     std::string desc;

@@ -50,11 +50,23 @@
 		"online"
 	],
 	"settings": {
-		"Skip Notifications": {
-			"name": "Skip Notifications",
+		"Skip All Notifications": {
+			"name": "Skip All Notifications",
 			"description": "Skips all queued notifications",
 			"type": "keybind",
+			"default": "Alt+Shift+S"
+		},
+		"Skip Notification": {
+			"name": "Skip Notification",
+			"description": "Skips the current notification",
+			"type": "keybind",
 			"default": "Shift+S"
+		},
+		"Disable Notifications": {
+			"name": "Disable Notifications",
+			"description": "Disables Archipelago notifications",
+			"type": "bool",
+			"default": false
 		}
 	}
 }

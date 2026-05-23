@@ -6,10 +6,17 @@
 using namespace geode::prelude;
 
 $on_game(Loaded) {
-    listenForKeybindSettingPresses("Skip Notifications",[](Keybind const& keybind, bool down, bool repeat, double time){
+    listenForKeybindSettingPresses("Skip All Notifications",[](Keybind const& keybind, bool down, bool repeat, double time){
         if (down && !repeat) {
             while (AchievementNotifier::sharedState()->m_activeAchievementBar) {
             AchievementNotifier::sharedState()->achievementDisplayFinished(); // skips the current notif - while loop will clear all of em
+            }
+        }   
+    });
+    listenForKeybindSettingPresses("Skip Notification",[](Keybind const& keybind, bool down, bool repeat, double time){
+        if (down && !repeat) {
+            if (AchievementNotifier::sharedState()->m_activeAchievementBar) {
+                AchievementNotifier::sharedState()->achievementDisplayFinished();
             }
         }   
     });
