@@ -54,22 +54,29 @@ class $modify(APMenuLayer, MenuLayer) {
         otherBtn->setID("APDebug1Btn"_spr);
         anotherBtn->setID("APDebug2Btn"_spr);
         if (APUtils::manaOrbsToAdd != 0) {
-            GameStatsManager::sharedState()->incrementStat("14", APUtils::manaOrbsToAdd);
+            if (Mod::get()->getSavedValue<bool>("StayingInArchMode", false)) {
+                GameStatsManager::sharedState()->incrementStat("14", APUtils::manaOrbsToAdd);
+            }
             APUtils::manaOrbsToAdd = 0;
         }
         if (APUtils::diamondsToAdd != 0) {
-            GameStatsManager::sharedState()->incrementStat("13", APUtils::diamondsToAdd);
+            if (Mod::get()->getSavedValue<bool>("StayingInArchMode", false)) {
+                GameStatsManager::sharedState()->incrementStat("13", APUtils::diamondsToAdd);
+            }
             APUtils::diamondsToAdd = 0;
         }
-        if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
             auto status = AP_GetConnectionStatus();
-            if (status == AP_ConnectionStatus::Disconnected || status == AP_ConnectionStatus::ConnectionRefused) {
-                geode::Notification::create("Error: You currently aren't connected to Archipelago!", geode::NotificationIcon::None, 4.f)->show();
+            if (Mod::get()->getSavedValue<bool>("InitArchMode", false)) {
+                if (status == AP_ConnectionStatus::Disconnected || status == AP_ConnectionStatus::ConnectionRefused) {
+                    geode::Notification::create("Error: You currently aren't connected to Archipelago!", geode::NotificationIcon::None, 4.f)->show();
+                } else if (status == AP_ConnectionStatus::Connected || status == AP_ConnectionStatus::Authenticated) {
+                    Mod::get()->setSavedValue("StayingInArchMode", true); 
+                }
             }
-        }
         if (APUtils::errorMessage != "") {
             geode::Notification::create(APUtils::errorMessage.c_str(), geode::NotificationIcon::None, 4.f)->show();
         }
+        Mod::get()->setSavedValue<bool>("InitArchMode", false);
         geode::log::debug("MenuLayer::init() was finshed");
         return true;
     }

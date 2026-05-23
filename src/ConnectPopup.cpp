@@ -24,7 +24,7 @@ bool init() {
     }
     geode::log::debug("Called Popup::init()");
     m_noElasticity = true;
-    if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
+    if (Mod::get()->getSavedValue<bool>("StayingInArchMode", false)) {
         this->setTitle("Archipelago Room Info");
         auto winSize = CCDirector::sharedDirector()->getWinSize();
         auto layerPos = (winSize - layerSize) / 2;
@@ -135,14 +135,21 @@ bool init() {
 
 public:
 void onClick(CCObject* sender) {
-    if (Mod::get()->getSavedValue<bool>("InArchMode", false)) {
+    if (Mod::get()->getSavedValue<bool>("StayingInArchMode", false)) {
         geode::createQuickPopup(
             "Disconnect",
             "Are you sure you want to disconnect from Archipelago? This will restart your game and restore your save prior to restarting.",
             "No", "Yes",
             [this](auto, bool btn2) {
                 if (btn2) {
-                    geode::utils::game::restart(false);
+                    Mod::get()->setSavedValue<bool>("LoadBackup", true);
+                    Mod::get()->setSavedValue<bool>("StayingInArchMode", false);
+                    auto res = Mod::get()->saveData();
+                    if (!res.isOk()) {
+                        FLAlertLayer::create("Error", fmt::format("The mod did not save data correctly! Error: {}", res.unwrapErr()), "Ok")->show();
+                        return;
+                    }
+                    geode::utils::game::restart(true);
                 }
             }
         );
@@ -164,16 +171,11 @@ void onClick(CCObject* sender) {
                 Mod::get()->setSavedValue<std::string>("recent-url", url);
                 Mod::get()->setSavedValue<std::string>("recent-slot", slot);
                 Mod::get()->setSavedValue<std::string>("recent-pass", pass);
-                Mod::get()->setSavedValue<bool>("LoadBackup", true);
+                Mod::get()->setSavedValue<bool>("InitArchMode", true);
                 auto res = Mod::get()->saveData();
                 if (!res.isOk()) {
                     FLAlertLayer::create("Error", fmt::format("The mod did not save data correctly! Error: {}", res.unwrapErr()), "Ok")->show();
                     return;
-                }
-                auto saves = geode::dirs::getSaveDir();
-                std::filesystem::create_directory(saves / "inArchModeFlag.txt", error);
-                if (error) {
-                    FLAlertLayer::create("Error", fmt::format("Could not go into Archipelago mode: Error: {} Code: {}", error.message(), error.value()), "Ok")->show();
                 }
                 geode::utils::game::restart(true);
                 /*

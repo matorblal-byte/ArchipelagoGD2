@@ -18,7 +18,7 @@ class $modify(APLoadingLayer, LoadingLayer) {
         auto dir = dirs::getGameDir();
         AP_RoomInfo info;
         auto res = AP_GetRoomInfo(&info);
-        if (std::filesystem::exists(saves / "inArchModeFlag.txt") || res == 0) {
+        if (Mod::get()->getSavedValue<bool>("InitArchMode", false) || res == 0 || Mod::get()->getSavedValue<bool>("StayingInArchMode", false)) { // we are also checking if we got a resul;t because we can reload LoadingLayer messing stuff up
             geode::log::debug("We're in Archipelago mode");
             auto url = Mod::get()->getSavedValue<std::string>("recent-url", "");
             if (url == "") {
@@ -32,21 +32,21 @@ class $modify(APLoadingLayer, LoadingLayer) {
             apLabel->setScale(.45f);
             apLabel->setID("ap-status-label"_spr);
             this->addChild(apLabel);
-            Mod::get()->setSavedValue("InArchMode", true); // 2 checks for if your in arch mode because why not shhh (only used for connectpopup)
-            std::filesystem::remove(saves / "inArchModeFlag.txt");
             // add shop items
-            if (APUtils::checkShopEnabled) {
-                auto shopKeeperShop = GameStatsManager::sharedState()->shopTypeForItemID(1);
-                auto archImage = CCSprite::create("APLogo.png"_spr);
-                archImage->setTag(100);
-                GameStatsManager::sharedState()->addStoreItem(121, 0, 1000, 250, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(122, 0, 1000, 250, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(123, 0, 1000, 250, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(124, 0, 1000, 250, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(125, 0, 1000, 250, shopKeeperShop);
-                GameStatsManager::sharedState()->addStoreItem(126, 0, 1000, 250, shopKeeperShop);
+            if (res != 0) {
+                if (APUtils::checkShopEnabled) {
+                    auto shopKeeperShop = GameStatsManager::sharedState()->shopTypeForItemID(1);
+                    auto archImage = CCSprite::create("APLogo.png"_spr);
+                    archImage->setTag(100);
+                    GameStatsManager::sharedState()->addStoreItem(121, 0, 1000, 250, shopKeeperShop);
+                    GameStatsManager::sharedState()->addStoreItem(122, 0, 1000, 250, shopKeeperShop);
+                    GameStatsManager::sharedState()->addStoreItem(123, 0, 1000, 250, shopKeeperShop);
+                    GameStatsManager::sharedState()->addStoreItem(124, 0, 1000, 250, shopKeeperShop);
+                    GameStatsManager::sharedState()->addStoreItem(125, 0, 1000, 250, shopKeeperShop);
+                    GameStatsManager::sharedState()->addStoreItem(126, 0, 1000, 250, shopKeeperShop);
+                }
             }
-            geode::log::debug("Finished setting up Archipelago mode");
+                geode::log::debug("Finished setting up Archipelago mode");
         } else {
             geode::log::debug("We're not in Archipelago mode");
             auto apLabel = CCLabelBMFont::create("ArchipelagoGD: Not connected", "goldFont.fnt");
@@ -69,7 +69,6 @@ class $modify(APLoadingLayer, LoadingLayer) {
                     hook->enable();
                 }
             }
-            Mod::get()->setSavedValue("InArchMode", false);
             geode::log::debug("Finished disabling hooks");
         }
 
