@@ -156,7 +156,7 @@ void onClick(CCObject* sender) {
     } else {
     geode::createQuickPopup(
         "Connect",
-        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. This will <cr>RESET YOUR GAME</c> (including settings) and back your save data up locally, twice. You might want to save on the cloud. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
+        fmt::format("Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. This will <cr>RESET YOUR GAME</c> (including settings) and back your save data up locally, twice. You might want to save on the cloud. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> {} \n<cb>Slot:</c> {}",  urlInput->getString(), slotInput->getString()),
         "No", "Yes",
         [this](auto, bool btn2) { 
             if (btn2) {

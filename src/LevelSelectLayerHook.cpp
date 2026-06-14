@@ -49,7 +49,7 @@ bool init(GJGameLevel* level) {
             p0->m_requiredCoins = 0;
 		    LevelPage::updateDynamicPage(p0);
         }
-        if (bool canPlay = !Mod::get()->getSavedValue<bool>(p0->m_levelName + ": Unlock", false)) {
+        if (bool canPlay = !Mod::get()->getSavedValue<bool>(fmt::format("{}: Unlock", p0->m_levelName), false)) {
             LevelPage::updateDynamicPage(p0);
 
             auto lockSprite = CCSprite::createWithSpriteFrameName("GJLargeLock_001.png");
