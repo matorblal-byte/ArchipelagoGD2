@@ -16,7 +16,7 @@ namespace APUtils {
     extern bool ultimatesEnabled;
     extern bool checkShopEnabled;
 
-    bool notifsOff; // i dont think i should extern here cuz it is only used in this file
+    extern bool notifsOff;
     //extern bool modifiers;
 
     static std::vector<std::string> levels = {

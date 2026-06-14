@@ -84,6 +84,10 @@ class $modify(APMenuLayer, MenuLayer) {
             geode::Notification::create(APUtils::errorMessage.c_str(), geode::NotificationIcon::None, 4.f)->show();
         }
         Mod::get()->setSavedValue<bool>("InitArchMode", false);
+        auto res = Mod::get()->saveData(); // Whenh thew game crashes we might not save (i think??????)
+        if (!res.isOk()) {
+            // i dont rlly haveanything to put here do i
+        }
         geode::log::debug("MenuLayer::init() was finshed");
         return true;
     }
